@@ -25,14 +25,14 @@ package.json
 
 
 ### Compressed Packages ###
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
+#*.7z
+#*.dmg
+#*.gz
+#*.iso
+#*.jar
+#*.rar
+#*.tar
+#*.zip
 
 
 ### Logs and Databases ###
