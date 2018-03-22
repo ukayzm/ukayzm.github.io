@@ -1,7 +1,5 @@
 ---
-layout: single
 title:  "Python Object Detection with Tensorflow"
-date:   2018-03-19 20:20:34 +0900
 #categories: python face-recognition
 tags: python object-detection tensorflow
 
@@ -91,14 +89,12 @@ On jupyter notebook, open object_detection/object_detection_tutorial_Webcam_1.ip
 
 * [Whole install procedure of Tensorflow object detection model][install]
 * [Tensorflow object detection model zoo][modelzoo]
-* [Demo application][demoapp]
-* [Demo application2][demoapp2]
-* [Using Tensorflow Object Detection to do Pixel Wise Classification][maskexample]
-* [Is Google Tensorflow Object Detection API the easiest way to implement image recognition?][objexample]
+* [Real time object detection with Tensorflow][objexample1]
+* [Using Tensorflow Object Detection to do Pixel Wise Classification][objexample2]
+* [Is Google Tensorflow Object Detection API the easiest way to implement image recognition?][maskexample]
 
 [install]:https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
 [modelzoo]: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md
-[demoapp]:https://towardsdatascience.com/real-time-object-detection-with-tensorflow-detection-model-e7fd20421d5d
-[demoapp2]:https://github.com/ElephantHunters/Real_time_object_detection_using_tensorflow
-[maskexample]: https://towardsdatascience.com/using-tensorflow-object-detection-to-do-pixel-wise-classification-702bf2605182
-[objexample]: https://towardsdatascience.com/is-google-tensorflow-object-detection-api-the-easiest-way-to-implement-image-recognition-a8bd1f500ea0
+[objexample1]:https://towardsdatascience.com/real-time-object-detection-with-tensorflow-detection-model-e7fd20421d5d
+[objexample2]: https://towardsdatascience.com/using-tensorflow-object-detection-to-do-pixel-wise-classification-702bf2605182
+[maskexample]: https://towardsdatascience.com/is-google-tensorflow-object-detection-api-the-easiest-way-to-implement-image-recognition-a8bd1f500ea0
