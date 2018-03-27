@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "Python Face Recognition - simple implementation"
-date:   2018-03-18 20:20:34 +0900
+date:   2018-03-27 21:30:34 +0900
 #categories: python face-recognition
 tags: python face-recognition
 
@@ -9,24 +9,13 @@ tags: python face-recognition
 
 ## 파이썬으로 웹캠 동영상에서 실시간으로 얼굴 인식하기
 
-다음 그림을 보면 동영상에 나온 사람의 이름을 실시간으로 알아냅니다. 이것은 face recognition 기술입니다.
+사진에서 사람 얼굴을 인식하는 face_recognition이라는, 아주 쓰기 쉬운 파이썬 패키지가 있습니다. 이 패키지를 이용하면 웹캠을 이용하여 실시간으로 사람 얼굴을 인식하는 프로그램을 쉽게 제작할 수 있습니다. 파이썬을 설치하고, 필요한 패키지를 설치하고 소스코드를 다운 받고, knowns 디렉토리에 사람 얼굴이 있는 사진을 넣으면 동작합니다. 바로 아래 화면처럼요.
 
-![using OpenFace](https://cdn-images-1.medium.com/max/800/1*IHy4EB25kpO9Dh_ugCJp7Q.gif)
+![face-recognition-example-picture](https://cloud.githubusercontent.com/assets/896692/24430398/36f0e3f0-13cb-11e7-8258-4d0c9ce1e419.gif)
 
-이미지 출처: [여기][media_com]
+Face_recognition 패키지는 [여기](https://github.com/ageitgey/face_recognition)에서 운영되고 있습니다.
 
-위 [이미지 출처 사이트][media_com]에 가 보면 Face recognition에 대한 이론적인 설명이 잘 나와 있고, OpenFace 패키지를 이용하여 face recognition을 구현하고 있습니다.
-마치 밥 로스 아저씨의 "참 쉽죠" 같죠?
-
-
-그런데, 이것보다 더 쉽게 구현할 수 있는 방법이 있습니다. Python의 OpenCV와 face_recognition 패키지를 사용하는 방법입니다. 아래 화면처럼요.
-
-![using face_recognition](https://cloud.githubusercontent.com/assets/896692/24430398/36f0e3f0-13cb-11e7-8258-4d0c9ce1e419.gif)
-
-여기에서는 face_recognition을 이용하여 구현하는 방법에 대해서 설명하겠습니다. 많은 부분을 [이 사이트](https://github.com/ageitgey/face_recognition)에서 참고하였습니다.
-
-
-이 예제를 실행하려면 webcam이 연결된 PC가 필요합니다. 노트북에 내장된  webcam도 잘 동작합니다. 이 예제는 Ubuntu 14.04 linux와 Windows 10에서 테스트 되었습니다만, 다른 버전의 linux나 MacOS에서도 잘 동작할 것입니다.
+얼굴 인식 프로그램을 실행하려면 webcam이 연결된 PC가 필요합니다. 노트북에 내장된  webcam도 잘 동작합니다. 이 예제는 Ubuntu 14.04 linux와 Windows 10에서 테스트 되었습니다만, 다른 버전의 linux나 MacOS에서도 잘 동작할 것입니다.
 
 
 ## 필요 패키지 설치
@@ -42,7 +31,7 @@ $ source py3/bin/activate
 (py3) $ pip install --upgrade pip
 ```
 
-그 다음, 아래와 같이 필요한 패키지를 설치합니다. 
+그 다음, 아래와 같이 필요한 패키지를 설치합니다.
 
 ```
 (py3) $ pip install opencv-python
@@ -68,7 +57,7 @@ C:\> pip install flask
 
 ### Windows에서 dlib 설치
 
-Windows에서 dlib 설치시 에러가 발생할 수 있습니다. 이것을 해결하기 위해서 [https://pypi.python.org/simple/dlib](https://pypi.python.org/simple/dlib)에 접속하여 가장 최신 버전의 *-win_amd64.whl 파일을 다운받습니다. 
+Windows에서 dlib 설치시 에러가 발생할 수 있습니다. 이것을 해결하기 위해서 [https://pypi.python.org/simple/dlib](https://pypi.python.org/simple/dlib)에 접속하여 가장 최신 버전의 xxx-win_amd64.whl 파일을 다운받습니다.
 
 이 글을 쓰는 시점에는 dlib-19.8.1-cp36-cp36m-win_amd64.whl 파일이 가장 최신 파일이었습니다.
 그 다음, 아래 명령으로 파일을 설치합니다.
@@ -105,6 +94,7 @@ HyoRi.jpg  Lenna.jpg  DongGun.jpg
 * 사진에는 한 사람의 얼굴만 들어 있어야 합니다.
 * 파일 이름은 "사람이름.jpg"으로 합니다. 파일 이름은 비디오상에 출력되는 이름으로 사용됩니다.
 * 스마트폰으로 찍은 사진을 사용하는 경우에는, 회전 속성이 들어있지 않은 사진을 사용해야 합니다. 얼굴 인식이 잘 되지 않을 때는, 사진을 그림판에서 읽은 후, 90/180도 좌/우로 회전 시킨 다음 저장하세요.
+* 사진에서 얼굴이 인식되지 않으면 에러가 발생합니다.
 
 zip 파일에는 3개의 파이썬 파일이 들어 있습니다. 각 파이썬 파일의 기능은 아래와 같습니다.
 
@@ -137,7 +127,7 @@ face_recog.py는 많은 머신 러닝 알고리즘이 구현되어 있는 dlib�
 knowns 디렉토리에서 사진 파일을 읽습니다. 파일 이름으로부터 사람 이름을 추출합니다.
 
 ### Line 27-29
-사진에서 얼굴 영역을 알아내고, face landmarks라 불리는 68개 얼굴 특징의 위치를 분석한 데이터를 known_face_encodings에 저장합니다. 이 작업의 원리는 [이 사이트][media_com]을 참고하세요.
+사진에서 얼굴 영역을 알아내고, face landmarks라 불리는 68개 얼굴 특징의 위치를 분석한 데이터를 known_face_encodings에 저장합니다. 이 작업의 원리는 [이 사이트][media_com]에 잘 설명되어 있습니다. 아주 쉽게 설명되어 있으므로, 꼭 한 번 읽어보시길 강력 추천 드립니다.
 
 ### Line 42-45
 카메라로부터 frame을 읽어서 1/4 크기로 줄입니다. 이것은 계산양을 줄이기 위해서 입니다.
@@ -162,11 +152,14 @@ Frame에서 추출한 얼굴 특징과 knowns에 있던 사진 얼굴의 특징�
 
 ## 참고 사이트
 
-* Face recognition의 원리 - [https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c][media_com]
-* Face recognition package - [https://github.com/ageitgey/face_recognition](https://github.com/ageitgey/face_recognition)
-* Live streaming - [http://www.chioka.in/python-live-video-streaming-example/](http://www.chioka.in/python-live-video-streaming-example/)
+* [Face recognition의 원리 - 기계 학습은 즐겁다 Part 4][media_com]
+* [Face recognition python package](https://github.com/ageitgey/face_recognition)
+* [Live streaming](http://www.chioka.in/python-live-video-streaming-example/)
+
+## 소스 코드 다운로드
+
+[face_recognition.zip][face_recognition.zip]
 
 
-[face_recognition.zip]:{{ site.url }}/assets/face_recognition.zip
-[media_com]:https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c
-
+[face_recognition.zip]: {{ site.url }}/assets/face_recognition.zip
+[media_com]: https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c
