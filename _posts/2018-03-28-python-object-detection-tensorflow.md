@@ -1,16 +1,15 @@
 ---
 title:  "Python Object Detection with Tensorflow"
-date:   2018-03-27 21:30:34 +0900
-#categories: python face-recognition
-tags: python object-detection tensorflow
+date:   2018-03-28 21:15:00 +0900
+tags: python object-detection tensorflow 사물인식
 ---
 
 ## 구글 텐서플로 object detection 모델
 
 구글은 텐서플로로 구현된 많은 [모델](https://github.com/tensorflow/models)을 [아파치 라이센스](https://github.com/tensorflow/models/blob/master/LICENSE)로 공개하고 있습니다.
-그 중에서 [object detection](https://github.com/tensorflow/models/tree/master/research/object_detection) 모델은 사진에서 물체를 인식하는 모델입니다. 이것은 매우 활발히 연구되고 빠르게 발전하는 모델로서, 글을 쓰는 현재 구글은 19개의 [pre-trained object detection model][modelzoo]을 공개했으며, 점점 더 많은 모델이 구현되고 공개될 것입니다.
+그 중에서 [object detection API](https://github.com/tensorflow/models/tree/master/research/object_detection) 사진에서 물체를 인식하는 모델을 쉽게 제작/학습/배포할 수 있는 opensource 프레임워크 입니다. 사물 인식은 매우 활발히 연구되고 빠르게 발전하는 모델로서, 글을 쓰는 현재 구글은 19개의 [pre-trained object detection model][modelzoo]을 공개했으며, 점점 더 많은 모델이 구현되고 공개될 것입니다.
 
-이 모델 API를 이용하면 아래 그림과 같이 웹캠을 이용한 실시간 사물 인식을 쉽게 구현할 수 있습니다. 아래 그림은 [여기][objexample2]에서 가져왔습니다.
+이 API를 이용하면 아래 그림과 같이 웹캠을 이용한 실시간 사물 인식을 쉽게 구현할 수 있습니다. 아래 그림은 [여기][objexample2]에서 가져왔습니다.
 
 ![object-detection-example](https://cdn-images-1.medium.com/max/800/1*W3elu1yPiJ3bpj8MZrmvwA.gif)
 
@@ -18,7 +17,7 @@ tags: python object-detection tensorflow
 
 파이썬과 텐서플로는 이미 설치되어 있다고 가정하겠습니다. 텐서플로 설치는 [여기](https://www.tensorflow.org/install/)를 참조하시면 됩니다.
 
-이 설치 방법은 [여기][install]를 참고하였습니다. 이 글을 쓰는 시점 이후에 설치 방법이 바뀔 수도 있으니, 아래 방법이 잘 안 될 경우에는 [원본 사이트][install]를 방문하시기 바랍니다.
+이 설치 방법은 [여기][install]를 참고하였습니다. 이 글을 쓰는 시점 이후에 설치 방법이 바뀔 수도 있으니, 아래 방법이 잘 안될 경우에는 [원본 사이트][install]를 방문하시기 바랍니다.
 
 
 ### Install Necessary Libraries and Packages
@@ -97,20 +96,46 @@ OK
 (py3) $ cd ~/work/tensorflow/models/research
 (py3) $ jupyter notebook
 ```
-웹브라우저에서 localhost:8888/tree 가 열릴 것입니다. object_detection 디렉토리의 object_detection_tutorial.ipynb를 실행시켜 보세요. 아래 그림과 같이, 두 마리의 개가 인식이 되었나요?
+웹브라우저에서 localhost:8888/tree 가 열릴 것입니다. object_detection 디렉토리의 object_detection_tutorial.ipynb를 실행시켜 보세요. 아래 그림과 같이, 두 마리의 개가 인식이 되었나요? 성공입니다.
 
 ![obj-detection-install-test]({{ site.url }}/assets/obj-detection-install-test.png)
 
 
-## ElephantHunters의 예제:
+## 웹캠을 이용한 실시간 사물 인식
+
+인터넷 상에 [웹캠을 이용하여 실시간으로 사물을 인식할 수 있는 좋은 예제](objexample1)가 있어 소개를 하겠습니다. 아래과 같이 코드를 다운 받고, ipynb 파일을 object_detection 디렉토리로 복사한 후, Jupyter notebook을 실행시킵니다.
 
 ```
 (py3) $ cd ~/work
 (py3) $ git clone https://github.com/ElephantHunters/Real_time_object_detection_using_tensorflow
 (py3) $ cp Real_time_object_detection_using_tensorflow/object_detection_tutorial_Webcam_1.ipynb ~/work/tensorflow/models/research/object_detection
+(py3) $ cd /work/tensorflow/models/research/object_detection
+(py3) $ jupyter notebook
 ```
 
-On jupyter notebook, open object_detection/object_detection_tutorial_Webcam_1.ipynb. Change the filename in [7]. Then run.
+웹브라우저에서 Jupyter notebook이 뜨면, object_detection_tutorial_Webcam_1.ipynb 파일을 열고, 아래 그림의 \[7\] 셀에서 filename을 적당히 수정합니다.
+
+![change-filename]({{ site.url }}/assets/change_filename.png)
+
+```
+filename="output.avi"
+```
+
+이렇게 수정한 후, 노트북을 실행시켜 보세요. 잠시 후 웹캠 화면이 뜨고, 화면에서 인식된 물체에 사각형이 그려지고 물체의 이름이 뜰 것입니다.
+
+아래와 같이 notebook 파일을 파이썬 스크립트로 변환시켜 실행시켜도 잘 동작합니다. 이 때, 변환된 파이썬 코드에서 get_ipython()으로 시작하는 노트북 코드를 주석처리해야 합니다.
+
+```
+(py3) $ cd /work/tensorflow/models/research/object_detection
+(py3) $ jupyter nbconvert --to script object_detection_tutorial_Webcam_1.ipynb
+(py3) $ vi object_detection_tutorial_Webcam_1.py
+# This is needed to display the images.
+# get_ipython().run_line_magic('matplotlib', 'inline')
+# 윗 줄처럼 파이썬 코드 중에서 get_ipython() 부분을 주석처리하세요.
+(py3) $ python object_detection_tutorial_Webcam_1.py
+```
+
+어떻습니까? 잘 실행이 되나요? 그렇다면 성공입니다.
 
 ## 참고 사이트
 
