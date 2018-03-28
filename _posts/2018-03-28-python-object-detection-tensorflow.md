@@ -1,7 +1,7 @@
 ---
 title:  "Python Object Detection with Tensorflow"
 date:   2018-03-28 21:15:00 +0900
-tags: python object-detection tensorflow 사물인식
+tags: python object-detection tensorflow
 ---
 
 ## 구글 텐서플로 object detection 모델
