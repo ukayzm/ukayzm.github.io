@@ -152,7 +152,7 @@ Frame에서 추출한 얼굴 특징과 knowns에 있던 사진 얼굴의 특징�
 
 ## 참고 사이트
 
-* [Face recognition의 원리 - 기계 학습은 즐겁다 Part 4][media_com]
+* [딥러닝(Deep Learning)을 사용한 최신 얼굴 인식(Face Recognition)][media_com]
 * [Face recognition python package](https://github.com/ageitgey/face_recognition)
 * [Live streaming](http://www.chioka.in/python-live-video-streaming-example/)
 

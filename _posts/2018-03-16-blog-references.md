@@ -7,6 +7,7 @@ categories: blog jekyll
 
 * [Jekyll Official Docs][jekyll-docs]
 * [Atom 을 마크다운(Markdown) 에디터로 사용하기][atom-guide]
+* [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
 * [Jekyll Blog 추천 테마 5가지][jekyll-theme-recommendation]
 * [Jekyll 블로그 테마 적용하기 (minimal-mistakes)][jekyll-minimal-mistakes]
 * [Google Analytics](https://analytics.google.com/)
