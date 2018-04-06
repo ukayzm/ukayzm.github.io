@@ -1,13 +1,11 @@
 ---
 layout: single
-title:  "Python Face Recognition - simple implementation"
+title:  "Python Face Recognition in Real Time"
 date:   2018-03-27 21:30:34 +0900
 #categories: python face-recognition
 tags: python face-recognition
 
 ---
-
-## 파이썬으로 웹캠 동영상에서 실시간으로 얼굴 인식하기
 
 사진에서 사람 얼굴을 인식하는 face_recognition이라는, 아주 쓰기 쉬운 파이썬 패키지가 있습니다. 이 패키지를 이용하면 웹캠을 이용하여 실시간으로 사람 얼굴을 인식하는 프로그램을 쉽게 제작할 수 있습니다. 파이썬을 설치하고, 필요한 패키지를 설치하고 소스코드를 다운 받고, knowns 디렉토리에 사람 얼굴이 있는 사진을 넣으면 동작합니다. 바로 아래 화면처럼요.
 

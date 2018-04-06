@@ -4,17 +4,13 @@ date:   2018-04-02 21:51:00 +0900
 tags:   python facial-landmarks
 ---
 
-## Facial Landmarks
-
-며칠 전에 [Python Face Recognition][python-face-recognition]에 대한 글을 올렸습니다. Face recognition은 다음과 같은 과정을 거칩니다.
+며칠 전에 [Python Face Recognition][python-face-recognition]에 대한 글을 올렸습니다. Face recognition은 다음과 같은 과정을 거칩니다. 이 중에서, 2번째 단계인 얼굴의 특징점을 추출하는 단계는 아주 재미있습니다.
 
 1. 이미지에서 얼굴만 분리
 1. 얼굴의 특징점 (facial landmarks) 추출
 1. 얼굴 위치 교정과 투영
 1. 교정된 얼굴을 인코딩
 1. 기존 데이터베이스와 비교하여 가장 비슷한 얼굴 찾기
-
-이 중에서, 2번째 단계인 얼굴의 특징점을 추출하는 단계는 아주 재미있습니다.
 
 인터넷 상에 아래 그림과 같이 [웹캠 영상에서 실시간으로 얼굴의 특징점을 찾아내는 재미있는 예제](facial-landmarks)가 있어 소개하고자 합니다.
 

@@ -4,10 +4,8 @@ date:   2018-03-28 21:15:00 +0900
 tags: python object-detection tensorflow
 ---
 
-## 구글 텐서플로 object detection 모델
-
 구글은 텐서플로로 구현된 많은 [모델](https://github.com/tensorflow/models)을 [아파치 라이센스](https://github.com/tensorflow/models/blob/master/LICENSE)로 공개하고 있습니다.
-그 중에서 [object detection API](https://github.com/tensorflow/models/tree/master/research/object_detection) 사진에서 물체를 인식하는 모델을 쉽게 제작/학습/배포할 수 있는 opensource 프레임워크 입니다. 사물 인식은 매우 활발히 연구되고 빠르게 발전하는 모델로서, 글을 쓰는 현재 구글은 19개의 [pre-trained object detection model][modelzoo]을 공개했으며, 점점 더 많은 모델이 구현되고 공개될 것입니다.
+그 중에서 [object detection API](https://github.com/tensorflow/models/tree/master/research/object_detection) 사진에서 물체를 인식하는 모델을 쉽게 제작/학습/배포할 수 있는 오픈소스 프레임워크 입니다. 사물 인식은 매우 활발히 연구되고 빠르게 발전하는 모델로서, 글을 쓰는 현재 구글은 19개의 [pre-trained object detection model][modelzoo]을 공개했으며, 점점 더 많은 모델이 구현되고 공개될 것입니다.
 
 이 API를 이용하면 아래 그림과 같이 웹캠을 이용한 실시간 사물 인식을 쉽게 구현할 수 있습니다. 아래 그림은 [여기][objexample2]에서 가져왔습니다.
 

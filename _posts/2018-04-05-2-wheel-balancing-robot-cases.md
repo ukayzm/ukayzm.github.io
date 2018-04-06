@@ -1,15 +1,19 @@
 ---
 title:  "2 Wheel Balancing Robot - Cases"
-date:   2018-04-05 21:40:00 +0900
+date:   2018-04-06 21:40:00 +0900
 tags:   2-wheel-balancing-robot
 ---
 
-2 Wheel Balancing Robot을 제작한 실제 사례를 모아보았습니다. 모두 아두이노 또는 그와 비슷한 마이크로 콘트롤러를 이용하여 구현한 것들 입니다.
+인터넷이나 유튜브를 보면 많은 2 wheel balancing robot 작품을 접할 수 있습니다. 어떤 작품은 간신히 균형잡고 서있기 바쁜 것도 있지만, 놀랄만큼 재빠르고 날렵한 움직임을 보여주는 것도 있습니다. 심지어 넘어졌다가 스스로 일어나는 로봇도 있습니다.
+
+모두 아두이노 또는 그와 비슷한 마이크로 콘트롤러를 이용하여 구현한 것들 입니다. 많은 사이트가 사용한 부품과 소스 코드를 공개하고 있습니다.
+
+인상적이거나 시간을 두고 연구 분석할만한 사이트를 아래에 모아놓았습니다. 꼭 방문해 보시고, 사이트에 같이 올려진 동영상도 보시길 강력 추천 합니다.
 
 
 ## [http://www.brokking.net/yabr_main.html][brokking-yabr]
 
-{% youtube 6WWqo-Yr8lA %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6WWqo-Yr8lA" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 * 1 x Arduino pro mini clone
 * 1 x FTDI USB to TTL programmer for the Arduino pro mini
@@ -31,7 +35,7 @@ NEMA 14 스텝 모터 사용. 이곳을 참조하여 NEMA 17 모터로 만든 �
 
 ## [Instructable 예제][instructable1]
 
-{% youtube ZYLb11xUsSY %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZYLb11xUsSY" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 * DC 모터와 인코더 (모터 스펙은 나와있지 않음)
 * L298N 모터 드라이버
@@ -41,7 +45,7 @@ NEMA 14 스텝 모터 사용. 이곳을 참조하여 NEMA 17 모터로 만든 �
 
 ## [http://axelsdiy.brinkeby.se/?page_id=1447](http://axelsdiy.brinkeby.se/?page_id=1447)
 
-{% youtube nT1FqvNbThU %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nT1FqvNbThU" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 * Arduino Pro Micro (clone)
 * 2 pcs. NEMA 14 stepper motors (1.8 degrees per step)
@@ -63,7 +67,7 @@ PID에 대한 직관적인 설명이 인상적임:
 
 ## [Make: 에 실린 예제](https://makezine.com/projects/arduroller-self-balancing-robot/)
 
-{% youtube uXVwx9Gxp_E %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uXVwx9Gxp_E" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 * DC 모터와 인코더
 * Pololu 25D 34:1 motor with encoder (170 RPM, 50 oz-in (3.5 kg-cm), LP 6V, 2.4A)
@@ -79,12 +83,12 @@ PID에 대한 직관적인 설명이 인상적임:
 
 ## [FK Engineering's Blog](http://fkeng.blogspot.kr/2016/04/self-balancing-two-wheels-mobile-robot.html?m=1)
 
-{% youtube R6i-xSrRCec %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/R6i-xSrRCec" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 ## [Lukasz Bien의 작품](https://youtu.be/EwrQEsFmL4E )
 
-{% youtube EwrQEsFmL4E %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EwrQEsFmL4E" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 * DC 모터와 인코더
 * Pololu 37D 19:1 motor with encoder (500 RPM, 84 oz-in, 12V, 5A)
@@ -97,7 +101,7 @@ PID에 대한 직관적인 설명이 인상적임:
 
 ## [B-robot EVO](https://www.thingiverse.com/thing:2306541)
 
-{% youtube d6J0ijMG3jI %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d6J0ijMG3jI" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 [https://www.thingiverse.com/thing:1069256](https://www.thingiverse.com/thing:1069256)
 [https://www.jjrobots.com/projects-2/b-robot/](https://www.jjrobots.com/projects-2/b-robot/)
@@ -114,7 +118,8 @@ PID에 대한 직관적인 설명이 인상적임:
 
 ## [Zippy the Balancing Robot](https://github.com/elkayem/ZippyTheBalancingRobot)
 
-{% youtube 0io5SwitLzY %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0io5SwitLzY" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 [https://youtu.be/V53LkU0RIlw](https://youtu.be/V53LkU0RIlw)
 [https://youtu.be/0io5SwitLzY](https://youtu.be/0io5SwitLzY)
 
@@ -129,7 +134,7 @@ PID에 대한 직관적인 설명이 인상적임:
 
 ## [BalancingWii 2.0](https://github.com/mahowik/BalancingWii)
 
-{% youtube 038e2j9nE3M %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/038e2j9nE3M" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 * NEMA 17 스텝 모터
 * A4988 모터 드라이버
@@ -140,7 +145,7 @@ PID에 대한 직관적인 설명이 인상적임:
 
 ## [Pololu Balboa 32U4 Balancing Robot](https://www.pololu.com/category/210/balboa-robot-and-accessories)
 
-{% youtube sRtsc3EXL8A %}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sRtsc3EXL8A" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 * [how to make](https://www.pololu.com/blog/662/how-to-make-a-balboa-robot-balance-part-1-selecting-mechanical-parts)
 * Pololu사에서 제작한 키트
