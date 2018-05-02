@@ -130,6 +130,102 @@ $ ifconfig
 $ date
 ```
 
+## WIFI Concurrent mode 설정
+
+(experimental)
+
+/etc/udev/rules.d/90-wireless.rules 파일을 만들고 아래 내용을 적습니다. 이렇게 하면 다음 번 부팅때 uap0 라는 가상 네트워크 인터페이스가 만들어집니다. 이 uap0를 AP mode의 인터페이스로 사용할 것입니다.
+
+```
+ACTION=="add", SUBSYSTEM=="ieee80211", KERNEL=="phy0", \
+    RUN+="/sbin/iw phy %k interface add ap0 type __ap", \
+    RUN+="/bin/ip link set ap0 address b8:27:eb:38:8d:34"
+```
+
+아래 명령으로 dnsmasq와 hostapd 패키지를 설치합니다.
+```
+$ sudo apt-get install dnsmasq hostapd
+```
+
+/etc/dnsmasq.conf 파일의 맨 뒤에 다음 라인 추가
+```
+interface=lo,ap0
+no-dhcp-interface=lo,wlan0
+bind-interfaces
+server=8.8.8.8
+domain-needed
+bogus-priv
+dhcp-range=192.168.10.50,192.168.10.150,12h
+```
+/etc/hostapd/hostapd.conf 파일을 생성하고, 아래 내용 추가. YourApNameHere와 YourPassPhraseHere는 알아서 수정.
+```
+ctrl_interface=/var/run/hostapd
+ctrl_interface_group=0
+interface=ap0
+driver=nl80211
+ssid=YourApNameHere
+hw_mode=g
+channel=11
+wmm_enabled=0
+macaddr_acl=0
+auth_algs=1
+wpa=2
+wpa_passphrase=YourPassPhraseHere
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP CCMP
+rsn_pairwise=CCMP
+```
+
+/etc/wpa_supplicant/wpa_supplicant.conf 파일은 아래와 비슷하게 이미 만들어져 있을 것임. 거기에 id_str을 추가하자.
+```
+country=US
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid="YourSSID1"
+    psk="YourPassphrase1"
+    id_str="AP1"
+}
+
+network={
+    ssid="YourSSID2"
+    psk="YourPassphrase2"
+    id_str="AP2"
+}
+```
+
+/etc/network/interfaces 파일을 아래와 같이 수정하여 ap0에 static IP address를 부여함.
+```
+# interfaces(5) file used by ifup(8) and ifdown(8)
+
+# Please note that this file is written to be used with dhcpcd
+# For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
+
+# Include files from /etc/network/interfaces.d:
+source-directory /etc/network/interfaces.d
+
+auto lo
+auto ap0
+auto wlan0
+iface lo inet loopback
+
+allow-hotplug ap0
+iface ap0 inet static
+    address 192.168.10.1
+    netmask 255.255.255.0
+    hostapd /etc/hostapd/hostapd.conf
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+    wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface AP1 inet dhcp
+iface AP2 inet dhcp
+```
+
+이렇게 하고 재부팅하면 스마트폰에서 YourApNameHere 란 이름의 AP가 보일 것입니다. 위 과정 중에서 /etc/hostapd/hostapd.conf 파일에서 AP 이름을 명시해 주었죠. hostapd.conf 파일에서 명시한 암호를 입력하면 스마트폰이 RPi에 접속이 될 것입니다. 스마트폰에서 ssh app을 실행하여 pi@192.168.10.1로 접속하면 ssh 연결을 할 수 있습니다.
+
 ## 참고 사이트
 
 * [https://www.raspberrypi.org/documentation/installation/installing-images/README.md](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
+* [https://albeec13.github.io/2017/09/26/raspberry-pi-zero-w-simultaneous-ap-and-managed-mode-wifi/](https://albeec13.github.io/2017/09/26/raspberry-pi-zero-w-simultaneous-ap-and-managed-mode-wifi/)
