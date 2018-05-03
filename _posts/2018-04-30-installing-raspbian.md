@@ -150,7 +150,7 @@ $ sudo apt-get install dnsmasq hostapd
 /etc/dnsmasq.conf 파일의 맨 뒤에 다음 라인 추가
 ```
 interface=lo,ap0
-no-dhcp-interface=lo,wlan0
+no-dhcp-interface=lo,wlan0,eth0
 bind-interfaces
 server=8.8.8.8
 domain-needed
