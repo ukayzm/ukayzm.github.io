@@ -2,6 +2,9 @@
 title:  "2 Wheel Balancing Robot - Cases"
 date:   2018-04-06 21:40:00 +0900
 tags:   2-wheel-balancing-robot
+feature-img: "assets/img/pexels/wall_e.jpeg"
+thumbnail:   "assets/img/pexels/wall_e.jpeg"
+layout: post
 ---
 
 인터넷이나 유튜브를 보면 많은 2 wheel balancing robot 작품을 접할 수 있습니다. 어떤 작품은 간신히 균형잡고 서있기 바쁜 것도 있지만, 놀랄만큼 재빠르고 날렵한 움직임을 보여주는 것도 있습니다. 심지어 넘어졌다가 스스로 일어나는 로봇도 있습니다.

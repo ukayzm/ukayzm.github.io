@@ -2,6 +2,9 @@
 title:  "Python Object Detection with Tensorflow"
 date:   2018-03-28 21:15:00 +0900
 tags: python object-detection tensorflow
+feature-img: "assets/img/posts/object-detection-kite.jpg"
+thumbnail:   "assets/img/posts/object-detection-kite.jpg"
+layout: post
 ---
 
 구글은 텐서플로로 구현된 많은 [모델](https://github.com/tensorflow/models)을 [아파치 라이센스](https://github.com/tensorflow/models/blob/master/LICENSE)로 공개하고 있습니다.

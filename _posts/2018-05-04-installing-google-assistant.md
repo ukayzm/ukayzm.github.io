@@ -2,6 +2,9 @@
 title:  "Installing Google Assistant"
 date:   2018-05-04 18:40:00 +0900
 tags:   raspberry-pi google-assistant
+feature-img: "assets/img/pexels/gadget-google-google-wifi-1054554.jpg"
+thumbnail:   "assets/img/pexels/gadget-google-google-wifi-1054554.jpg"
+layout: post
 ---
 
 구글은 [라즈베리파이에 Google Assistant를 설치할 수 있는 가이드](https://developers.google.com/assistant/sdk/guides/library/python/embed/setup)를 제공하고 있습니다. 이 글에서는 그 가이드를 좀 더 쉽게 설명하겠습니다.
@@ -20,7 +23,7 @@ GCP 클라우드를 사용하기 위해서 구글 계정에 가입합니다. 기
 
 [https://console.cloud.google.com](https://console.cloud.google.com)에서 프로젝트를 생성합니다. 프로젝트는 구글 클라우드에서 지원하는 서비스를 하나로 묶어서 관리하는 집합이라고 볼 수 있습니다. 아래 화면은 구글 클라우드 콘솔의 맨 위에 위치한 바입니다. 필자가 만든 VaGoogle1 이라는 이름의 프로젝트가 현재 활성화되어 있는 것을 볼 수 있습니다.
 
-![GCP-project]({{ site.url }}/assets/GCP-project.png)
+![GCP-project]({{ site.url }}/assets/img/posts/GCP-project.png)
 
 ### Google Assistant API 활성화
 
@@ -33,7 +36,7 @@ GCP 클라우드를 사용하기 위해서 구글 계정에 가입합니다. 기
 활성화한 Google Assistant API를 사용하려면 Consent screen과 OAuth Client ID를 만들어야 합니다. OAuth client ID는 라즈베리파이에서 구동되는 Google Assistant가 서버에 OAuth 2.0 access token을 요청할 때 사용됩니다.
 三 > APIs & Services > Credential > OAuth consent screen을 누릅니다. 적당히 Product name을 입력합니다. 필자는 DIYGoogleAssistant로 정했습니다. SAVE를 누른 후, Client ID를 설정합니다. 적당한 client ID를 입력합니다. 필자는 diy_ga_client를 입력하였습니다. Type은 반드시 Other로 합니다. Create를 누르고 OK를 누르면 OAuth Client ID가 만들어집니다. 만들어진 client ID는 아래 그림과 같이, 三 > APIs & Services > Credential > Credentials에서 확인할 수 있습니다.
 
-![GCP-credentials]({{ site.url }}/assets/GCP-credentials.png)
+![GCP-credentials]({{ site.url }}/assets/img/posts/GCP-credentials.png)
 
 Client ID의 맨 오른쪽에 있는 아래 화살표를 눌러서, JSON file을 다운로드 합니다. 파일 이름은 client_secret_<client_id>.json 입니다. 이 파일을 라즈베리 파이의 /home/pi 디렉토리에 복사해야 합니다. 중요한 점은, 파일 이름이 변경되면 안됩니다. 아래와 같이 scp로 복사할 수 있습니다.
 ```
@@ -119,7 +122,7 @@ Enter the authorization code:
 
 PC의 웹브라우저에서 https:// 이하 URL을 입력하여 해당 페이지로 이동합니다. PC 단계에서 사용한 계정을 선택하고, 다음 화면에서 “ALLOW”를 누르면 아래와 같이 code가 출력됩니다.
 
-![GA-authorization-code]({{ site.url }}/assets/GA-authorization-code.png)
+![GA-authorization-code]({{ site.url }}/assets/img/posts/GA-authorization-code.png)
 
 이 코드를 복사한 다음, google-oauthlib-tool을 실행시킨 터미널에 붙여넣기를 합니다.
 

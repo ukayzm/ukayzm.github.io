@@ -2,7 +2,12 @@
 title:  "Installing Raspbian Headless"
 date:   2018-04-30 18:40:00 +0900
 tags:   raspberry-pi
+feature-img: "assets/img/pexels/capacitors-chip-circuit-board-57007.jpg"
+thumbnail:   "assets/img/pexels/capacitors-chip-circuit-board-57007.jpg"
+layout: post
 ---
+
+모니터, 키보드, 마우스 연결 없이 Raspberry Pi를 headless로 설정하는 방법을 설명합니다.
 
 새로 구입한 Raspberry Pi에 제일 먼저 해야 하는 일은 OS를 설치하는 것입니다. Raspberry Pi에는 여러 종류의 Linux와 심지어 Windows 10 IOT 버전도 설치할 후 있습니다. 그 중에서 Raspbian은 Raspberry Pi에서 공식적으로 릴리즈하는 OS 입니다.
 

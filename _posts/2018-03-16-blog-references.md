@@ -1,6 +1,7 @@
 ---
-title:  "블로그 운영 - bookmarks"
+title:  "블로그 운영 - references"
 categories: blog jekyll
+layout: post
 ---
 
 ## References
@@ -14,12 +15,37 @@ categories: blog jekyll
 * [구글 애널리틱스 설치부터 적용까지](https://milooy.wordpress.com/2016/01/14/google-analtyics-1-intro/)
 
   * Minimal-mistakes 테마를 사용하는 경우에는, _config.yml 파일을 아래와 같이 수정하면 자동으로 google analytics 스크립트가 붙는다.
+
 ```
+...
 # Analytics
 analytics:
   provider               : google-gtag # false (default), "google", "google-universal", "google-gtag", "custom"
   google:
     tracking_id          : UA-111111111-1
+...
+```
+
+### Type-on-Strap theme
+
+* [http://jekyllthemes.org/themes/Type-on-Strap/](http://jekyllthemes.org/themes/Type-on-Strap/)
+* Adsense를 위해 _include에 adsense.html을 추가하고 _include/head.html의 마지막 줄을 아래와 같이 수정
+
+```
+...
+{% raw %} {% include adsense.html %} {% endraw %}
+</head>
+```
+
+* URL을 /:categories/:title/ 형태로 만들기 위해 _config.yml 파일에 아래와 같이 permalink 라인을 추가
+
+```
+...
+# PAGINATION
+permalink: /:categories/:title/
+paginate: 5
+paginate_path: "blog/page:num"
+...
 ```
 
 
