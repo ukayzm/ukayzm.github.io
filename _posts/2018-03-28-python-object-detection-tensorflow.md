@@ -99,7 +99,7 @@ OK
 ```
 웹브라우저에서 localhost:8888/tree 가 열릴 것입니다. object_detection 디렉토리의 object_detection_tutorial.ipynb를 실행시켜 보세요. 아래 그림과 같이, 두 마리의 개가 인식이 되었나요? 성공입니다.
 
-![obj-detection-install-test]({{ site.url }}/assets/obj-detection-install-test.png)
+![obj-detection-install-test]({{ site.url }}/assets/img/posts/obj-detection-install-test.png)
 
 
 ## 웹캠을 이용한 실시간 사물 인식
@@ -116,7 +116,7 @@ OK
 
 웹브라우저에서 Jupyter notebook이 뜨면, object_detection_tutorial_Webcam_1.ipynb 파일을 열고, 아래 그림의 \[7\] 셀에서 filename을 적당히 수정합니다.
 
-![change-filename]({{ site.url }}/assets/change_filename.png)
+![change-filename]({{ site.url }}/assets/img/posts/change_filename.png)
 
 ```
 filename="output.avi"

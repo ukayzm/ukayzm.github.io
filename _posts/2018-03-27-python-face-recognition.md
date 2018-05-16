@@ -2,6 +2,7 @@
 title:  "Python Face Recognition in Real Time"
 date:   2018-03-27 21:30:34 +0900
 tags: python face-recognition
+thumbnail:   "assets/img/thumbnails/face_recognition_capture.png"
 layout: post
 ---
 
