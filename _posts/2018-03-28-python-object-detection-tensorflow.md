@@ -64,13 +64,34 @@ $ protoc object_detection/protos/*.proto --python_out=.
 ```
 이렇게 하면 ~/work/tensorflow/models/research/object_detection/protos 디렉토리에 box.predictor_pb2.py, faster_rcnn_box_coder_pb2.py 등의 파일이 생성됩니다.
 
+간혹, old version의 protoc를 사용하면 아래와 같은 에러가 나는데요.
+
+```
+$ protoc object_detection/protos/*.proto --python_out=.
+object_detection/protos/anchor_generator.proto:12:3: Expected "required", "optional", or "repeated".
+object_detection/protos/anchor_generator.proto:12:32: Missing field number.
+```
+
+이 경우에는 protoc 3.3 (or higher)를 사용하면 됩니다. 아래와 같이 protoc를 다운받아 압축을 풀고 실행시키세요.
+[https://github.com/tensorflow/models/issues/1834](https://github.com/tensorflow/models/issues/1834) 여기를 참고하세요.
+
+```
+$ wget https://github.com/google/protobuf/releases/download/v3.3.0/protoc-3.3.0-linux-x86_64.zip
+$ unzip protoc-3.3.0-linux-x86_64.zip -d protoc-3.3.0
+$ protoc-3.3.0/bin/protoc object_detection/protos/*.proto --python_out=.
+```
+
 ### Add Libraries to PYTHONPATH
 
 ```
 (py3) $ cd ~/work/tensorflow/models/research
 (py3) $ export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
 ```
-이 작업은 PYTHONPATH 환경 변수에 모델 디렉토리를 추가하는 것으로, shell이 생성될 때 마다 해 주어야 합니다. 또는 .bashrc에 넣어 두면 shell이 생성될 때 마다 자동으로 실행되니 편합니다.
+이 작업은 PYTHONPATH 환경 변수에 모델 디렉토리를 추가하는 것으로, shell이 생성될 때 마다 해 주어야 합니다. 또는 .bashrc에 아래 라인을 넣어 두면 shell이 생성될 때 마다 자동으로 실행되니 편합니다.
+
+```
+export PYTHONPATH=$PYTHONPATH:~/work/tensorflow/models/research/:~/work/tensorflow/models/research/slim
+```
 
 ### Testing the Installation
 
@@ -144,7 +165,6 @@ filename="output.avi"
 * [Tensorflow object detection model zoo][modelzoo]
 * [Real time object detection with Tensorflow][objexample1]
 * [Is Google Tensorflow Object Detection API the easiest way to implement image recognition?][objexample2]
-* [Using Tensorflow Object Detection to do Pixel Wise Classification][maskexample]
 
 [install]:https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
 [modelzoo]: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md
