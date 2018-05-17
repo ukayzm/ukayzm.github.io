@@ -85,12 +85,12 @@ $ protoc-3.3.0/bin/protoc object_detection/protos/*.proto --python_out=.
 
 ```
 (py3) $ cd ~/work/tensorflow/models/research
-(py3) $ export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+(py3) $ export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim:`pwd`/object_detection
 ```
 이 작업은 PYTHONPATH 환경 변수에 모델 디렉토리를 추가하는 것으로, shell이 생성될 때 마다 해 주어야 합니다. 또는 .bashrc에 아래 라인을 넣어 두면 shell이 생성될 때 마다 자동으로 실행되니 편합니다.
 
 ```
-export PYTHONPATH=$PYTHONPATH:~/work/tensorflow/models/research/:~/work/tensorflow/models/research/slim
+export PYTHONPATH=$PYTHONPATH:~/work/tensorflow/models/research/:~/work/tensorflow/models/research/slim:~/work/tensorflow/models/research/object_detection/
 ```
 
 ### Testing the Installation
