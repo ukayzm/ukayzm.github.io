@@ -5,5 +5,5 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', '{{ site.analytics.google.tracking_id }}');
+  gtag('config', 'UA-116205467-1');
 </script>
