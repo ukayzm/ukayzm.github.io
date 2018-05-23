@@ -26,8 +26,27 @@ $ mkdir data
 $ cp ~/work/tensorflow/models/research/object_detection/data/mscoco_label_map.pbtxt data
 ```
 
+On windows
+
+```
+c:> pip install --upgrade tensorflow
+c:\work\tenworflow> git clone https://github.com/tensorflow/models.git
+```
+
+set env variable PYTHONPATH: 
+
+download protoc from https://github.com/google/protobuf/releases, for example protoc-3.4.0-win32.zip and unzip it.
+protoc-3.5.1 did not work - it makes error.
+compile protobuf:
+```
+cd path\to\models\research
+C:\Program Files\protoc-3.4.0-win32\bin\protoc.exe object_detection/protos/*.proto --python_out=.
+```
+
 ## References
 
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/instance_segmentation.md
 https://towardsdatascience.com/using-tensorflow-object-detection-to-do-pixel-wise-classification-702bf2605182
 https://stackoverflow.com/questions/33947823/what-is-semantic-segmentation-compared-to-segmentation-and-scene-labeling
+https://medium.com/@rohitrpatil/how-to-use-tensorflow-object-detection-api-on-windows-102ec8097699
+
