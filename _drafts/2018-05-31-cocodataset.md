@@ -1,10 +1,159 @@
 ---
 title:  "COCO Dataset"
 tags:   object-detection
-feature-img: "assets/img/posts/instance-segmentation-road.png"
+feature-img: "assets/img/posts/coco-examples.png"
 thumbnail:   "assets/img/posts/coco-examples.png"
+date:   2018-05-30 18:40:00 +0900
 layout: post
 ---
+
+머신러닝을 위해 많은 데이터 셋이 만들어져 있는데, 그 중에 [COCO dataset](http://cocodataset.org/)은 object detection, segmentation, keypoint detection 등을 위한 데이터셋으로, 매년 다른 데이터셋으로 전 세계의 여러 대학/기업이 참가하는 대회에 사용되고 있습니다.
+구글이 공개한 TensorFlow Object Detection API에도 COCO dataset으로 학습시킨 모델이 들어있습니다. 이 COCO dataset과 이것을 다루기 위한 COCO API에 대해 알아보겠습니다.
+
+## Download COCO Dataset
+
+COCO dataset은 많은 그림 파일을 가지고 있으므로, 용량이 GB 단위로 큽니다. 그래서, gsutil (Google Storage 유틸리티)을 사용하여 다운로드 받는 방법이 권장됩니다. 먼저 아래와 같이 gsutil을 설치합니다.
+```
+$ sudo apt install curl
+$ curl https://sdk.cloud.google.com | bash
+$ source ~/.bashrc
+```
+
+그 다음, image data와 annotation data를 다운로드 받습니다.
+아래 예는 val2017 데이터를 다운받는 예인데요. val2017 말고 다른 데이터도 다운 받을 수 있습니다. 다운 받을수 있는 데이터셋의 종류는 [http://cocodataset.org/#download](http://cocodataset.org/#download)를 참고하세요.
+```
+$ cd ~/work
+$ mkdir cocodataset
+$ cd cocodataset
+$ mkdir val2017
+$ gsutil -m rsync gs://images.cocodataset.org/val2017 val2017
+$ mkdir anns
+$ gsutil -m rsync gs://images.cocodataset.org/annotations anns
+$ cd val2017
+$ unzip ../anns/annotations_trainval2017.zip
+```
+
+## COCO Dataset의 구성
+
+
+위와 같이 다운로드를 받았다면 val2017 디렉토리를 살펴보세요.
+
+```
+$ ls
+000000000139.jpg  000000098018.jpg  000000190307.jpg  000000289702.jpg
+000000384666.jpg  000000481413.jpg  000000000285.jpg  000000098261.jpg
+000000190637.jpg  000000289741.jpg  000000384670.jpg  000000481480.jpg
+...
+$ ls annotations
+captions_train2017.json  instances_train2017.json  person_keypoints_train2017.json
+captions_val2017.json    instances_val2017.json    person_keypoints_val2017.json
+```
+
+val2017에는 5000장의 jpg 파일이 있습니다. (다른 데이터셋에는 더 많은 jpg 파일이 있습니다.) 그리고, annotations 디렉토리에는 6개의 json 파일이 있는데요. Training, validation 별로 captions, instances, person_keypoints 파일이 있습니다. 이것들은 각각 
+* captions - 텍스트로 된 그림에 대한 설명
+* instances - 그림에 있는 사람/사물에 대한 category와 영역 mask
+* person_keypoint - 사람의 자세 데이터
+를 가지고 있습니다.
+
+이 중에서 instances에 대해 좀 더 자세히 알아보겠습니다.
+
+## Instances json file
+
+Json file의 첫 부분은 아래와 같이 information과 license의 종류에 대한 내용입니다.
+
+```json
+{
+  "info": {
+    "description": "COCO 2017 Dataset",
+    "url": "http://cocodataset.org",
+    "version": "1.0",
+    "year": 2017,
+    "contributor": "COCO Consortium",
+    "date_created": "2017/09/01"
+  },
+  "licenses": [
+    {
+      "url": "http://creativecommons.org/licenses/by-nc-sa/2.0/",
+      "id": 1,
+      "name": "Attribution-NonCommercial-ShareAlike License"
+    },
+    ...
+  ],
+```
+
+그 다음엔, 그림 파일에 대한 내용이 나옵니다.
+```json
+  "images": [
+    {
+      "license": 4,
+      "file_name": "000000397133.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000397133.jpg",
+      "height": 427,
+      "width": 640,
+      "date_captured": "2013-11-14 17:02:52",
+      "flickr_url": "http://farm7.staticflickr.com/6116/6255196340_da26cf2c9e_z.jpg",
+      "id": 397133
+    },
+    ...
+  ],
+```
+그 다음엔, 각 그림에 대한 annotation 정보가 나옵니다.
+```json
+  "annotations": [
+    {
+      "segmentation": [
+        [
+          510.66,
+          423.01,
+          511.72,
+          420.03,
+          510.45,
+          ...
+          423.01
+        ]
+      ],
+      "area": 702.1057499999998,
+      "iscrowd": 0,
+      "image_id": 289343,
+      "bbox": [
+        473.07,
+        395.93,
+        38.65,
+        28.67
+      ],
+      "category_id": 18,
+      "id": 1768
+    },
+    ...
+  ],
+```
+마지막으로, category 정보가 나옵니다.
+```json
+  "categories": [
+    {
+      "supercategory": "person",
+      "id": 1,
+      "name": "person"
+    },
+    ...
+  ]
+}
+```
+
+COCO dataset의 image와 annotation을 쉽게 다루기 위한 API가 [COCO API](https://github.com/cocodataset/cocoapi) 입니다.
+
+## Install cocoapi
+
+다음과 같이 COCO API를 다운 받고 컴파일 합니다.
+
+```
+(py3) $ pip install cython
+$ cd ~/work
+$ git clone https://github.com/cocodataset/cocoapi.git
+$ cd cocoapi/PythonAPI
+$ make
+$ echo 'export PYTHONPATH=$PYTHONPATH:'`pwd` >> ~/.bashrc
+```
 
 ## Install packages
 
@@ -15,19 +164,10 @@ $ source py3/bin/activate
 (py3) $ pip install matplotlib
 ```
 
-## Install cocoapi
-
-```
-(py3) $ pip install cython
-$ git clone https://github.com/cocodataset/cocoapi.git
-$ cd cocoapi/PythonAPI
-$ make
-$ cp -r pycocotools WORKING_DIR
-```
 
 ## References
 
-* [https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/instance_segmentation.md](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/instance_segmentation.md)
-* [https://towardsdatascience.com/using-tensorflow-object-detection-to-do-pixel-wise-classification-702bf2605182](https://towardsdatascience.com/using-tensorflow-object-detection-to-do-pixel-wise-classification-702bf2605182)
-* [https://stackoverflow.com/questions/33947823/what-is-semantic-segmentation-compared-to-segmentation-and-scene-labeling](https://stackoverflow.com/questions/33947823/what-is-semantic-segmentation-compared-to-segmentation-and-scene-labeling)
-* [https://medium.com/@rohitrpatil/how-to-use-tensorflow-object-detection-api-on-windows-102ec8097699](https://medium.com/@rohitrpatil/how-to-use-tensorflow-object-detection-api-on-windows-102ec8097699)
+* [http://cocodataset.org/](http://cocodataset.org/)
+* [https://github.com/cocodataset/cocoapi](https://github.com/cocodataset/cocoapi)
+* [https://en.wikipedia.org/wiki/List_of_datasets_for_machine_learning_research](https://en.wikipedia.org/wiki/List_of_datasets_for_machine_learning_research)
+
