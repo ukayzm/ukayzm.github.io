@@ -4,6 +4,30 @@ categories: blog jekyll
 layout: post
 ---
 
+## Install Jekyll
+
+```
+$ sudo apt-get install ruby ruby-dev build-essential
+$ echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
+$ echo 'export GEM_HOME=$HOME/gems' >> ~/.bashrc
+$ echo 'export PATH=$HOME/gems/bin:$PATH' >> ~/.bashrc
+$ source ~/.bashrc
+$ gem install jekyll bundler
+```
+
+## Upgrade Jekyll
+```
+$ jekyll --version
+$ gem list jekyll
+$ bundle update jekyll
+$ gem update jekyll
+```
+
+## Run Jekyll
+```
+$ jekyll serve --draft
+```
+
 ## References
 
 * [Jekyll Official Docs][jekyll-docs]
