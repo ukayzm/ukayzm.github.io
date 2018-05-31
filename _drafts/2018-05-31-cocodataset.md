@@ -55,6 +55,17 @@ val2017에는 5000장의 jpg 파일이 있습니다. (다른 데이터셋에는 
 * person_keypoint - 사람의 자세 데이터
 를 가지고 있습니다.
 
+## Annotation 파일 분석
+
+Annotation 파일은 한 줄짜리 json 형식으로 되어 있습니다. 혹시라도, 이 파일을 그냥 vi로 열면 안됩니다. 수백메가 크기의 한 줄 짜리 파일이라, vi가 감당을 못합니다.
+
+먼저 json beautifier를 이용하여 줄바꿈을 해 주어야 분석이 쉽습니다. 저는 아래와 같이 했습니다.
+[https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)에서 jq binary를 다운로드 받습니다. 저는 64-bit Ubuntu용으로 다운로드 받아서, 파일 이름이 jq-linux64 네요. 그 다음,
+```
+$ jq-linux64 . instances_val2017.json > instances_val2017.beautified.json
+```
+이와 같이 하면 줄바꿈이 적용된 JSON 파일인 instances_val2017.beautified.json 파일이 생성됩니다.
+
 이 중에서 instances에 대해 좀 더 자세히 알아보겠습니다.
 
 ## Instances json file
@@ -82,52 +93,85 @@ Json file의 첫 부분은 아래와 같이 information과 license의 종류에 
 ```
 
 그 다음엔, 그림 파일에 대한 내용이 나옵니다.
+
 ```json
   "images": [
+    ...
     {
-      "license": 4,
-      "file_name": "000000397133.jpg",
-      "coco_url": "http://images.cocodataset.org/val2017/000000397133.jpg",
-      "height": 427,
-      "width": 640,
-      "date_captured": "2013-11-14 17:02:52",
-      "flickr_url": "http://farm7.staticflickr.com/6116/6255196340_da26cf2c9e_z.jpg",
-      "id": 397133
+      "license": 1,
+      "file_name": "000000324158.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000324158.jpg",
+      "height": 334,
+      "width": 500,
+      "date_captured": "2013-11-19 23:54:06",
+      "flickr_url": "http://farm1.staticflickr.com/169/417836491_5bf8762150_z.jpg",
+      "id": 324158
     },
     ...
   ],
 ```
+
 그 다음엔, 각 그림에 대한 annotation 정보가 나옵니다.
+
 ```json
   "annotations": [
+    ...
     {
       "segmentation": [
         [
-          510.66,
-          423.01,
-          511.72,
-          420.03,
-          510.45,
+          216.7,
+          211.89,
+          216.16,
+          217.81,
+          215.89,
+          220.77,
+
           ...
-          423.01
+          212.16
         ]
       ],
-      "area": 702.1057499999998,
+      "area": 759.3375500000002,
       "iscrowd": 0,
-      "image_id": 289343,
+      "image_id": 324158,
       "bbox": [
-        473.07,
-        395.93,
-        38.65,
-        28.67
+        196.51,
+        183.36,
+        23.95,
+        53.02
       ],
       "category_id": 18,
-      "id": 1768
+      "id": 10673
+    },
+    ...
+    {
+      "segmentation": [
+        [
+          44.2,
+          167.74,
+          48.39,
+          162.71,
+          ...
+          167.58
+        ]
+      ],
+      "area": 331.9790999999998,
+      "iscrowd": 0,
+      "image_id": 324158,
+      "bbox": [
+        44.2,
+        161.19,
+        36.78,
+        13.78
+      ],
+      "category_id": 3,
+      "id": 345846
     },
     ...
   ],
 ```
+
 마지막으로, category 정보가 나옵니다.
+
 ```json
   "categories": [
     {
