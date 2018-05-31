@@ -7,6 +7,9 @@
     {% include gtag.js %}
     {% endif %}
 
+    <!-- Google AdSense -->
+    {% include adsense.html %}
+
     <!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
     <script defer=true src="{{ site.baseurl }}/assets/js/main.min.js"></script>
     
@@ -45,6 +48,4 @@
     <title>{% if page.title %}{{ page.title }} |{% endif %} {{ site.theme_settings.title }}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.theme_settings.description }}{% endif %}">
     -->
-
-    {% include adsense.html %}
 </head>

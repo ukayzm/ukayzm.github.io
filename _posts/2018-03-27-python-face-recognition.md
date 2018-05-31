@@ -10,7 +10,7 @@ layout: post
 
 ![face-recognition-example-picture](https://cloud.githubusercontent.com/assets/896692/24430398/36f0e3f0-13cb-11e7-8258-4d0c9ce1e419.gif)
 
-Face_recognition 패키지는 [여기](https://github.com/ageitgey/face_recognition)에서 운영되고 있습니다.
+Face_recognition 패키지는 [https://github.com/ageitgey/face_recognition](https://github.com/ageitgey/face_recognition)에서 운영되고 있습니다.
 
 얼굴 인식 프로그램을 실행하려면 webcam이 연결된 PC가 필요합니다. 노트북에 내장된  webcam도 잘 동작합니다. 이 예제는 Ubuntu 14.04 linux와 Windows 10에서 테스트 되었습니다만, 다른 버전의 linux나 MacOS에서도 잘 동작할 것입니다.
 
@@ -63,11 +63,11 @@ Windows에서 dlib 설치시 에러가 발생할 수 있습니다. 이것을 해
 C:\> pip install dlib-19.8.1-cp36-cp36m-win_amd64.whl
 ```
 
-(이 방법은 https://github.com/charlielito/install-dlib-python-windows 를 참고했습니다.)
+(이 방법은 [https://github.com/charlielito/install-dlib-python-windows](https://github.com/charlielito/install-dlib-python-windows) 를 참고했습니다.)
 
 ## 코드 다운로드와 실행
 
-먼저, 다음 파이썬 파일을 다운로드 받습니다. [face_recognition.zip][face_recognition.zip]
+먼저, [https://github.com/ukayzm/opencv/tree/master/face_recognition](https://github.com/ukayzm/opencv/tree/master/face_recognition) 또는 다음 zip 파일을 다운로드 받습니다. [face_recognition.zip][face_recognition.zip]
 압축을 풀면 아래와 같은 파일과 디렉토리가 생성됩니다.
 
 ```
@@ -155,8 +155,8 @@ Frame에서 추출한 얼굴 특징과 knowns에 있던 사진 얼굴의 특징�
 
 ## 소스 코드 다운로드
 
-[face_recognition.zip][face_recognition.zip]
-
+* [face_recognition.zip][face_recognition.zip]
+* [https://github.com/ukayzm/opencv/tree/master/face_recognition](https://github.com/ukayzm/opencv/tree/master/face_recognition)
 
 [face_recognition.zip]: {{ site.url }}/assets/face_recognition.zip
 [media_com]: https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c

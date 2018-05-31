@@ -3,7 +3,7 @@ title:  "COCO Dataset"
 tags:   object-detection
 feature-img: "assets/img/posts/coco-examples.png"
 thumbnail:   "assets/img/posts/coco-examples.png"
-date:   2018-05-30 18:40:00 +0900
+date:   2018-05-31 21:00:00 +0900
 layout: post
 ---
 
@@ -49,7 +49,7 @@ captions_train2017.json  instances_train2017.json  person_keypoints_train2017.js
 captions_val2017.json    instances_val2017.json    person_keypoints_val2017.json
 ```
 
-val2017에는 5000장의 jpg 파일이 있습니다. (다른 데이터셋에는 더 많은 jpg 파일이 있습니다.) 그리고, annotations 디렉토리에는 6개의 json 파일이 있는데요. Training, validation 별로 captions, instances, person_keypoints 파일이 있습니다. 이것들은 각각 
+val2017에는 5000장의 jpg 파일이 있습니다. (다른 데이터셋에는 더 많은 jpg 파일이 있습니다.) 그리고, annotations 디렉토리에는 6개의 json 파일이 있는데요. Training, validation 별로 captions, instances, person_keypoints 파일이 있습니다. 이것들은 각각
 * captions - 텍스트로 된 그림에 대한 설명
 * instances - 그림에 있는 사람/사물에 대한 category와 영역 mask
 * person_keypoint - 사람의 자세 데이터
@@ -57,9 +57,8 @@ val2017에는 5000장의 jpg 파일이 있습니다. (다른 데이터셋에는 
 
 ## Annotation 파일 분석
 
-Annotation 파일은 한 줄짜리 json 형식으로 되어 있습니다. 혹시라도, 이 파일을 그냥 vi로 열면 안됩니다. 수백메가 크기의 한 줄 짜리 파일이라, vi가 감당을 못합니다.
+Annotation 파일은 한 줄짜리 json 형식으로 되어 있습니다. 혹시라도, 이 파일을 그냥 vi로 열면 안됩니다. 수백메가 크기의 한 줄 짜리 파일이라, vi가 감당을 못합니다. 그래서, json beautifier를 이용하여 줄바꿈을 해 주어야 분석이 쉽습니다.
 
-먼저 json beautifier를 이용하여 줄바꿈을 해 주어야 분석이 쉽습니다. 저는 아래와 같이 했습니다.
 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)에서 jq binary를 다운로드 받습니다. 저는 64-bit Ubuntu용으로 다운로드 받아서, 파일 이름이 jq-linux64 네요. 그 다음,
 ```
 $ jq-linux64 . instances_val2017.json > instances_val2017.beautified.json
@@ -70,7 +69,7 @@ $ jq-linux64 . instances_val2017.json > instances_val2017.beautified.json
 
 ## Instances json file
 
-Json file의 첫 부분은 아래와 같이 information과 license의 종류에 대한 내용입니다.
+Instances json file의 첫 부분은 아래와 같이 information과 license의 종류에 대한 내용입니다.
 
 ```json
 {
@@ -111,7 +110,9 @@ Json file의 첫 부분은 아래와 같이 information과 license의 종류에 
   ],
 ```
 
-그 다음엔, 각 그림에 대한 annotation 정보가 나옵니다.
+그 다음엔, 각 그림에 대한 annotation 정보가 나옵니다. Annotation이란, 그림에 있는 사물/사람의 segmentation mask와 box 영역, 카테고리 등의 정보를 말합니다. 아래 예는 [COCO API Demo](https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocoDemo.ipynb)에서 사용된 image인 324159 그림의 annotation 중 일부 입니다.
+
+![324158]({{ site.url }}/assets/img/posts/324158.png)
 
 ```json
   "annotations": [
@@ -170,7 +171,7 @@ Json file의 첫 부분은 아래와 같이 information과 license의 종류에 
   ],
 ```
 
-마지막으로, category 정보가 나옵니다.
+마지막으로, category 리스트가 나옵니다.
 
 ```json
   "categories": [
@@ -184,10 +185,10 @@ Json file의 첫 부분은 아래와 같이 information과 license의 종류에 
 }
 ```
 
+
+## Install COCO API
+
 COCO dataset의 image와 annotation을 쉽게 다루기 위한 API가 [COCO API](https://github.com/cocodataset/cocoapi) 입니다.
-
-## Install cocoapi
-
 다음과 같이 COCO API를 다운 받고 컴파일 합니다.
 
 ```
@@ -199,19 +200,20 @@ $ make
 $ echo 'export PYTHONPATH=$PYTHONPATH:'`pwd` >> ~/.bashrc
 ```
 
-## Install packages
+COCO API의 설명과 사용 방법은 [http://cocodataset.org/#download](http://cocodataset.org/#download)에서 더 자세히 알 수 있습니다.
+
+COCO Dataset을 다운로드 받아 보시고, [https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocoDemo.ipynb](https://github.com/cocodataset/cocoapi/blob/master/PythonAPI/pycocoDemo.ipynb)에서 COCO API가 어떻게 동작하는지 알아보세요.
+
+참고로, 아래는 pycocoDemo.ipynb에서 사용되는 python package를 설치하는 방법입니다.
 
 ```
-$ source py3/bin/activate
 (py3) $ pip install numpy
 (py3) $ pip install scikit-image
 (py3) $ pip install matplotlib
 ```
-
 
 ## References
 
 * [http://cocodataset.org/](http://cocodataset.org/)
 * [https://github.com/cocodataset/cocoapi](https://github.com/cocodataset/cocoapi)
 * [https://en.wikipedia.org/wiki/List_of_datasets_for_machine_learning_research](https://en.wikipedia.org/wiki/List_of_datasets_for_machine_learning_research)
-
