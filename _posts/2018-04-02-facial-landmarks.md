@@ -14,11 +14,11 @@ layout: post
 1. 교정된 얼굴을 인코딩
 1. 기존 데이터베이스와 비교하여 가장 비슷한 얼굴 찾기
 
-인터넷 상에 아래 그림과 같이 [웹캠 영상에서 실시간으로 얼굴의 특징점을 찾아내는 재미있는 예제](facial-landmarks)가 있어 소개하고자 합니다.
+인터넷 상에 아래 그림과 같이 [웹캠 영상에서 실시간으로 얼굴의 특징점을 찾아내는 재미있는 예제][facial-landmarks]가 있어 소개하고자 합니다.
 
 ![realtime-facial-landmarks](https://www.pyimagesearch.com/wp-content/uploads/2017/04/realtime_facial_landmarks_demo.gif)
 
-[사이트](facial-landmarks)에 방문해 보세요. dlib 패키지를 이용하여 구현된 파이썬 소스코드에 대한 설명이 잘 되어 있습니다. e-mail 주소를 적으면 소스코드를 다운받을 수 있습니다.
+[사이트][facial-landmarks]에 방문해 보세요. dlib 패키지를 이용하여 구현된 파이썬 소스코드에 대한 설명이 잘 되어 있습니다. e-mail 주소를 적으면 소스코드를 다운받을 수 있습니다.
 
 소스코드를 받으신 후, 다음 명령을 내리면 웹캠 영상에 실시간으로 얼굴의 특징점이 나타납니다. 직접 해 보시면 더 재미있습니다.
 
