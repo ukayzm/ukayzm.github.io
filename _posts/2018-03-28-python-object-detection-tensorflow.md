@@ -54,6 +54,8 @@ $ make
 $ cp -r pycocotools ~/work/tensorflow/models/research/
 ```
 
+COCO dataset이나 COCO API에 대해 좀 더 알고 싶으시면 [{{ site.url }}/cocodataset]({{ site.url }}/cocodataset)을 참고하세요.
+
 ### Protobuf Compilation
 
 Protobuf를 라이브러리를 컴파일합니다.
