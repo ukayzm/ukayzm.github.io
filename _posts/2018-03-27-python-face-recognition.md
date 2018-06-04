@@ -158,5 +158,10 @@ Frame에서 추출한 얼굴 특징과 knowns에 있던 사진 얼굴의 특징�
 * [face_recognition.zip][face_recognition.zip]
 * [https://github.com/ukayzm/opencv/tree/master/face_recognition](https://github.com/ukayzm/opencv/tree/master/face_recognition)
 
+## See Also
+
+Object detection 예제도 재미있습니다. [{{ site.url }}/tensorflow-instance-segmentation/]({{ site.url }}/tensorflow-instance-segmentation/)를 방문해 보세요.
+
+
 [face_recognition.zip]: {{ site.url }}/assets/face_recognition.zip
 [media_com]: https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c

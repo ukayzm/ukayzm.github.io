@@ -161,12 +161,19 @@ filename="output.avi"
 
 어떻습니까? 잘 실행이 되나요? 그렇다면 성공입니다.
 
+## See Also
+
+Jupyter notebook이 아닌 python code를 이용하여 실시간으로 Object Detection을 하고 http로 전송하는 예제를 만들고 source code를 공개하였습니다.
+[{{ site.url }}/tensorflow-instance-segmentation/]({{ site.url }}/tensorflow-instance-segmentation/)를 방문해 보세요.
+
+
 ## 참고 사이트
 
 * [Whole install procedure of Tensorflow object detection model][install]
 * [Tensorflow object detection model zoo][modelzoo]
 * [Real time object detection with Tensorflow][objexample1]
 * [Is Google Tensorflow Object Detection API the easiest way to implement image recognition?][objexample2]
+
 
 [install]:https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
 [modelzoo]: https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md
