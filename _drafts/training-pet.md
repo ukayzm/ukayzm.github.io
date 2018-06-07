@@ -69,7 +69,7 @@ model.ckpt-332.meta                 model.ckpt-547.data-00000-of-00001
 model.ckpt-385.data-00000-of-00001  model.ckpt-547.index
 model.ckpt-385.index                model.ckpt-547.meta
 model.ckpt-385.meta                 pipeline.config
-$ python ~/work/priya-dwivedi/Deep-Learning/tensorflow_toy_detector/export_inference_graph.py --input_type image_tensor --pipeline_config_path ../data/faster_rcnn_resnet101_pets.config --trained_checkpoint_prefix=./model.ckpt-547 --output_directory ../freeze
+$ python ~/work/tensorflow/models/research/object_detection/export_inference_graph.py --input_type image_tensor --pipeline_config_path ../data/faster_rcnn_resnet101_pets.config --trained_checkpoint_prefix=./model.ckpt-547 --output_directory ../freeze
 $ ls ../freeze/
 checkpoint                 model.ckpt.data-00000-of-00001  model.ckpt.meta  saved_model/
 frozen_inference_graph.pb  model.ckpt.index                pipeline.config
