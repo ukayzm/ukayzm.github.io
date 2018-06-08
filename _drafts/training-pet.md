@@ -106,4 +106,9 @@ $ cd /home/rostude/work/tensorflow/models/
 $ git checkout 772964e --
 ```
 
+5.
+```
+OutOfRangeError (see above for traceback): FIFOQueue '_2_prefetch_queue' is closed and has insufficient elements (requested 1, current size 0)
+```
+It could be that "it cannot read input data". Check your pet_train.record and pet_val.record file or the path in faster_rcnn_resnet101_pets.config is right.
 
