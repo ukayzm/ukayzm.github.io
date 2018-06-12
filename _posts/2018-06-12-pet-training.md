@@ -1,9 +1,9 @@
 ---
 title:  "Training on the Pet Dataset"
 tags:   object-detection
-feature-img: "assets/img/posts/oxford_pet.png"
+feature-img: "assets/img/posts/pet-training.png"
 thumbnail:   "assets/img/posts/oxford_pet.png"
-date:   2018-06-11 21:00:00 +0900
+date:   2018-06-12 11:00:00 +0900
 layout: post
 ---
 
@@ -60,15 +60,28 @@ $ wget http://storage.googleapis.com/download.tensorflow.org/models/object_detec
 $ tar -xvf faster_rcnn_resnet101_coco_11_06_2017.tar.gz
 ```
 
-## Data 준비
+## Data
 
-아래와 같이, data 디렉토리를 준비합니다.
-* Label file: Tensorflow model에서 미리 준비해 놓은 `pet_label_map.pbtxt` 파일을 북사
-* Training, validation 데이터: `create_pet_tf_record.py` 파일을 실행시켜 생성함.
-
+구글이 제공하는 예제 Label 파일을 복사해 넣습니다. Lebel 파일은 분류할 개/고양이의 품종 문자열이 들어 있는 protobuf 형식의 파일 입니다.
 ```bash
 $ cd ~/work/pet-training/data
 $ cp ~/work/tensorflow/models/research/object_detection/data/pet_label_map.pbtxt .
+$ cat ~/work/pet-training/data/pet_label_map.pbtxt
+item {
+  id: 1
+  name: 'Abyssinian'
+}
+
+item {
+  id: 2
+  name: 'american_bulldog'
+}
+...
+```
+
+Object detection은 training이나 evaluation을 하기 위한 데이터로 TFRecord 형식의 파일을 입력으로 받습니다. 그래서, 위에서 다운받은 Pet dataset과 레이블을 조합하여 TFRecord 형식의 파일을 만들어 주어야 합니다. 파일 변환하는 툴은 구글에서 제공하고 있으니, 그것을 그대로 사용합니다.
+
+```bash
 $ python ~/work/tensorflow/models/research/object_detection/dataset_tools/create_pet_tf_record.py \
   --label_map_path=./pet_label_map.pbtxt \
   --data_dir=../download \
@@ -105,9 +118,12 @@ $ sed -i "s|PATH_TO_BE_CONFIGURED|/home/rostude/work/pet-training/data|g" faster
 
 ## Training and evaluation
 
-아래 명령은 아무 디렉토리에서 실행시켜도 됩니다. 여기서도 마찬가지로, 파라미터로 ~로 시작하는 경로를 지정하면 안됩니다.
+이제 준비는 끝났습니다. Training을 시작할 수 있습니다. 참고로, 아래 명령은 아무 디렉토리에서 실행시켜도 됩니다. 여기서도 마찬가지로, 파라미터로 ~로 시작하는 경로를 지정하면 안됩니다.
 
-아래와 같이 python명령으로 Training을 시키면 주기적으로 로그가 출력됩니다.
+### Training
+
+아래와 같이 python명령으로 Training을 시키킵니다. 주기적으로 로그가 출력됩니다.
+
 ```bash
 $ python ~/work/tensorflow/models/research/object_detection/train.py \
     --logtostderr \
@@ -136,10 +152,20 @@ INFO:tensorflow:global step 612: loss = 1.2626 (58.015 sec/step)
 ...
 ```
 
-터미널을 하나 더 띄워서 아래와 같이 tensorboard를 실행시키고 web browser에서 "localhost:6006"을 띄워서 진행 과정을 모니터링 합니다.
+중간에 `"Saving checkpoint"` 로그가 보이죠? Training 결과를 중간 중간에 저장을 하는 것입니다. 이 기능 때문에, training 중간에 언제든지 ^C를 눌러 중단시켰다가, 동일 명령을 입력하여 training을 재개할 수 있습니다.
+
+### Monitoring
+
+터미널을 하나 더 띄워서 아래와 같이 tensorboard를 실행시키고 web browser에서 "localhost:6006"을 띄우면 진행 과정을 모니터링 할 수 있습니다.
 ```bash
 $ tensorboard --logdir=/home/rostude/work/pet-training/
 ```
+
+아래 그림은 2일간 학습을 시킨 결과 입니다. (제 CPU가 그리 좋은 편이 아니고, GPU도 없습니다.)
+
+![pet-training-total-loss]({{ site.url }}/assets/img/posts/pet-training-total-loss.png)
+
+### Evaluation
 
 학습이 잘 진행되는지 검증하기 위해, 터미널을 하나 더 띄워서 아래와 같이 evaluation을 실행합니다.
 ```bash
@@ -149,31 +175,62 @@ $ python ~/work/tensorflow/models/research/object_detection/eval.py \
     --checkpoint_dir=/home/rostude/work/pet-training/training \
     --eval_dir=/home/rostude/work/pet-training/eval
 ```
-저의 경우에는 노트북에서 실행을 시켰는데, evaluation을 실행하면 컴퓨터가 매우 느려졌습니다. 대신에, tensorboard의 image tab에서 evaluation 결과를 확인할 수 있습니다.
+
+구글의 Guide에서는 training과 evaluation을 동시에 실행시켜도 된다고 되어 있습니다. 하지만 저의 경우에는 노트북에서 실행을 시켰는데, evaluation을 실행하면 컴퓨터가 매우 느려졌습니다. 
+그래서, 저는 ^C로 training을 중단 시키고 evaluation을 실행시켰습니다.
+Evaluation을 실행시키면, tensorboard에 image tab이 생기고, 아래 그림과 같이 학습 결과를 눈으로 확인할 수 있습니다. 제 경우는 대략 500 step의 training을 돌고 난 후부터 한 두개 이미지씩 인식을 하기 시작했습니다.
 
 ![pet-tensorboard-image]({{ site.url }}/assets/img/posts/pet-tensorboard-image.png)
 
 ## Checkpoint and Frozen Graph
 
+충분히 학습을 시켰다고 생각되면, 이제 학습을 중단시키고 학습된 모델을 export해야 합니다. Export된 모델은 [이 예제]({{ site.url }}/tensorflow-instance-segmentation/)에 그대로 적용할 수 있습니다. 
+
+아래와 같이, Checkpoint가 생성된 것을 확인할 수 있습니다. 이 Checkpoint를 frozen graph로 export 하는 것입니다.
 ```bash
 $ cd ~/work/pet-training/training
 $ ls
-checkpoint                          model.ckpt-440.data-00000-of-00001
-events.out.tfevents.1528331021.a42  model.ckpt-440.index
-events.out.tfevents.1528336914.a42  model.ckpt-440.meta
-graph.pbtxt                         model.ckpt-494.data-00000-of-00001
-model.ckpt-332.data-00000-of-00001  model.ckpt-494.index
-model.ckpt-332.index                model.ckpt-494.meta
-model.ckpt-332.meta                 model.ckpt-547.data-00000-of-00001
-model.ckpt-385.data-00000-of-00001  model.ckpt-547.index
-model.ckpt-385.index                model.ckpt-547.meta
-model.ckpt-385.meta                 pipeline.config
-$ python ~/work/tensorflow/models/research/object_detection/export_inference_graph.py --input_type image_tensor --pipeline_config_path ../data/faster_rcnn_resnet101_pets.config --trained_checkpoint_prefix=./model.ckpt-547 --output_directory ../freeze
+checkpoint                            model.ckpt-21310.index
+events.out.tfevents.1528331021.a42    model.ckpt-21310.meta
+events.out.tfevents.1528336914.a42    model.ckpt-21365.data-00000-of-00001
+events.out.tfevents.1528418824.a42    model.ckpt-21365.index
+events.out.tfevents.1528419447.a42    model.ckpt-21365.meta
+events.out.tfevents.1528419623.a42    model.ckpt-21420.data-00000-of-00001
+events.out.tfevents.1528448067.a42    model.ckpt-21420.index
+events.out.tfevents.1528680565.a42    model.ckpt-21420.meta
+graph.pbtxt                           model.ckpt-21475.data-00000-of-00001
+model.ckpt-21254.data-00000-of-00001  model.ckpt-21475.index
+model.ckpt-21254.index                model.ckpt-21475.meta
+model.ckpt-21254.meta                 pipeline.config
+model.ckpt-21310.data-00000-of-00001
+
+$ python ~/work/tensorflow/models/research/object_detection/export_inference_graph.py \
+    --input_type image_tensor \
+	--pipeline_config_path ../data/faster_rcnn_resnet101_pets.config \
+	--trained_checkpoint_prefix=./model.ckpt-21475 \
+	--output_directory ../freeze
 $ ls ../freeze/
 checkpoint                 model.ckpt.data-00000-of-00001  model.ckpt.meta  saved_model/
 frozen_inference_graph.pb  model.ckpt.index                pipeline.config
 ```
 
+위와 같이 `export_inference_graph.py`를 실행시키면 `freeze` 디렉토리에 `frozen_inference_graph.pb` 파일이 생성됩니다. 바로 이 파일이 이 글의 최종 결과물입니다.
+
+## 적용
+
+`frozen_inference_graph.pb` 파일과 `pet_label_map.pbtxt` 파일이 있으면 ({{ site.url }}/tensorflow-instance-segmentation/)에서와 동일한 방법으로 Webcam 동영상에서 개/고양이 품종을 인식할 수 있습니다. JPEG에서 이미지를 인식하여 JPEG 파일로 저장하는 예제도 추가하였습니다. 
+
+```bash
+$ mkdir -p ~/work/opencv
+$ cd ~/work/opencv
+$ git clone https://github.com/ukayzm/opencv.git
+$ cd object_detection_tensorflow
+$ mkdir pet
+$ cp ~/work/pet-training/freeze/frozen_inference_graph.pb ./pet
+$ cp ~/work/pet-training/data/pet_label_map.pbtxt ./data
+$ python ./image_detector.py input.jpg -o output.jpg
+$ python ./object_detector.py
+```
 
 ## Trouble Shooting
 
@@ -217,3 +274,4 @@ $ pip install contextlib2
 
 * [https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md)
 * [http://www.robots.ox.ac.uk/~vgg/data/pets/](http://www.robots.ox.ac.uk/~vgg/data/pets/)
+* 
