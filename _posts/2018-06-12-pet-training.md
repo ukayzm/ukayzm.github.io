@@ -186,7 +186,10 @@ Evaluation을 실행시키면, tensorboard에 image tab이 생기고, 아래 그
 
 충분히 학습을 시켰다고 생각되면, 이제 학습을 중단시키고 학습된 모델을 export해야 합니다. Export된 모델은 [이 예제]({{ site.url }}/tensorflow-instance-segmentation/)에 그대로 적용할 수 있습니다. 
 
-아래와 같이, Checkpoint가 생성된 것을 확인할 수 있습니다. 이 Checkpoint를 frozen graph로 export 하는 것입니다.
+아래와 같이, Checkpoint가 생성된 것을 확인할 수 있습니다. 이 Checkpoint를 frozen graph로 export 하는 것입니다. `training` 디렉토리에서 `ls`를 해 보면, 아래와 같이 여러개의 checkpoint 파일 (model.ckpt-XXXX.* 파일)이 보입니다. 이 중에서 XXXX의 숫자가 가장 큰 것이 마지막으로 생성된 checkpoint 파일입니다. 
+
+`export_inference_graph.py`를 실행시킬 때, `--trained_checkpoint_prefix` 파라미터에 XXXX 숫자를 틀리지 않게 지정해야 합니다. 아래 예에서는 21475가 사용되었습니다. 각자 생성된 checkpoint에 따라 알맞는 XXXX를 사용하세요.
+
 ```bash
 $ cd ~/work/pet-training/training
 $ ls
@@ -276,6 +279,6 @@ $ pip install contextlib2
 
 ## References
 
-* [https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md)
-* [http://www.robots.ox.ac.uk/~vgg/data/pets/](http://www.robots.ox.ac.uk/~vgg/data/pets/)
-* 
+* [Google's Quick Start Guide on Training Pets Dataset](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md)
+* [Pets Dataset](http://www.robots.ox.ac.uk/~vgg/data/pets/)
+* [Source Code to Run Trained Model](https://github.com/ukayzm/opencv/tree/master/object_detection_tensorflow)
