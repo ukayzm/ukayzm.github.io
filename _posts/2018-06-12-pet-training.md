@@ -280,5 +280,8 @@ $ pip install contextlib2
 ## References
 
 * [Google's Quick Start Guide on Training Pets Dataset](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md)
+* [Google's Guide on Configuring the Object Detection Training Pipeline](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/configuring_jobs.md)
+* [Googld's Guide on Preparing Inputs](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/preparing_inputs.md)
+* [Google's Guide on Running Locally](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_locally.md)
 * [Pets Dataset](http://www.robots.ox.ac.uk/~vgg/data/pets/)
 * [Source Code to Run Trained Model](https://github.com/ukayzm/opencv/tree/master/object_detection_tensorflow)
