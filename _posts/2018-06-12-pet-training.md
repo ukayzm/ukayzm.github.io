@@ -161,7 +161,7 @@ INFO:tensorflow:global step 612: loss = 1.2626 (58.015 sec/step)
 $ tensorboard --logdir=/home/rostude/work/pet-training/
 ```
 
-아래 그림은 2일간 학습을 시킨 결과 입니다. (제 CPU가 그리 좋은 편이 아니고, GPU도 없습니다.)
+아래 그림은 2일간 학습을 시킨 Total Loss 그래프 입니다. 주말 내내 학습을 시킨 것인데, 사실 몇 시간 정도만 학습을 시켜도 쓸만한 결과가 나옵니다. (참고로, 제 CPU가 그리 좋은 편이 아니고, GPU도 없습니다.)
 
 ![pet-training-total-loss]({{ site.url }}/assets/img/posts/pet-training-total-loss.png)
 
@@ -218,7 +218,7 @@ frozen_inference_graph.pb  model.ckpt.index                pipeline.config
 
 ## 적용
 
-`frozen_inference_graph.pb` 파일과 `pet_label_map.pbtxt` 파일이 있으면 ({{ site.url }}/tensorflow-instance-segmentation/)에서와 동일한 방법으로 Webcam 동영상에서 개/고양이 품종을 인식할 수 있습니다. JPEG에서 이미지를 인식하여 JPEG 파일로 저장하는 예제도 추가하였습니다. 
+`frozen_inference_graph.pb` 파일과 `pet_label_map.pbtxt` 파일이 있으면 [{{ site.url }}/tensorflow-instance-segmentation/]({{ site.url }}/tensorflow-instance-segmentation/)에서와 동일한 방법으로 Webcam 동영상에서 개/고양이 품종을 인식할 수 있습니다. (`object_detector.py`). JPEG, PNG 등의 그림 파일에서 object를 인식하여 그림 파일로 저장하는 예제도 추가하였습니다. (`image_detector.py`)
 
 ```bash
 $ mkdir -p ~/work/opencv
@@ -228,9 +228,13 @@ $ cd object_detection_tensorflow
 $ mkdir pet
 $ cp ~/work/pet-training/freeze/frozen_inference_graph.pb ./pet
 $ cp ~/work/pet-training/data/pet_label_map.pbtxt ./data
-$ python ./image_detector.py input.jpg -o output.jpg
-$ python ./object_detector.py
+$ python image_detector.py input.jpg -o output.jpg
+$ python object_detector.py
 ```
+
+아래 그림은 image_detector.py를 실행시킨 결과물 입니다.
+
+![pet-training-detected]({{ site.url }}/assets/img/posts/pet-training-detected.jpg)
 
 ## Trouble Shooting
 
