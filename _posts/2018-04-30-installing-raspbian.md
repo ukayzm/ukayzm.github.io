@@ -1,7 +1,7 @@
 ---
 title:  "Installing Raspbian Headless"
 date:   2018-04-30 18:40:00 +0900
-tags:   raspberry-pi
+tags:   embedded-software
 feature-img: "assets/img/pexels/capacitors-chip-circuit-board-57007.jpg"
 thumbnail:   "assets/img/pexels/capacitors-chip-circuit-board-57007.jpg"
 layout: post

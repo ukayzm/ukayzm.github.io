@@ -1,7 +1,7 @@
 ---
 title:  "Facial Landmarks"
 date:   2018-04-02 21:51:00 +0900
-tags:   python face-recognition
+tags:   face-recognition
 feature-img: "assets/img/pexels/model-face-beautiful-black-and-white-407035.jpeg"
 layout: post
 ---

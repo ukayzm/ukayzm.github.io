@@ -1,7 +1,7 @@
 ---
 title:  "2 Wheel Balancing Robot - Cases"
 date:   2018-04-06 21:40:00 +0900
-tags:   2-wheel-balancing-robot
+tags:   embedded-software
 feature-img: "assets/img/pexels/wall_e.jpeg"
 thumbnail:   "assets/img/pexels/wall_e.jpeg"
 layout: post

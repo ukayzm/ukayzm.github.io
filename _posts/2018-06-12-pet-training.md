@@ -1,6 +1,6 @@
 ---
 title:  "Training on the Pet Dataset"
-tags:   object-detection
+tags:   object-detection tensorflow
 feature-img: "assets/img/posts/pet-training.png"
 thumbnail:   "assets/img/posts/oxford_pet.png"
 date:   2018-06-12 11:00:00 +0900
@@ -9,7 +9,7 @@ layout: post
 
 구글은 object detection model을 이용하여 [Pet Dataset을 학습시키는 예제](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md)를 제공하고 있습니다. 예제는 Google Cloud Platform 상에서 학습을 시키도록 되어 있는데, 여기서는 local PC에서 학습 시키는 방법을 설명합니다. 그리고, Google의 예제에서 잘못된 부분을 고치고, 예제 실행시 만나는 문제의 해결책을 제시합니다.
 
-이 예제에서는 실제로 제가 사용한 디렉토리 이름을 그대로 사용했고, 매 단계마다 작업 디렉토리를 명시하였으므로, 좀 더 실용적인 예제가 될 것으로 기대합니다.
+이 예제에서는 실제로 제가 사용한 디렉토리 이름을 그대로 사용했고 매 단계마다 작업 디렉토리를 명시하였으므로, 좀 더 실용적인 예제가 될 것으로 기대합니다.
 
 ## 디렉토리
 
@@ -19,7 +19,7 @@ layout: post
 * Tensorflow model directory: `/home/rostude/work/tensorflow/models`
 * Pet training directory: `/home/rostude/work/pet-training`
 
-디렉토리 이름을 각자의 환경에 맞게 적당히 수정해야 합니다.
+아래 예제를 적용할 때는, 디렉토리 이름을 자신의 환경에 맞게 적당히 수정해야 합니다.
 
 ## TensorFlow Models
 
@@ -35,11 +35,11 @@ $ git checkout 772964e --
 
 ## Pet Dataset
 
-먼저 이 예제에서 사용할 Pet Dataset이 어떤 것인지 [http://www.robots.ox.ac.uk/~vgg/data/pets/](http://www.robots.ox.ac.uk/~vgg/data/pets/)를 방문하여 대략 훑어보세요.
+이 예제에서 사용할 Pet Dataset이 어떤 것인지 [http://www.robots.ox.ac.uk/~vgg/data/pets/](http://www.robots.ox.ac.uk/~vgg/data/pets/)를 방문하여 대략 훑어보세요.
 
 ## 사전작업
 
-먼저 아래와 같이, training을 시킬 디렉토리를 만듭니다.
+아래와 같이, training을 시킬 디렉토리를 만듭니다.
 ```bash
 $ mkdir -p ~/work/pet-training
 $ mkdir -p ~/work/pet-training/data         # for data, model and config
@@ -48,7 +48,7 @@ $ mkdir -p ~/work/pet-training/download     # for downloaded files
 
 ## Download
 
-아래와 같이, Pet dataset image, annotation을 다운로드 받습니다. 그리고, Google이 공개한 Faster RCNN 모델을 다운로드 받습니다. Faster RCNN 모델을 기반으로 Pet dataset을 학습시킬 것입니다.
+Pet dataset image, annotation을 다운로드 받습니다. 그리고, Google이 공개한 Faster RCNN 모델을 다운로드 받습니다. Faster RCNN 모델을 기반으로 Pet dataset을 학습시킬 것입니다.
 
 ```bash
 $ cd ~/work/pet-training/download
@@ -62,7 +62,7 @@ $ tar -xvf faster_rcnn_resnet101_coco_11_06_2017.tar.gz
 
 ## Data
 
-구글이 제공하는 예제 Label 파일을 복사해 넣습니다. Lebel 파일은 분류할 개/고양이의 품종 문자열이 들어 있는 protobuf 형식의 파일 입니다.
+구글이 제공하는 예제 Label 파일을 복사해 넣습니다. Lebel 파일은 분류할 개/고양이의 품종 이름이 들어 있는 protobuf 형식의 파일 입니다.
 ```bash
 $ cd ~/work/pet-training/data
 $ cp ~/work/tensorflow/models/research/object_detection/data/pet_label_map.pbtxt .
@@ -161,7 +161,7 @@ INFO:tensorflow:global step 612: loss = 1.2626 (58.015 sec/step)
 $ tensorboard --logdir=/home/rostude/work/pet-training/
 ```
 
-아래 그림은 2일간 학습을 시킨 Total Loss 그래프 입니다. 주말 내내 학습을 시킨 것인데, 사실 몇 시간 정도만 학습을 시켜도 쓸만한 결과가 나옵니다. (참고로, 제 CPU가 그리 좋은 편이 아니고, GPU도 없습니다.)
+아래 그림은 2일간 학습을 시킨 Total Loss 그래프 입니다. 주말 내내 학습을 시킨 것인데, GPU로 학습 시키면 한 두 시간 정도만 학습을 시켜도 쓸만한 결과가 나올 것 같습니다.
 
 ![pet-training-total-loss]({{ site.url }}/assets/img/posts/pet-training-total-loss.png)
 
@@ -176,17 +176,17 @@ $ python ~/work/tensorflow/models/research/object_detection/eval.py \
     --eval_dir=/home/rostude/work/pet-training/eval
 ```
 
-구글의 Guide에서는 training과 evaluation을 동시에 실행시켜도 된다고 되어 있습니다. 하지만 저의 경우에는 노트북에서 실행을 시켰는데, evaluation을 실행하면 컴퓨터가 매우 느려졌습니다. 
-그래서, 저는 ^C로 training을 중단 시키고 evaluation을 실행시켰습니다.
+구글의 Guide에서는 training과 evaluation을 동시에 실행시켜도 된다고 되어 있습니다. 하지만 제 노트북에서 실행시켜보니, evaluation을 실행하면 컴퓨터가 매우 느려졌습니다. 그래서, 저는 ^C로 training을 중단 시키고 evaluation을 실행시켰습니다.
+
 Evaluation을 실행시키면, tensorboard에 image tab이 생기고, 아래 그림과 같이 학습 결과를 눈으로 확인할 수 있습니다. 제 경우는 대략 500 step의 training을 돌고 난 후부터 한 두개 이미지씩 인식을 하기 시작했습니다.
 
 ![pet-tensorboard-image]({{ site.url }}/assets/img/posts/pet-tensorboard-image.png)
 
 ## Checkpoint and Frozen Graph
 
-충분히 학습을 시켰다고 생각되면, 이제 학습을 중단시키고 학습된 모델을 export해야 합니다. Export된 모델은 [이 예제]({{ site.url }}/tensorflow-instance-segmentation/)에 그대로 적용할 수 있습니다. 
+충분히 학습을 시켰다고 생각되면, 이제 학습을 중단시키고 학습된 모델을 export해야 합니다. Export된 모델은 [이 예제]({{ site.url }}/tensorflow-instance-segmentation/)에 그대로 적용할 수 있습니다.
 
-아래와 같이, Checkpoint가 생성된 것을 확인할 수 있습니다. 이 Checkpoint를 frozen graph로 export 하는 것입니다. `training` 디렉토리에서 `ls`를 해 보면, 아래와 같이 여러개의 checkpoint 파일 (model.ckpt-XXXX.* 파일)이 보입니다. 이 중에서 XXXX의 숫자가 가장 큰 것이 마지막으로 생성된 checkpoint 파일입니다. 
+아래와 같이, Checkpoint가 생성된 것을 확인할 수 있습니다. 이 Checkpoint를 frozen graph로 export 하는 것입니다. `training` 디렉토리에서 `ls`를 해 보면, 아래와 같이 여러개의 checkpoint 파일 (model.ckpt-XXXX.* 파일)이 보입니다. 이 중에서 XXXX의 숫자가 가장 큰 것이 마지막으로 생성된 checkpoint 파일입니다.
 
 `export_inference_graph.py`를 실행시킬 때, `--trained_checkpoint_prefix` 파라미터에 XXXX 숫자를 틀리지 않게 지정해야 합니다. 아래 예에서는 21475가 사용되었습니다. 각자 생성된 checkpoint에 따라 알맞는 XXXX를 사용하세요.
 
