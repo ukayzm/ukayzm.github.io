@@ -200,4 +200,4 @@ $ source py3/bin/activate
 
 ## 참고 사이트
 
-* [https://developers.google.com/assistant/sdk/guides/library/python/embed/setup](https://developers.google.com/assistant/sdk/guides/library/python/embed/setup)
+* [Google's Official Set Up Guide](https://developers.google.com/assistant/sdk/guides/library/python/embed/setup)

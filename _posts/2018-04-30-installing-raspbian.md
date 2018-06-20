@@ -232,5 +232,5 @@ iface AP2 inet dhcp
 
 ## 참고 사이트
 
-* [https://www.raspberrypi.org/documentation/installation/installing-images/README.md](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
-* [https://albeec13.github.io/2017/09/26/raspberry-pi-zero-w-simultaneous-ap-and-managed-mode-wifi/](https://albeec13.github.io/2017/09/26/raspberry-pi-zero-w-simultaneous-ap-and-managed-mode-wifi/)
+* [Raspberry Pi Official Guide on Installing OS Images](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
+* [Raspberry Pi Zero W Simultaneous AP and Managed Mode Wifi](https://albeec13.github.io/2017/09/26/raspberry-pi-zero-w-simultaneous-ap-and-managed-mode-wifi/)

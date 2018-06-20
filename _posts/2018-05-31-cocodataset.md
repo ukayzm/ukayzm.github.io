@@ -214,6 +214,6 @@ COCO Dataset을 다운로드 받아 보시고, [https://github.com/cocodataset/c
 
 ## References
 
-* [http://cocodataset.org/](http://cocodataset.org/)
-* [https://github.com/cocodataset/cocoapi](https://github.com/cocodataset/cocoapi)
-* [https://en.wikipedia.org/wiki/List_of_datasets_for_machine_learning_research](https://en.wikipedia.org/wiki/List_of_datasets_for_machine_learning_research)
+* [COCO dataset Official Home](http://cocodataset.org/)
+* [COCO API on GitHub](https://github.com/cocodataset/cocoapi)
+* [List of Datasets for Machine Learning Research on Wikipedia](https://en.wikipedia.org/wiki/List_of_datasets_for_machine_learning_research)
