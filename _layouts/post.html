@@ -15,11 +15,9 @@ layout: default
   {% capture tag_list %}{{ page.tags | join: "|"}}{% endcapture %}
   {% include tags_list.html tags=tag_list %}
     
-  <br><center>
-  {% include ads_bottom.html %}
-  </center><br>
-
 </article>
+
+{% include ads_bottom.html %}
 
 <!-- Disqus -->
 {% if site.theme_settings.disqus_shortname %}
