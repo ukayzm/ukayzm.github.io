@@ -159,5 +159,10 @@ PID에 대한 직관적인 설명이 인상적임:
 * 모터의 힘만으로 스스로 일어남
 
 
+## Worlds smallest Fully Autonomous Self-Righting Self-Balancing Robot!!!
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6fyz-NMuRYs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
 [brokking-yabr]: http://www.brokking.net/yabr_main.html
 [instructable1]: http://www.instructables.com/id/2-Wheel-Self-Balancing-Robot-by-using-Arduino-and-/
