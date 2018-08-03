@@ -162,6 +162,7 @@ Frame에서 추출한 얼굴 특징과 knowns에 있던 사진 얼굴의 특징�
 
 Object detection 예제도 재미있습니다. [{{ site.url }}/tensorflow-instance-segmentation/]({{ site.url }}/tensorflow-instance-segmentation/)를 방문해 보세요.
 
+[{{ site.url }}/face-clustering/]({{ site.url }}/face-clustering/)을 방문해 보시면, 이미 알고 있는 얼굴이 아니라 전혀 모르는 얼굴을 분류하는 방법을 알 수 있습니다.
 
 [face_recognition.zip]: {{ site.url }}/assets/face_recognition.zip
 [media_com]: https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c
