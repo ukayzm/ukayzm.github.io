@@ -179,10 +179,11 @@ label에 해당하는 모든 얼굴을 `ID#` 디렉토리에 저장합니다.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bUQj7Ng7PCs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-먼저 `youtube-dl`을 이용하여 위 동영상을 다운받은 다음, 아래 명령을 내리면 됩니다.
+`youtube-dl`을 이용하여 동영상을 다운받은 다음, 아래 명령을 내리면 됩니다.
 
 ```bash
-$ python face_clustering.py -e I_Ran_La_La_Land.mkv
+$ youtube-dl https://www.youtube.com/watch?v=bUQj7Ng7PCs
+$ python face_clustering.py -e "I Ran - Pool Party Scene [La La Land_2016] - 1080p Blu-ray-bUQj7Ng7PCs.mkv"
 ```
 
 아래 분류된 얼굴을 보세요. 일부 잘못 분류된 것도 있지만, 꽤 괜찮은 결과를 보이죠? 심지어 선글래스를 쓴 얼굴도 분류하네요.
