@@ -63,17 +63,41 @@ C:\tensorflow\models\research> protoc-3.4.0-win32\bin\protoc.exe object_detectio
 C:\tensorflow\models\research;C:\tensorflow\models\research\slim
 ```
 
-## Example code
+## Source Code
 
 구글은 object detection API를 사용하는 예제 코드도 같이 공개하고 있습니다. 그 예제코드를 변형하여, webcam으로부터 실시간으로 object detection이나 instance segmentation을 하는 예제 코드를 만들었습니다.
 
 [https://github.com/ukayzm/opencv/tree/master/object_detection_tensorflow](https://github.com/ukayzm/opencv/tree/master/object_detection_tensorflow) 여기에 방문하여 소스코드를 다운로드 받아 실행해 보세요.
 
-예제 코드는 세 파일로 되어 있습니다.
+예제 코드는 네 파일로 되어 있습니다.
 * camera.py - webcam 테스트
-* object_detector.py - object detection 또는 instance segmentation 실행
+* object_detector.py - 웹캠에서 object detection 또는 instance segmentation 실행
+* image_detector.py - 사진에서 object detection 또는 instance segmentation 실행
 * live_streaming.py - 영상을 네트워크 상으로 전송. 웹브라우저에서 http://IP_addr:5000 으로 접속하여 확인
 
+### 다운로드 및 실행
+
+```
+$ git clone https://github.com/ukayzm/opencv.git
+```
+
+위와 같이 다운로드한 후, object_detector.py 파일의 174, 175 라인을 아래와 같이 수정합니다.
+```
+$ cd opencv/object_detection_tensorflow
+$ vi object_detector.py
+174     #detector = ObjectDetector('ssd_mobilenet_v1_coco_2017_11_17')
+175     detector = ObjectDetector('mask_rcnn_inception_v2_coco_2018_01_28')
+```
+
+아래와 같이 실행시키면 자동으로 인터넷으로부터 구글이 공개한 모델을 다운로드 받고 웹캠으로부터 디텍션을 시작합니다.
+```
+(py3) $ python object_detector.py
+ObjectDetector('mask_rcnn_inception_v2_coco_2018_01_28', 'data/mscoco_label_map.pbtxt')
+downloading model mask_rcnn_inception_v2_coco_2018_01_28 ...
+download completed
+mask_rcnn_inception_v2_coco_2018_01_28/frozen_inference_graph.pb is extracted
+press `q` to quit
+```
 
 ## References
 

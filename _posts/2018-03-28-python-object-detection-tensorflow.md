@@ -175,8 +175,16 @@ Jupyter notebook이 아닌 python code를 이용하여 실시간으로 Object De
 $ git clone https://github.com/ukayzm/opencv.git
 $ cd opencv/object_detection_tensorflow
 (py3) $ python object_detector.py
+ObjectDetector('ssd_mobilenet_v1_coco_2017_11_17', 'data/mscoco_label_map.pbtxt')
+downloading model ssd_mobilenet_v1_coco_2017_11_17 ...
+download completed
+ssd_mobilenet_v1_coco_2017_11_17/frozen_inference_graph.pb is extracted
 press `q` to quit
 ```
+
+## Advanced: Instance Segmentation
+
+박스 형태의 인식에서 한 단계 더 나아가 사물의 모양대로 mask까지 인식하는 모델도 있습니다. [{{ site.url }}/tensorflow-instance-segmentation/]({{ site.url }}/tensorflow-instance-segmentation/) 여기를 읽어보세요.
 
 ## 참고 사이트
 
