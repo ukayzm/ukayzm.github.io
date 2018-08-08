@@ -139,6 +139,8 @@ $ date
 
 (experimental)
 
+Raspberry Pi를 headless로 설정하면, 낯선 네트워크에 처음 붙일 때 난감합니다. 특히나 무선 환경에 붙이려고 하면 방법이 없죠. 이럴 때 필요한 것이, Raspberry Pi의 WIFI를 concurrent mode로 설정하여 client와 AP 두 가지 모드를 가지도록 하는 것입니다. AP 모드로 돌게 되면 핸드폰 또는 PC에서 무선으로 Raspberry Pi에 접속할 수 있고, client로 붙을 AP의 SSID와 password를 설정할 수 있습니다. 마치 크롬캐스트를 설정할 때 처럼요.
+
 /etc/udev/rules.d/90-wireless.rules 파일을 만들고 아래 내용을 적습니다. 이렇게 하면 다음 번 부팅때 uap0 라는 가상 네트워크 인터페이스가 만들어집니다. 이 uap0를 AP mode의 인터페이스로 사용할 것입니다.
 
 ```
@@ -152,7 +154,7 @@ ACTION=="add", SUBSYSTEM=="ieee80211", KERNEL=="phy0", \
 $ sudo apt-get install dnsmasq hostapd
 ```
 
-/etc/dnsmasq.conf 파일의 맨 뒤에 다음 라인 추가
+/etc/dnsmasq.conf 파일의 맨 뒤에 다음 라인 추가합니다.
 ```
 interface=lo,ap0
 no-dhcp-interface=lo,wlan0,eth0
@@ -162,7 +164,7 @@ domain-needed
 bogus-priv
 dhcp-range=192.168.10.50,192.168.10.150,12h
 ```
-/etc/hostapd/hostapd.conf 파일을 생성하고, 아래 내용 추가. YourApNameHere와 YourPassPhraseHere는 알아서 수정.
+/etc/hostapd/hostapd.conf 파일을 생성하고, 아래 내용 추가합니다. YourApNameHere와 YourPassPhraseHere는 자신의 환경에 맞게 수정하세요.
 ```
 ctrl_interface=/var/run/hostapd
 ctrl_interface_group=0
@@ -181,7 +183,7 @@ wpa_pairwise=TKIP CCMP
 rsn_pairwise=CCMP
 ```
 
-/etc/wpa_supplicant/wpa_supplicant.conf 파일은 아래와 비슷하게 이미 만들어져 있을 것임. 거기에 id_str을 추가하자.
+/etc/wpa_supplicant/wpa_supplicant.conf 파일은 아래와 비슷하게 이미 만들어져 있을 것입니다. 거기에 id_str을 추가하세요.
 ```
 country=US
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -200,7 +202,7 @@ network={
 }
 ```
 
-/etc/network/interfaces 파일을 아래와 같이 수정하여 ap0에 static IP address를 부여함.
+/etc/network/interfaces 파일을 아래와 같이 수정하여 ap0에 static IP address를 부여합니다.
 ```
 # interfaces(5) file used by ifup(8) and ifdown(8)
 

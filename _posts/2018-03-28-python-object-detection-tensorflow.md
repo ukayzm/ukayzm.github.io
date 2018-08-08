@@ -23,7 +23,9 @@ layout: post
 
 ### Install Necessary Libraries and Packages
 
-아래 명령을 입력하여 필요한 라이브러리와 파이썬 패키지를 설치합니다. 파이썬 패키지는 py3 이름의 virtualenv상에 설치하는 것으로 가정합니다.
+CAUTION: 파이썬 패키지는 py3 이름의 virtualenv상에 설치하는 것으로 가정합니다. 즉, 아래 모든 예제에서 `(py3)`으로 시작하는 것은 python3의 virtualenv 상에서 설치하는 것입니다.
+
+아래 명령을 입력하여 필요한 라이브러리와 파이썬 패키지를 설치합니다.
 
 ```
 $ sudo apt-get install protobuf-compiler python-pil python-lxml python-tk
@@ -127,7 +129,7 @@ OK
 
 ## 웹캠을 이용한 실시간 사물 인식
 
-인터넷 상에 [웹캠을 이용하여 실시간으로 사물을 인식할 수 있는 좋은 예제](objexample1)가 있어 소개를 하겠습니다. 아래과 같이 코드를 다운 받고, ipynb 파일을 object_detection 디렉토리로 복사한 후, Jupyter notebook을 실행시킵니다.
+인터넷 상에 [웹캠을 이용하여 실시간으로 사물을 인식할 수 있는 좋은 예제](https://towardsdatascience.com/real-time-object-detection-with-tensorflow-detection-model-e7fd20421d5d)가 있어 소개를 하겠습니다. 아래과 같이 코드를 다운 받고, ipynb 파일을 object_detection 디렉토리로 복사한 후, Jupyter notebook을 실행시킵니다.
 
 ```
 (py3) $ cd ~/work
@@ -161,11 +163,20 @@ filename="output.avi"
 
 어떻습니까? 잘 실행이 되나요? 그렇다면 성공입니다.
 
-## See Also
+## 웹캠을 이용한 실시간 사물 인식 - 2
 
-Jupyter notebook이 아닌 python code를 이용하여 실시간으로 Object Detection을 하고 http로 전송하는 예제를 만들고 source code를 공개하였습니다.
-[{{ site.url }}/tensorflow-instance-segmentation/]({{ site.url }}/tensorflow-instance-segmentation/)를 방문해 보세요.
+Jupyter notebook이 아닌 python code를 이용하여 실시간으로 Object Detection을 하고 http로 전송하는 예제를 만들어서, gitbug에 source code를 공개하였습니다.
 
+[https://github.com/ukayzm/opencv/tree/master/object_detection_tensorflow](https://github.com/ukayzm/opencv/tree/master/object_detection_tensorflow) 에서 다운받을 수 있습니다.
+
+### 다운로드 및 실행
+아래와 같이 하면 자동으로 인터넷으로부터 구글이 공개한 모델을 다운로드 받고 웹캠으로부터 디텍션을 시작합니다.
+```
+$ git clone https://github.com/ukayzm/opencv.git
+$ cd opencv/object_detection_tensorflow
+(py3) $ python object_detector.py
+press `q` to quit
+```
 
 ## 참고 사이트
 
