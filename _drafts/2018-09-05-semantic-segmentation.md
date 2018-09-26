@@ -29,6 +29,19 @@ $ cmake ..
 $ make all -j8
 ```
 
+### Download Dataset
+
+Download city scape dataset from https://www.cityscapes-dataset.com/
+Please use your work or university email address as we use this to verify your technical and research interest. And you'd better specify your work/university name and homepage when registering, to speed up the process.
+
+Once registered, go to download tab and download the fine labeled Cityscapes dataset leftImg8bit_trainvaltest.zip (11GB) and the corresponding ground truth gtFine_trainvaltest.zip (241MB).
+
+And In addition, clone the cityscapesScripts repository:
+```
+$ git clone https://github.com/mcordts/cityscapesScripts.git
+```
+After that, run the /preparation/createTrainIdLabelImags.py script, to convert annotations in polygonal format to png images with label IDs, where pixels encode "train IDs" (that you can define in labels.py). 
+
 
 ## References
 
@@ -37,4 +50,3 @@ $ make all -j8
 * [Semantic segmentation with OpenCV and deep learning in PyImageSearch site](https://www.pyimagesearch.com/2018/09/03/semantic-segmentation-with-opencv-and-deep-learning/)
 
 ## Source Code Download
-
