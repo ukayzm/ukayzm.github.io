@@ -11,13 +11,51 @@ layout: post
 
 Check [Arduino-CLI in GitHub](https://github.com/arduino/arduino-cli)
 
-## Config for cheaper board
-```bash
-$ sudo usermod -a -G dialout $USER         # add this user to dialout group
+## Install
 
+```bash
+$ curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+
+$ sudo usermod -a -G dialout $USER         # add this user to dialout group
+                                           # You need to reopen the terminal or reboot the computer
+
+$ id $USER                 # check that you have 20(dialout)
+uid=1000(rostude) gid=1000(rostude) groups=1000(rostude),4(adm),20(dialout),24(cdrom),27(sudo),30(dip),46(plugdev),116(lpadmin),122(sambashare)
+
+$ arduino-cli config init
+Config file written to: /home/rostude/.arduino15/arduino-cli.yaml
+
+$ arduino-cli core update-index
+Updating index: package_index.json downloaded
+
+```
+
+## Config for cheaper board
+
+```bash
+$ dmesg
+[ 3059.609249] usb 1-1: new full-speed USB device number 6 using xhci_hcd
+[ 3059.759268] usb 1-1: New USB device found, idVendor=1a86, idProduct=7523
+[ 3059.759284] usb 1-1: New USB device strings: Mfr=0, Product=2, SerialNumber=0
+[ 3059.759294] usb 1-1: Product: USB2.0-Serial
+[ 3059.761263] sdhci-pci 0000:00:12.0: SDHCI controller found [8086:2296] (rev 35)
+[ 3059.821491] usbcore: registered new interface driver usbserial_generic
+[ 3059.822413] usbserial: USB Serial support registered for generic
+[ 3059.826341] usbcore: registered new interface driver ch341
+[ 3059.827087] usbserial: USB Serial support registered for ch341-uart
+[ 3059.828153] ch341 1-1:1.0: ch341-uart converter detected
+[ 3059.828944] usb 1-1: ch341-uart converter now attached to ttyUSB0
+[ 3059.829169] sdhci-pci 0000:00:12.0: SDHCI controller found [8086:2296] (rev 35)
+[ 3059.830108] sdhci-pci 0000:00:12.0: SDHCI controller found [8086:2296] (rev 35)
+```
+
+
+```bash
 $ arduino-cli board list      # Check the connection to the board
-Port         Type              Board Name  FQBN            Core
-/dev/ttyACM0 Serial Port (USB) Arduino Uno arduino:avr:uno arduino:avr
+Port         Type              Board Name              FQBN                 Core
+/dev/ttyACM0 Serial Port (USB) Arduino Uno             arduino:avr:uno      arduino:avr
+/dev/ttyACM1 Serial Port (USB) Arduino/Genuino MKR1000 arduino:samd:mkr1000 arduino:samd
+/dev/ttyUSB0 Serial Port (USB) Unknown
 ...
 
 $ arduino-cli core install arduino:avr      # Install Arduino:avr core
@@ -63,17 +101,25 @@ Arduino Yún Mini                    arduino:avr:yunmini
 LilyPad Arduino                     arduino:avr:lilypad
 LilyPad Arduino USB                 arduino:avr:LilyPadUSB
 Linino One                          arduino:avr:one
+```
 
+## create sketch
+
+```bash
 $ mkdir sketch/
 $ cat > sketch/sketch.ino        # create sketch.ino
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
+  Serial.begin(115200);
+  Serial.println("start...");
 }
 
 void loop() {
   digitalWrite(LED_BUILTIN, HIGH);
+  Serial.println("H");
   delay(1000);
   digitalWrite(LED_BUILTIN, LOW);
+  Serial.println("L");
   delay(1000);
 }
 ^D
@@ -81,7 +127,11 @@ void loop() {
 $ ls -Al sketch/           # sketch.ino is created
 total 4
 -rw-r--r-- 1 rostude rostude 175 Apr 16 10:25 sketch.ino
+```
 
+### Compile and upload the sketch
+
+```bash
 $ arduino-cli compile --fqbn arduino:avr:uno sketch/          # Compile 'sketch' directory
 $ arduino-cli compile --fqbn arduino:avr:nano:cpu=atmega328old sketch/          # Compile 'sketch' directory for nano with ATmega328P (Old Bootloader)
 Sketch uses 924 bytes (2%) of program storage space. Maximum is 32256 bytes.
@@ -96,7 +146,29 @@ total 28
 
 $ arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno sketch/    # upload the sketch
 $ arduino-cli upload -p /dev/ttyUSB0 --fqbn arduino:avr:nano:cpu=atmega328old sketch/      # for nano with ATmega328P (Old Bootloader)
+```
 
+## Using serial output
+
+```bash
+$ stty -F /dev/ttyUSB0 cs8 115200 ignbrk -brkint -icrnl -imaxbel -opost -onlcr -isig -icanon -iexten -echo -echoe -echok -echoctl -echoke noflsh -ixon -crtscts
+$ cat /dev/ttyUSB0 
+start...
+H
+L
+H
+L
+H
+...
+^C
+
+$ echo "Hello Arduino" > /dev/ttyUSB0
+$ echo -n "H" > /dev/ttyUSB0
+```
+
+## Add library
+
+```bash
 $ arduino-cli lib search debouncer     # search library
 Name: "BirdhouseSDK"
     Author: Serhiy Korzun <korzun.serhiy@gmail.com>
@@ -138,6 +210,8 @@ Installing FTDebouncer@1.3.2...
 Installed FTDebouncer@1.3.2
 
 ```
+
+## FQBN of the unknown board
 
 The easiest way to determine the fqbn of a board is:
 Start the Arduino IDE GUI (Yes, I know you are dead set on using the CLI only but it really won't hurt too badly to use the GUI every once in a while)
