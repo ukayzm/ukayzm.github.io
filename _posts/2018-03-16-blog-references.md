@@ -4,6 +4,8 @@ categories: blog jekyll
 layout: post
 ---
 
+이 블로그는 Jekyll로 만들어져 있습니다.
+
 ## Install Jekyll
 
 ```
@@ -27,7 +29,7 @@ $ gem update jekyll
 
 ## Run Jekyll
 ```
-$ jekyll serve --draft
+$ jekyll serve --draft --host 0.0.0.0
 ```
 
 ## References
