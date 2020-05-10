@@ -144,15 +144,33 @@ Port         Type              Board Name              FQBN                 Core
 /dev/ttyUSB0 Serial Port (USB) Unknown
 ```
 
-자동 인식이 안된다고 해서 사용을 못하는 것은 아니니, 그리 걱정할 필요는 없습니다. ch340/ch341의 시리얼 포트는 `/dev/ttyUSB0` 또는 `/dev/ttyUSB1` 입니다. 그리고, 코어는 정품과 같습니다. 따라서, 정품의 경우와 동일하게 `arduino-cli core install arduino:avr` 명령으로 정품 보드용 코어를 설치하고, `arduino-cli board listall` 명령으로 설치된 코어를 확인합니다.
+자동 인식이 안된다고 해서 사용을 못하는 것은 아니니, 걱정할 필요는 없습니다. ch340/ch341의 시리얼 포트는 `/dev/ttyUSB0` 또는 `/dev/ttyUSB1` 입니다. 그리고, 코어는 정품과 같습니다. 따라서, 정품의 경우와 동일하게 `arduino-cli core install arduino:avr` 명령으로 정품 보드용 코어를 설치하고, `arduino-cli board listall` 명령으로 설치된 코어를 확인합니다.
 
-### 컴파일의 중간 파일 지우기
+# 보드의 fqbn 알아내기
 
-컴파일 과정의 중간 파일은 `/tmp` 디렉토리에 저장됩니다. 소스 파일 이름을 바꾸거나 하면 간혹 컴파일러가 오동작하는 경우가 있는데요. 이 때는 /tmp/arduino-로 시작하는 디렉토리를 지우고 다시 컴파일하면 됩니다.
+위에서, 중국산 클론 보드를 위해서는 fqbn을 지정해 주어야 한다고 했는데요. 내가 가지고 있는 보드의 fqbn 값을 어떻게 알아낼까요? 아두이노 기본 IDE를 이용하여 알아낼 수 있는 방법이 있습니다.
 
-```bash
-$ rm -rf /tmp/arduino-*
+1. 보드를 PC에 연결하고 아두이노 기본 IDE를 실행합니다.
+2. 파일 > 환경설정 > 다음 동작중 자세한 출력 보이기 > 컴파일을 체크합니다.
+3. 툴 > 보드 메뉴에서 보드를 지정합니다.
+4. 필요시 툴 > 프로세서에서 프로세서를 지정합니다. 필자가 가지고 있는 아두이노 나노 보드는 ATmeta328P (Old Bootloader)로 했습니다.
+5. 스케치 > 확인/컴파일을 합니다.
+
+컴파일이 끝나면, 검은 바탕 컴파일 화면의 스크롤을 올려 맨 윗줄을 봅니다. 
+
 ```
+C:\Program Files (x86)\Arduino\arduino-builder -dump-prefs -logger=machine -hardware C:\Program Files (x86)\Arduino\hardware -tools C:\Program Files (x86)\Arduino\tools-builder -tools C:\Program Files (x86)\Arduino\hardware\tools\avr -built-in-libraries C:\Program Files (x86)\Arduino\libraries -libraries D:\Users\kjeom\Documents\Arduino\libraries -fqbn=arduino:avr:nano:cpu=atmega328old -vid-pid=1A86_7523 -ide-version=10812 -build-path C:\Users\kjeom\AppData\Local\Temp\arduino_build_337148 -warnings=none -build-cache C:\Users\kjeom\AppData\Local\Temp\arduino_cache_981687 -prefs=build.warn_data_percentage=75 -prefs=runtime.tools.avr-gcc.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.avr-gcc-7.3.0-atmel3.6.1-arduino5.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.avrdude.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.avrdude-6.3.0-arduino17.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.arduinoOTA.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.arduinoOTA-1.3.0.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -verbose D:\temp\sketch_apr17a\sketch_apr17a.ino
+```
+
+위와 같이 긴 줄이 있는데, 중간에 `-fqbn=arduino:avr:nano:cpu=atmega328old` 이런 부분이 보이죠. `arduino:avr:nano:cpu=atmega328old`가 바로 내가 가지고 있는 보드의 fqbn 값입니다.
+
+참고로, 필자가 가지고 있는 보드의 fqbn은 다음과 같습니다.
+
+| 보드 | fqbn | 시리얼 포트 |
+|-------|--------|---------|
+| 아두이노 우노 정품 | arduino:avr:uno | /dev/ttyACM0 |
+| 아두이노 우노 클론 | arduino:avr:uno | /dev/ttyUSB0 |
+| 아두이노 나노 클론 | arduino:avr:nano:cpu=atmega328old | /dev/ttyUSB0 |
 
 # 테스트해 보기
 
@@ -212,17 +230,32 @@ $ arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno sketch/    # upload 
 $ arduino-cli upload -p /dev/ttyUSB0 --fqbn arduino:avr:nano:cpu=atmega328old sketch/      # for nano with ATmega328P (Old Bootloader)
 ```
 
-### 시리얼 포트로 디버깅
+업로드가 성공하면 위에서 작성한 코드 대로 아두이노의 내장 LED가 1초 간격으로 켜졌다 꺼졌다를 반복할 것입니다.
 
-이제, 시리얼 포트로 디버깅을 해 봅시다. 시리얼 포트 연결은 `minicom`같은 리눅스에서 많이 쓰는 시리얼 콘솔 프로그램으로 해도 됩니다. 하지만 여기에서는 더 간단하게 cat 명령으로 시리얼 출력을 보고 echo 명령으로 시리얼 입력을 하는 방법을 설명합니다. 
+### 컴파일의 중간 파일 지우기
 
-먼저 아래와 같이 `stty` 명령으로 시리얼 포트를 설정합니다. 위 예제에서 시리얼 포트의 baud rate를 115200으로 했으므로, `stty` 명령에도 115200을 지정합니다. 이 작업은 아두이노를 연결한 후 한번만 해 주면 됩니다.
+컴파일 과정의 중간 파일은 `/tmp` 디렉토리에 저장됩니다. 소스 파일 이름을 바꾸거나 하면 간혹 컴파일러가 오동작하는 경우가 있는데요. 이 때는 /tmp/arduino-로 시작하는 디렉토리를 지우고 다시 컴파일하면 됩니다.
+
+```bash
+$ rm -rf /tmp/arduino-*
+```
+
+
+# 시리얼 포트로 디버깅
+
+임베디드 기기 개발에서 시리얼 입출력은 필수로 사용되는 디버깅 방법이죠. Arduino CLI는 컴파일/업로드 툴이므로, 시리얼 포트 입출력을 지원하지는 않습니다. 대신에 `minicom`같은 일반적인 시리얼 콘솔 프로그램을 사용할 수 있습니다.
+
+하지만 여기에서는 더 간단하게 `cat` 명령으로 시리얼 출력을 보고 `echo` 명령으로 시리얼 입력을 하는 방법을 설명합니다. 
+
+### 시리얼 포트 입출력
+
+먼저 아래와 같이 `stty` 명령으로 시리얼 포트를 설정합니다. 위 예제에서 `Serial.begin(115200)` 이렇게 시리얼 포트의 baud rate를 115200으로 했으므로, `stty` 명령에도 115200을 지정합니다. 이 작업은 아두이노를 연결한 후 한번만 해 주면 됩니다.
 
 ```bash
 $ stty -F /dev/ttyUSB0 cs8 115200 ignbrk -brkint -icrnl -imaxbel -opost -onlcr -isig -icanon -iexten -echo -echoe -echok -echoctl -echoke noflsh -ixon -crtscts
 ```
 
-그 다음, `cat` 명령으로 아두이노의 시리얼 출력을 볼 수 있습니다. 아두이노 코드를 업로드 할 때에도 시리얼을 이용하므로, 업로드를 하고 싶으면 ^C를 눌러 `cat` 명령을 종료해야 합니다.
+그 다음, `cat` 명령으로 아두이노의 시리얼 출력을 볼 수 있습니다. 아래에서는 우리가 작성한 코드대로 `start...`가 출력되고 `H`와 `L`이 1초 간격으로 출력되는 것을 볼 수 있습니다. 시리얼 출력을 그만 보고 싶으면 `^C`를 누릅니다.
 
 ```bash
 $ cat /dev/ttyUSB0 
@@ -236,20 +269,25 @@ H
 ^C
 ```
 
-시리얼로 아두이노에 문자를 보내고 싶으면 아래와 같이 `echo` 명령을 이용합니다. 
+아두이노에 문자를 입력하고 싶으면 터미널을 하나 더 열고 아래와 같이 `echo` 명령을 이용합니다. 
 
 ```bash
-$ echo "Hello Arduino" > /dev/ttyUSB0         # 맨 뒤에 줄바꿈 문자가 추가됩니다.
-$ echo -n "H" > /dev/ttyUSB0                  # -n 옵션을 주면 줄바꿈 문자 없이 'H'만 전송됩니다.
+$ echo "Hello Arduino" > /dev/ttyUSB0  # 맨 뒤에 줄바꿈 문자가 추가됩니다.
+$ echo -n "H" > /dev/ttyUSB0           # -n 옵션을 주면 줄바꿈 문자 없이 'H'만 전송됩니다.
 ```
+
+### 코드 업로드시 주의사항
+
+Arduino CLI는 컴파일된 코드를 업로드 할 때 시리얼 포트를 이용하므로, 업로드를 하고 싶으면 `^C`를 눌러 `cat` 명령을 종료해야 합니다.
+
 
 # Library 추가하기
 
 아두이노에 공개된 라이브러리는 `arduino-cli lib search` 명령으로 검색하고 `arduino-cli lib install` 명령으로 추가합니다.
-다음은 적외선 리모콘 신호를 수신하는 IRremote 라이브러리를 검색하고 설치하는 예제입니다.
+다음은 적외선 리모콘 신호를 수신하는 IRremote 라이브러리를 검색하고 설치하는 예 입니다.
 
 ```bash
-$ arduino-cli lib search IRremote     # search library
+$ arduino-cli lib search IRremote     # IRremote 글자가 들어가는 라이브러리 검색
 Name: "DL_PAC_NK76"
   Author: Quadrifoglio Verde <quadrifoglio@protonmail.com>
   Maintainer: Quadrifoglio Verde <quadrifoglio@protonmail.com>
@@ -285,7 +323,7 @@ Name: "IRremote"
 
 ...
 
-$ arduino-cli lib install IRremote     # install library
+$ arduino-cli lib install IRremote     # IRremote 라이브러리 설치
 IRremote depends on IRremote@2.2.3
 Downloading IRremote@2.2.3...
 IRremote@2.2.3 already downloaded
@@ -293,36 +331,20 @@ Installing IRremote@2.2.3...
 Installed IRremote@2.2.3
 ```
 
-설치된 라이브러리는 `~/Arduino/libraries` 디렉토리에 저장됩니다. 
-* 수동으로 라이브러리를 추가하고 싶으면 이 디렉토리에 라이브러리를 복사하면 됩니다.
-* 설치된 라이브러리를 삭제하고 싶으면 이 디렉토리에 있는 라이브러리 디렉토리를 지우면 됩니다. 
-
-제 PC에는 아래와 같이, arduino-cli로 추가한 IRremote 라이브러리와 수동으로 추가한 I2Cdev, MPU6050 라이브러리가 있네요.
+설치된 라이브러리는 `~/Arduino/libraries` 디렉토리에 저장됩니다. 제 PC에는 아래와 같이, arduino-cli로 추가한 IRremote 라이브러리와 수동으로 추가한 I2Cdev, MPU6050 라이브러리가 있네요.
 ```bash
 $ ls ~/Arduino/libraries/
 I2Cdev/  IRremote/  MPU6050/
 ```
 
-# 보드의 FQBN 알아내기
+* 수동으로 라이브러리를 추가하고 싶으면 이 디렉토리에 라이브러리를 복사하면 됩니다.
+* 설치된 라이브러리를 삭제하고 싶으면 이 디렉토리에 있는 라이브러리 디렉토리를 지우면 됩니다. 
 
-위에서, 중국산 클론 보드를 위해서는 fqbn을 지정해 주어야 한다고 했는데요. 내가 가지고 있는 보드의 fqbn 값을 어떻게 알아낼까요? 아두이노 기본 IDE를 이용하여 알아낼 수 있는 방법이 있습니다.
-
-1. 보드를 PC에 연결하고 아두이노 기본 IDE를 실행합니다.
-2. 파일 > 환경설정 > 다음 동작중 자세한 출력 보이기 > 컴파일을 체크합니다.
-3. 툴 > 보드 메뉴에서 보드를 지정합니다.
-4. 필요시 툴 > 프로세서에서 프로세서를 지정합니다. 필자가 가지고 있는 아두이노 나노 보드는 ATmeta328P (Old Bootloader)로 했습니다.
-5. 스케치 > 확인/컴파일을 합니다.
-
-컴파일이 끝나면, 검은 바탕 컴파일 화면의 스크롤을 올려 맨 윗줄을 봅니다. 
-
-```
-C:\Program Files (x86)\Arduino\arduino-builder -dump-prefs -logger=machine -hardware C:\Program Files (x86)\Arduino\hardware -tools C:\Program Files (x86)\Arduino\tools-builder -tools C:\Program Files (x86)\Arduino\hardware\tools\avr -built-in-libraries C:\Program Files (x86)\Arduino\libraries -libraries D:\Users\kjeom\Documents\Arduino\libraries -fqbn=arduino:avr:nano:cpu=atmega328old -vid-pid=1A86_7523 -ide-version=10812 -build-path C:\Users\kjeom\AppData\Local\Temp\arduino_build_337148 -warnings=none -build-cache C:\Users\kjeom\AppData\Local\Temp\arduino_cache_981687 -prefs=build.warn_data_percentage=75 -prefs=runtime.tools.avr-gcc.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.avr-gcc-7.3.0-atmel3.6.1-arduino5.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.avrdude.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.avrdude-6.3.0-arduino17.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.arduinoOTA.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.arduinoOTA-1.3.0.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -verbose D:\temp\sketch_apr17a\sketch_apr17a.ino
-```
-
-위와 같이 긴 줄이 있는데, 중간에 `-fqbn=arduino:avr:nano:cpu=atmega328old` 이런 부분이 보이죠. `arduino:avr:nano:cpu=atmega328old`가 바로 내가 가지고 있는 보드의 fqbn 값입니다.
 
 # Reference
 
-* [Arduino-CLI in GitHub](https://github.com/arduino/arduino-cli)
-* [Arduino CLI Application](https://www.arduino.cc/pro/cli)
+글을 쓰는 2020년 5월 10일 현재, Arduino CLI는 계속 개발중이고 아직 1.0 버전이 나오지 않은 상태입니다. 가장 최신의 정보는 아래 사이트에서 얻을 수 있습니다.
 
+* [Arduino CLI in GitHub](https://github.com/arduino/arduino-cli)
+* [Arudino CLI Documentation Home](https://arduino.github.io/arduino-cli/)
+* [Arduino CLI Application](https://www.arduino.cc/pro/cli)
