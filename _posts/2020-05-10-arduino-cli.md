@@ -219,7 +219,7 @@ $ arduino-cli compile --fqbn arduino:avr:nano:cpu=atmega328old sketch/          
 Sketch uses 924 bytes (2%) of program storage space. Maximum is 32256 bytes.
 Global variables use 9 bytes (0%) of dynamic memory, leaving 2039 bytes for local variables. Maximum is 2048 bytes.
 
-$ ls -Al sketch/
+$ ls -Al sketch/         # .elf, .hex 파일이 생성되었음
 total 28
 -rw-r--r-- 1 rostude rostude   175 Apr 16 10:25 sketch.ino
 -rwxrwxr-x 1 rostude rostude 14112 Apr 17 16:11 sketch.ino.arduino.avr.uno.elf*
@@ -228,6 +228,12 @@ total 28
 
 $ arduino-cli upload -p /dev/ttyACM0 --fqbn arduino:avr:uno sketch/    # upload the sketch
 $ arduino-cli upload -p /dev/ttyUSB0 --fqbn arduino:avr:nano:cpu=atmega328old sketch/      # for nano with ATmega328P (Old Bootloader)
+```
+
+아래와 같이 `-u` 옵션을 사용하면 컴파일과 업로드를 동시에 할 수 있습니다.
+
+```bash
+$ arduino-cli compile --fqbn arduino:avr:uno -u -p /dev/ttyACM0 sketch/   # 컴파일에 성공하면 업로드까지 함
 ```
 
 업로드가 성공하면 위에서 작성한 코드 대로 아두이노의 내장 LED가 1초 간격으로 켜졌다 꺼졌다를 반복할 것입니다.
