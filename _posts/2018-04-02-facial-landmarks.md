@@ -1,9 +1,9 @@
 ---
-title:  "Facial Landmarks"
+title:  Facial Landmarks
 date:   2018-04-02 21:51:00 +0900
 tags:   face-recognition
-feature-img: "assets/img/pexels/model-face-beautiful-black-and-white-407035.jpeg"
-layout: post
+header:
+  image: /assets/img/pexels/model-face-beautiful-black-and-white-407035.jpeg
 ---
 
 며칠 전에 [Python Face Recognition][python-face-recognition]에 대한 글을 올렸습니다. Face recognition은 다음과 같은 과정을 거칩니다. 이 중에서, 2번째 단계인 얼굴의 특징점을 추출하는 단계는 아주 재미있습니다.
@@ -42,6 +42,6 @@ layout: post
 * [Real-time facial landmark detection with OpenCV, Python, and dlib][facial-landmarks]
 * [딥러닝(Deep Learning)을 사용한 최신 얼굴 인식(Face Recognition)][media_com]
 
-[python-face-recognition]: {{ site.url }}/python-face-recognition
+[python-face-recognition]: /python-face-recognition/
 [facial-landmarks]: https://www.pyimagesearch.com/2017/04/17/real-time-facial-landmark-detection-opencv-python-dlib/
 [media_com]: https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c

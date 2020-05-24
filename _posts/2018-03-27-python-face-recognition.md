@@ -2,8 +2,8 @@
 title:  "Python Face Recognition in Real Time"
 date:   2018-03-27 21:30:34 +0900
 tags: face-recognition
-thumbnail:   "assets/img/thumbnails/face_recognition_capture.png"
-layout: post
+header:
+  image:   /assets/img/thumbnails/face_recognition_capture.png
 ---
 
 사진에서 사람 얼굴을 인식하는 face_recognition이라는, 아주 쓰기 쉬운 파이썬 패키지가 있습니다. 이 패키지를 이용하면 웹캠을 이용하여 실시간으로 사람 얼굴을 인식하는 프로그램을 쉽게 제작할 수 있습니다. 파이썬을 설치하고, 필요한 패키지를 설치하고 소스코드를 다운 받고, knowns 디렉토리에 사람 얼굴이 있는 사진을 넣으면 동작합니다. 바로 아래 화면처럼요.
@@ -15,9 +15,9 @@ Face_recognition 패키지는 [https://github.com/ageitgey/face_recognition](htt
 얼굴 인식 프로그램을 실행하려면 webcam이 연결된 PC가 필요합니다. 노트북에 내장된  webcam도 잘 동작합니다. 이 예제는 Ubuntu 14.04 linux와 Windows 10에서 테스트 되었습니다만, 다른 버전의 linux나 MacOS에서도 잘 동작할 것입니다.
 
 
-## 필요 패키지 설치
+# 필요 패키지 설치
 
-### Linux
+## Linux
 
 Linux를 사용한다면, 패키지를 설치하기 전에 아래와 같이 virtualenv로 환경을 분리시키기를 추천합니다.
 
@@ -40,7 +40,7 @@ $ source py3/bin/activate
 
 Flask 패키지는 face recognition과 직접적인 관련은 없지만, 동영상을 스트리밍하기 위해 설치하는 것입니다.
 
-### Windows
+## Windows
 
 Windows 에서는 먼저 [https://www.python.org/downloads/](https://www.python.org/downloads/) 에서 Python 3을 64버전으로 설치합니다. 그 다음, 커맨드창에서 다음과 같이 필요한 패키지를 설치합니다.
 
@@ -65,7 +65,7 @@ C:\> pip install dlib-19.8.1-cp36-cp36m-win_amd64.whl
 
 (이 방법은 [https://github.com/charlielito/install-dlib-python-windows](https://github.com/charlielito/install-dlib-python-windows) 를 참고했습니다.)
 
-## 코드 다운로드와 실행
+# 소스 코드 다운로드
 
 먼저, [https://github.com/ukayzm/opencv/tree/master/face_recognition](https://github.com/ukayzm/opencv/tree/master/face_recognition) 또는 다음 zip 파일을 다운로드 받습니다. [face_recognition.zip][face_recognition.zip]
 압축을 풀면 아래와 같은 파일과 디렉토리가 생성됩니다.
@@ -99,6 +99,8 @@ zip 파일에는 3개의 파이썬 파일이 들어 있습니다. 각 파이썬 
 * face_recog.py - 웹캠 동영상에 있는 얼굴을 감지하여 knowns 디렉토리에 있는 얼굴과 비교하고 감지되는 이름을 출력합니다.
 * live_streaming.py - 위 동영상을 네트워크 상으로 전송합니다. 파이썬이 실행되는 머신에 모니터가 달려있지 않은 경우에 사용할 수 있습니다. 임의의 PC의 웹브라우저에서 http://IP_addr:5000 으로 접속이 가능합니다.
 
+## 실행하기
+
 터미널에서 아래 명령으로 각 파이썬 파일을 하나씩 실행시켜 보세요.  리눅스의 경우에는 먼저 virtualenv를 활성화시키는 것을 잊지 마세요.
 
 ```
@@ -111,7 +113,7 @@ zip 파일에는 3개의 파이썬 파일이 들어 있습니다. 각 파이썬 
 
 윈도우에서 'q' 키를 누르거나 터미널에서 ^C를 누르면 종료됩니다.
 
-## 소스코드 설명
+# 소스코드 설명
 
 
 얼굴 인식의 핵심 역할을 하는 face_recog.py 파일을 좀 더 깊게 알아보겠습니다.
@@ -120,49 +122,54 @@ face_recog.py는 많은 머신 러닝 알고리즘이 구현되어 있는 dlib�
 
 <script src="https://gist.github.com/ukayzm/05363345935cabe958627d75a113c825.js"></script>
 
-### Line 20-25
+Line 20-25
+
 knowns 디렉토리에서 사진 파일을 읽습니다. 파일 이름으로부터 사람 이름을 추출합니다.
 
-### Line 27-29
+Line 27-29
+
 사진에서 얼굴 영역을 알아내고, face landmarks라 불리는 68개 얼굴 특징의 위치를 분석한 데이터를 known_face_encodings에 저장합니다. 이 작업의 원리는 [이 사이트][media_com]에 잘 설명되어 있습니다. 아주 쉽게 설명되어 있으므로, 꼭 한 번 읽어보시길 강력 추천 드립니다.
 
-### Line 42-45
+Line 42-45
+
 카메라로부터 frame을 읽어서 1/4 크기로 줄입니다. 이것은 계산양을 줄이기 위해서 입니다.
 
-### Line 51
+Line 51
+
 계산 양을 더 줄이기 위해서 두 frame당 1번씩만 계산합니다.
 
-### Line 53-54
+Line 53-54
+
 읽은 frame에서 얼굴 영역과 특징을 추출합니다.
 
-### Line 59-60
+Line 59-60
+
 Frame에서 추출한 얼굴 특징과 knowns에 있던 사진 얼굴의 특징을 비교하여, (얼마나 비슷한지) 거리 척도로 환산합니다. 거리(distance)가 가깝다는 (작다는) 것은 서로 비슷한 얼굴이라는 의미 입니다.
 
-### Line 64-65
+Line 64-65
+
 실험상, 거리가 0.6 이면 다른 사람의 얼굴입니다. 이런 경우의 이름은 Unknown 입니다.
 
-### Line 65-67
+Line 65-67
+
 거리가 0.6 이하이고, 최소값을 가진 사람의 이름을 찾습니다.
 
-### Line 74-87
+Line 74-87
+
 찾은 사람의 얼굴 영역과 이름을 비디오 화면에 그립니다.
 
-## 참고 사이트
+# 참고 사이트
 
+* [https://github.com/ukayzm/opencv/tree/master/face_recognition](https://github.com/ukayzm/opencv/tree/master/face_recognition)
 * [딥러닝(Deep Learning)을 사용한 최신 얼굴 인식(Face Recognition)][media_com]
 * [Face recognition python package](https://github.com/ageitgey/face_recognition)
 * [Live streaming](http://www.chioka.in/python-live-video-streaming-example/)
 
-## 소스 코드 다운로드
+# See Also
 
-* [face_recognition.zip][face_recognition.zip]
-* [https://github.com/ukayzm/opencv/tree/master/face_recognition](https://github.com/ukayzm/opencv/tree/master/face_recognition)
+Unknown으로 분류된 얼굴을 좀 더 활용할 수 있는 방법은 없을까요? [face-clustering](/face-clustering/)을 방문해 보시면, 이미 알고 있는 얼굴이 아니라 전혀 모르는 얼굴을 분류하는 방법을 알 수 있습니다.
 
-## See Also
+Object detection 예제도 재미있습니다. [tensorflow-instance-segmentation](/tensorflow-instance-segmentation/)를 방문해 보세요.
 
-Unknown으로 분류된 얼굴을 좀 더 활용할 수 있는 방법은 없을까요? [{{ site.url }}/face-clustering/]({{ site.url }}/face-clustering/)을 방문해 보시면, 이미 알고 있는 얼굴이 아니라 전혀 모르는 얼굴을 분류하는 방법을 알 수 있습니다.
-
-Object detection 예제도 재미있습니다. [{{ site.url }}/tensorflow-instance-segmentation/]({{ site.url }}/tensorflow-instance-segmentation/)를 방문해 보세요.
-
-[face_recognition.zip]: {{ site.url }}/assets/face_recognition.zip
+[face_recognition.zip]: /assets/face_recognition.zip
 [media_com]: https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c

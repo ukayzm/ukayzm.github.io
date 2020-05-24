@@ -1,16 +1,15 @@
 ---
-title:  "COCO Dataset"
+title:  COCO Dataset
 tags:   object-detection
-feature-img: "assets/img/posts/coco-examples.png"
-thumbnail:   "assets/img/posts/coco-examples.png"
+header:
+  image: /assets/img/posts/coco-examples.png
 date:   2018-05-31 21:00:00 +0900
-layout: post
 ---
 
 머신러닝을 위해 많은 데이터 셋이 만들어져 있는데, 그 중에 [COCO dataset](http://cocodataset.org/)은 object detection, segmentation, keypoint detection 등을 위한 데이터셋으로, 매년 다른 데이터셋으로 전 세계의 여러 대학/기업이 참가하는 대회에 사용되고 있습니다.
 구글이 공개한 TensorFlow Object Detection API에도 COCO dataset으로 학습시킨 모델이 들어있습니다. 이 COCO dataset과 이것을 다루기 위한 COCO API에 대해 알아보겠습니다.
 
-## Download COCO Dataset
+# Download COCO Dataset
 
 COCO dataset은 많은 그림 파일을 가지고 있으므로, 용량이 GB 단위로 큽니다. 그래서, gsutil (Google Storage 유틸리티)을 사용하여 다운로드 받는 방법이 권장됩니다. 먼저 아래와 같이 gsutil을 설치합니다.
 ```
@@ -33,7 +32,7 @@ $ cd val2017
 $ unzip ../anns/annotations_trainval2017.zip
 ```
 
-## COCO Dataset의 구성
+# COCO Dataset의 구성
 
 
 위와 같이 다운로드를 받았다면 val2017 디렉토리를 살펴보세요.
@@ -186,7 +185,7 @@ Instances json file의 첫 부분은 아래와 같이 information과 license의 
 ```
 
 
-## Install COCO API
+# Install COCO API
 
 COCO dataset의 image와 annotation을 쉽게 다루기 위한 API가 [COCO API](https://github.com/cocodataset/cocoapi) 입니다.
 다음과 같이 COCO API를 다운 받고 컴파일 합니다.
@@ -212,7 +211,7 @@ COCO Dataset을 다운로드 받아 보시고, [https://github.com/cocodataset/c
 (py3) $ pip install matplotlib
 ```
 
-## References
+# References
 
 * [COCO dataset Official Home](http://cocodataset.org/)
 * [COCO API on GitHub](https://github.com/cocodataset/cocoapi)

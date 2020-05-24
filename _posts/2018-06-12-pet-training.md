@@ -1,13 +1,14 @@
 ---
-title:  "Training on the Pet Dataset"
+title:  Training on the Pet Dataset
 tags:   object-detection tensorflow
-feature-img: "assets/img/posts/pet-training.png"
-thumbnail:   "assets/img/posts/oxford_pet.png"
+header:
+  image: /assets/img/posts/pet-training.png
 date:   2018-06-12 11:00:00 +0900
-layout: post
 ---
 
 구글은 object detection model을 이용하여 [Pet Dataset을 학습시키는 예제](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md)를 제공하고 있습니다. 예제는 Google Cloud Platform 상에서 학습을 시키도록 되어 있는데, 여기서는 local PC에서 학습 시키는 방법을 설명합니다. 그리고, Google의 예제에서 잘못된 부분을 고치고, 예제 실행시 만나는 문제의 해결책을 제시합니다.
+
+# 시작하기
 
 이 예제에서는 실제로 제가 사용한 디렉토리 이름을 그대로 사용했고 매 단계마다 작업 디렉토리를 명시하였으므로, 좀 더 실용적인 예제가 될 것으로 기대합니다.
 
@@ -23,7 +24,7 @@ layout: post
 
 ## TensorFlow Models
 
-TensorFlow model이 설치되어 있어야 합니다. 설치 방법은 [여기]({{ site.url }}/python-object-detection-tensorflow/)를 참고하세요.
+TensorFlow model이 설치되어 있어야 합니다. 설치 방법은 [여기](/python-object-detection-tensorflow/)를 참고하세요.
 
 이 글을 작성 중이던 6월 6일 경에 GitHub의 tensorflow/models에 큰 변화가 있었습니다. 그 영향 때문인지, 6월 6일 코드로 `create_pet_tf_record.py`를 실행하면 `pet_train.record`, `pet_val.record` 파일이 예제와 다르게 생성되었습니다. 그래서, 저는 아래와 같이 6월 4일 code로 rollback 하여 테스트를 하였습니다. 자신이 가지고 있는 TensorFlow Model이 6월 4일 이전 버전이면 상관 없습니다.
 
@@ -37,7 +38,7 @@ $ git checkout 772964e --
 
 이 예제에서 사용할 Pet Dataset이 어떤 것인지 [http://www.robots.ox.ac.uk/~vgg/data/pets/](http://www.robots.ox.ac.uk/~vgg/data/pets/)를 방문하여 대략 훑어보세요.
 
-## 사전작업
+# 사전작업
 
 아래와 같이, training을 시킬 디렉토리를 만듭니다.
 ```bash
@@ -116,11 +117,11 @@ $ sed -i "s|PATH_TO_BE_CONFIGURED|/home/rostude/work/pet-training/data|g" faster
 
 `faster_rcnn_resnet101_pets.config` 파일에는 학습을 위한 각종 config가 들어 있습니다. 이 중에서 반드시 해야 하는 것은 `PATH_TO_BE_CONFIGURED`를 실제 디렉토리 이름으로 바꾸는 것입니다. 위와 같이 sed 명령으로 한번에 바꿔도 되고, vi 로 직접 편집해도 됩니다. 주의할 점은, `~/work/pet-trainig/data` 이런 식으로 ~로 시작하는 경로를 지정하면 안되고, /로 시작하는 절대 경로를 사용해야 합니다.
 
-## Training and evaluation
+# Training and evaluation
 
 이제 준비는 끝났습니다. Training을 시작할 수 있습니다. 참고로, 아래 명령은 아무 디렉토리에서 실행시켜도 됩니다. 여기서도 마찬가지로, 파라미터로 ~로 시작하는 경로를 지정하면 안됩니다.
 
-### Training
+## Training
 
 아래와 같이 python명령으로 Training을 시키킵니다. 주기적으로 로그가 출력됩니다.
 
@@ -154,7 +155,7 @@ INFO:tensorflow:global step 612: loss = 1.2626 (58.015 sec/step)
 
 중간에 `"Saving checkpoint"` 로그가 보이죠? Training 결과를 중간 중간에 저장을 하는 것입니다. 이 기능 때문에, training 중간에 언제든지 ^C를 눌러 중단시켰다가, 동일 명령을 입력하여 training을 재개할 수 있습니다.
 
-### Monitoring
+## Monitoring
 
 터미널을 하나 더 띄워서 아래와 같이 tensorboard를 실행시키고 web browser에서 "localhost:6006"을 띄우면 진행 과정을 모니터링 할 수 있습니다.
 ```bash
@@ -163,9 +164,9 @@ $ tensorboard --logdir=/home/rostude/work/pet-training/
 
 아래 그림은 2일간 학습을 시킨 Total Loss 그래프 입니다. 주말 내내 학습을 시킨 것인데, GPU로 학습 시키면 한 두 시간 정도만 학습을 시켜도 쓸만한 결과가 나올 것 같습니다.
 
-![pet-training-total-loss]({{ site.url }}/assets/img/posts/pet-training-total-loss.png)
+![pet-training-total-loss](/assets/img/posts/pet-training-total-loss.png)
 
-### Evaluation
+## Evaluation
 
 학습이 잘 진행되는지 검증하기 위해, 터미널을 하나 더 띄워서 아래와 같이 evaluation을 실행합니다.
 ```bash
@@ -180,11 +181,11 @@ $ python ~/work/tensorflow/models/research/object_detection/eval.py \
 
 Evaluation을 실행시키면, tensorboard에 image tab이 생기고, 아래 그림과 같이 학습 결과를 눈으로 확인할 수 있습니다. 제 경우는 대략 500 step의 training을 돌고 난 후부터 한 두개 이미지씩 인식을 하기 시작했습니다.
 
-![pet-tensorboard-image]({{ site.url }}/assets/img/posts/pet-tensorboard-image.png)
+![pet-tensorboard-image](/assets/img/posts/pet-tensorboard-image.png)
 
 ## Checkpoint and Frozen Graph
 
-충분히 학습을 시켰다고 생각되면, 이제 학습을 중단시키고 학습된 모델을 export해야 합니다. Export된 모델은 [이 예제]({{ site.url }}/tensorflow-instance-segmentation/)에 그대로 적용할 수 있습니다.
+충분히 학습을 시켰다고 생각되면, 이제 학습을 중단시키고 학습된 모델을 export해야 합니다. Export된 모델은 [이 예제](/tensorflow-instance-segmentation/)에 그대로 적용할 수 있습니다.
 
 아래와 같이, Checkpoint가 생성된 것을 확인할 수 있습니다. 이 Checkpoint를 frozen graph로 export 하는 것입니다. `training` 디렉토리에서 `ls`를 해 보면, 아래와 같이 여러개의 checkpoint 파일 (model.ckpt-XXXX.* 파일)이 보입니다. 이 중에서 XXXX의 숫자가 가장 큰 것이 마지막으로 생성된 checkpoint 파일입니다.
 
@@ -219,9 +220,9 @@ frozen_inference_graph.pb  model.ckpt.index                pipeline.config
 
 위와 같이 `export_inference_graph.py`를 실행시키면 `freeze` 디렉토리에 `frozen_inference_graph.pb` 파일이 생성됩니다. 바로 이 파일이 이 글의 최종 결과물입니다.
 
-## 적용
+# 적용
 
-`frozen_inference_graph.pb` 파일과 `pet_label_map.pbtxt` 파일이 있으면 [{{ site.url }}/tensorflow-instance-segmentation/]({{ site.url }}/tensorflow-instance-segmentation/)에서와 동일한 방법으로 Webcam 동영상에서 개/고양이 품종을 인식할 수 있습니다. (`object_detector.py`). JPEG, PNG 등의 그림 파일에서 object를 인식하여 그림 파일로 저장하는 예제도 추가하였습니다. (`image_detector.py`)
+`frozen_inference_graph.pb` 파일과 `pet_label_map.pbtxt` 파일이 있으면 [tensorflow-instance-segmentation](/tensorflow-instance-segmentation/)에서와 동일한 방법으로 Webcam 동영상에서 개/고양이 품종을 인식할 수 있습니다. (`object_detector.py`). JPEG, PNG 등의 그림 파일에서 object를 인식하여 그림 파일로 저장하는 예제도 추가하였습니다. (`image_detector.py`)
 
 ```bash
 $ mkdir -p ~/work/opencv
@@ -237,13 +238,13 @@ $ python object_detector.py
 
 아래 그림은 image_detector.py를 실행시킨 결과물 입니다.
 
-![pet-training-detected]({{ site.url }}/assets/img/posts/pet-training-detected.jpg)
+![pet-training-detected](/assets/img/posts/pet-training-detected.jpg)
 
-## Trouble Shooting
+# Trouble Shooting
 
 구글이 설명한 예제를 그대로 따라해 보면 여러 에러를 만나게 되는데, 에러에 대한 대처법을 아래와 같이 정리하였습니다.
 
-### ValueError
+## ValueError
 Training을 시키면, 아래와 같은 에러가 발생할 수 있습니다.
 ```
 ValueError: Tried to convert 't' to a tensor and failed. Error: Argument must be a dense tensor: range(0, 3) - got shape [3], but wanted [].
@@ -258,7 +259,7 @@ ValueError: Tried to convert 't' to a tensor and failed. Error: Argument must be
 
 이 방법은 [https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10/issues/11](https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10/issues/11)를 참고하였습니다.
 
-### OutOfRangeError
+## OutOfRangeError
 
 ```
 OutOfRangeError (see above for traceback): FIFOQueue '_2_prefetch_queue' is closed and has insufficient elements (requested 1, current size 0)
@@ -267,7 +268,7 @@ OutOfRangeError (see above for traceback): FIFOQueue '_2_prefetch_queue' is clos
 이 에러는 input data를 읽을 수 없을 때 발생합니다. pet_train.record, pet_val.record 파일이 정상적으로 생성되었는지, 파라미터로 지정한 path가 틀리지는 않았는지, faster_rcnn_resnet101_pets.config에 지정한 경로는 정상인지 검토해 보세요.
 
 
-### contextlib2
+## contextlib2
 
 Python을 실행시켰을 때, 아래와 같은 에러가 발생하면 contextlib2를 설치하세요.
 
@@ -277,7 +278,7 @@ $ pip install contextlib2
 ```
 
 
-## References
+# References
 
 * [Google's Quick Start Guide on Training Pets Dataset](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md)
 * [Google's Guide on Configuring the Object Detection Training Pipeline](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/configuring_jobs.md)

@@ -1,10 +1,9 @@
 ---
-title:  "2 Wheel Balancing Robot - Cases"
+title:  2 Wheel Balancing Robot - Cases
 date:   2018-04-06 21:40:00 +0900
 tags:   embedded-software
-feature-img: "assets/img/pexels/wall_e.jpeg"
-thumbnail:   "assets/img/pexels/wall_e.jpeg"
-layout: post
+header:
+  image: /assets/img/pexels/wall_e.jpeg
 ---
 
 인터넷이나 유튜브를 보면 많은 2 wheel balancing robot 작품을 접할 수 있습니다. 어떤 작품은 간신히 균형잡고 서있기 바쁜 것도 있지만, 놀랄만큼 재빠르고 날렵한 움직임을 보여주는 것도 있습니다. 심지어 넘어졌다가 스스로 일어나는 로봇도 있습니다.
@@ -14,7 +13,7 @@ layout: post
 인상적이거나 시간을 두고 연구 분석할만한 사이트를 아래에 모아놓았습니다. 꼭 방문해 보시고, 사이트에 같이 올려진 동영상도 보시길 강력 추천 합니다.
 
 
-## [http://www.brokking.net/yabr_main.html][brokking-yabr]
+# [brokking-yabr][brokking-yabr]
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6WWqo-Yr8lA" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -36,7 +35,7 @@ NEMA 14 스텝 모터 사용. 이곳을 참조하여 NEMA 17 모터로 만든 �
 제작 과정을 유튜브 비디오로 볼 수 있음
 움직임은 느린 편
 
-## [Instructable 예제][instructable1]
+# [Instructable 예제][instructable1]
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ZYLb11xUsSY" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -46,7 +45,7 @@ NEMA 14 스텝 모터 사용. 이곳을 참조하여 NEMA 17 모터로 만든 �
 * 움직임은 느린 편
 
 
-## [http://axelsdiy.brinkeby.se/?page_id=1447](http://axelsdiy.brinkeby.se/?page_id=1447)
+# [Axel's Mini Balancing Robot](http://axelsdiy.brinkeby.se/?page_id=1447)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nT1FqvNbThU" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -68,7 +67,7 @@ PID에 대한 직관적인 설명이 인상적임:
 ![PID-theory](http://axelsdiy.brinkeby.se/wp-content/uploads/2015/11/balancingSystem700.png)
 
 
-## [Make: 에 실린 예제](https://makezine.com/projects/arduroller-self-balancing-robot/)
+# [Make: 에 실린 예제](https://makezine.com/projects/arduroller-self-balancing-robot/)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uXVwx9Gxp_E" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -84,12 +83,12 @@ PID에 대한 직관적인 설명이 인상적임:
 중간 정도의 움직임
 
 
-## [FK Engineering's Blog](http://fkeng.blogspot.kr/2016/04/self-balancing-two-wheels-mobile-robot.html?m=1)
+# [FK Engineering's Blog](http://fkeng.blogspot.kr/2016/04/self-balancing-two-wheels-mobile-robot.html?m=1)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/R6i-xSrRCec" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
-## [Lukasz Bien의 작품](https://youtu.be/EwrQEsFmL4E )
+# [Lukasz Bien의 작품](https://youtu.be/EwrQEsFmL4E )
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EwrQEsFmL4E" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -102,7 +101,7 @@ PID에 대한 직관적인 설명이 인상적임:
 * 빠르고 안정적인 움직임
 
 
-## [B-robot EVO](https://www.thingiverse.com/thing:2306541)
+# [B-robot EVO](https://www.thingiverse.com/thing:2306541)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/d6J0ijMG3jI" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -120,7 +119,7 @@ PID에 대한 직관적인 설명이 인상적임:
 * 사용한 부품에 대한 설명은 없음
 
 
-## [Zippy the Balancing Robot](https://github.com/elkayem/ZippyTheBalancingRobot)
+# [Zippy the Balancing Robot](https://github.com/elkayem/ZippyTheBalancingRobot)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0io5SwitLzY" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -136,7 +135,7 @@ PID에 대한 직관적인 설명이 인상적임:
 * ZIPPY Flightmax 3000mAh 3S 20C LiPo battery
 
 
-## [BalancingWii 2.0](https://github.com/mahowik/BalancingWii)
+# [BalancingWii 2.0](https://github.com/mahowik/BalancingWii)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/038e2j9nE3M" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -147,7 +146,7 @@ PID에 대한 직관적인 설명이 인상적임:
 * 빠르고 부드러운 움직임
 
 
-## [Pololu Balboa 32U4 Balancing Robot](https://www.pololu.com/category/210/balboa-robot-and-accessories)
+# [Pololu Balboa 32U4 Balancing Robot](https://www.pololu.com/category/210/balboa-robot-and-accessories)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sRtsc3EXL8A" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
@@ -159,7 +158,7 @@ PID에 대한 직관적인 설명이 인상적임:
 * 모터의 힘만으로 스스로 일어남
 
 
-## Worlds smallest Fully Autonomous Self-Righting Self-Balancing Robot!!!
+# Worlds smallest Fully Autonomous Self-Righting Self-Balancing Robot!!!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6fyz-NMuRYs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 

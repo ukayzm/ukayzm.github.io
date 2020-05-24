@@ -1,10 +1,10 @@
 ---
-title:  "리눅스 터미널에서 아두이노 개발하기"
+title:  Arduino CLI - 리눅스 터미널 만으로 아두이노 개발
 tags:   arduino
-feature-img: "assets/img/posts/arduino-cli-title.png"
-thumbnail:   "assets/img/posts/arduino-cli-title.png"
+header:
+  teaser: /assets/img/posts/arduino-cli-title.png
+  image: /assets/img/posts/arduino-cli-title.png
 date:   2020-05-10 10:00:00 +0900
-layout: post
 ---
 
 아두이노에서 기본으로 제공하는 IDE를 사용하면 코드 작성, 컴파일, 업로드, 시리얼 디버깅을 한 곳에서 할 수 있습니다. 하지만 IDE없이 리눅스 터미널 만으로도 코드 작성, 컴파일, 업로드, 시리얼 디버깅을 할 수 있는 방법이 있습니다. 여기에서는 터미널 명령어 만으로 아두이노 코드를 컴파일, 업로드할 수 있는 Arduino CLI를 소개하고 방법을 설명합니다.
@@ -47,7 +47,7 @@ Updating index: package_index.json downloaded
 
 다음으로 아두이노 종류에 맞는 설정을 합니다. 아두이노는 우노, 나노 등의 종류도 있지만 값싼 중국산 클론도 있습니다. 보드에 맞는 정확한 fqbn을 알아야 합니다.
 
-### 아두이노 정품 보드
+## 아두이노 정품 보드
 
 아두이노 보드를 USB에 꽂고 dmesg 명령을 내리면 자기가 가지고 있는 아두이노 보드의 종류를 알아내기 위한 힌트를 얻을 수 있습니다. 아래 화면은 아두이노 우노 보드 정품의 경우 입니다. Manufacturer가 Arduino이고 시리얼 포트인 ttyACM0를 볼 수 있습니다.
 
@@ -119,7 +119,7 @@ LilyPad Arduino USB                 arduino:avr:LilyPadUSB
 Linino One                          arduino:avr:one
 ```
 
-### 아두이노 클론 보드
+## 아두이노 클론 보드
 
 중국산 클론의 경우는 자동 인식이 안됩니다. `dmesg` 명령으로 커널 로그를 보면, 아래와 같이 Arduino 글자가 보이지 않고, 저가형 시리얼 칩인 ch341 글자가 보입니다. `arduino-cli board list`를 해 보면 board name이 unknown으로 나오지요.
 
@@ -203,7 +203,7 @@ total 4
 -rw-r--r-- 1 rostude rostude 175 Apr 16 10:25 sketch.ino
 ```
 
-### 스케치를 컴파일하고 업로드하기
+## 스케치를 컴파일하고 업로드하기
 
 컴파일은 `arduino-cli compile` 명령으로 하고, 업로드는 `arduino-cli upload` 명령으로 합니다.
 
@@ -238,7 +238,7 @@ $ arduino-cli compile --fqbn arduino:avr:uno -u -p /dev/ttyACM0 sketch/   # 컴�
 
 업로드가 성공하면 위에서 작성한 코드 대로 아두이노의 내장 LED가 1초 간격으로 켜졌다 꺼졌다를 반복할 것입니다.
 
-### 컴파일의 중간 파일 지우기
+## 컴파일의 중간 파일 지우기
 
 컴파일 과정의 중간 파일은 `/tmp` 디렉토리에 저장됩니다. 소스 파일 이름을 바꾸거나 하면 간혹 컴파일러가 오동작하는 경우가 있는데요. 이 때는 /tmp/arduino-로 시작하는 디렉토리를 지우고 다시 컴파일하면 됩니다.
 
@@ -253,7 +253,7 @@ $ rm -rf /tmp/arduino-*
 
 하지만 여기에서는 더 간단하게 `cat` 명령으로 시리얼 출력을 보고 `echo` 명령으로 시리얼 입력을 하는 방법을 설명합니다. 
 
-### 시리얼 포트 입출력
+## 시리얼 포트 입출력
 
 먼저 아래와 같이 `stty` 명령으로 시리얼 포트를 설정합니다. 위 예제에서 `Serial.begin(115200)` 이렇게 시리얼 포트의 baud rate를 115200으로 했으므로, `stty` 명령에도 115200을 지정합니다. 이 작업은 아두이노를 연결한 후 한번만 해 주면 됩니다.
 
@@ -282,7 +282,7 @@ $ echo "Hello Arduino" > /dev/ttyUSB0  # 맨 뒤에 줄바꿈 문자가 추가�
 $ echo -n "H" > /dev/ttyUSB0           # -n 옵션을 주면 줄바꿈 문자 없이 'H'만 전송됩니다.
 ```
 
-### 코드 업로드시 주의사항
+## 코드 업로드시 주의사항
 
 Arduino CLI는 컴파일된 코드를 업로드 할 때 시리얼 포트를 이용하므로, 업로드를 하고 싶으면 `^C`를 눌러 `cat` 명령을 종료해야 합니다.
 

@@ -1,10 +1,9 @@
 ---
-title:  "Python Object Detection with Tensorflow"
-date:   2018-03-28 21:15:00 +0900
+title:  Python Object Detection with Tensorflow
 tags: object-detection tensorflow
-feature-img: "assets/img/posts/kites_detections_output.jpg"
-thumbnail:   "assets/img/posts/kites_detections_output.jpg"
-layout: post
+header:
+  image: /assets/img/posts/kites_detections_output.jpg
+date:   2018-03-28 21:15:00 +0900
 ---
 
 구글은 텐서플로로 구현된 많은 [모델](https://github.com/tensorflow/models)을 [아파치 라이센스](https://github.com/tensorflow/models/blob/master/LICENSE)로 공개하고 있습니다.
@@ -14,14 +13,14 @@ layout: post
 
 ![object-detection-example](https://cdn-images-1.medium.com/max/800/1*W3elu1yPiJ3bpj8MZrmvwA.gif)
 
-## 필요 패키지 설치
+# 필요 패키지 설치
 
 파이썬과 텐서플로는 이미 설치되어 있다고 가정하겠습니다. 텐서플로 설치는 [여기](https://www.tensorflow.org/install/)를 참조하시면 됩니다.
 
 이 설치 방법은 [여기][install]를 참고하였습니다. 이 글을 쓰는 시점 이후에 설치 방법이 바뀔 수도 있으니, 아래 방법이 잘 안될 경우에는 [원본 사이트][install]를 방문하시기 바랍니다.
 
 
-### Install Necessary Libraries and Packages
+## Install Necessary Libraries and Packages
 
 CAUTION: 파이썬 패키지는 py3 이름의 virtualenv상에 설치하는 것으로 가정합니다. 즉, 아래 모든 예제에서 `(py3)`으로 시작하는 것은 python3의 virtualenv 상에서 설치하는 것입니다.
 
@@ -34,7 +33,7 @@ $ sudo apt-get install protobuf-compiler python-pil python-lxml python-tk
 (py3) $ pip install Pillow
 ```
 
-### Clone TensorFlow Models
+## Clone TensorFlow Models
 
 그 다음, GitHub로부터 텐서플로 모델을 복사합니다. 여기서는 ~/work/tensorflow 디렉토리에 복사하는 것으로 가정합니다.
 
@@ -44,7 +43,7 @@ $ cd ~/work/tensorflow
 $ git clone https://github.com/tensorflow/models
 ```
 
-### Install COCO API (optional)
+## Install COCO API (optional)
 
 이 부분은 COCO API를 설치하는 것인데, 건너 뛰어도 좋습니다.
 
@@ -56,9 +55,9 @@ $ make
 $ cp -r pycocotools ~/work/tensorflow/models/research/
 ```
 
-COCO dataset이나 COCO API에 대해 좀 더 알고 싶으시면 [{{ site.url }}/cocodataset]({{ site.url }}/cocodataset)을 참고하세요.
+COCO dataset이나 COCO API에 대해 좀 더 알고 싶으시면 [cocodataset](/cocodataset)을 참고하세요.
 
-### Protobuf Compilation
+## Protobuf Compilation
 
 Protobuf를 라이브러리를 컴파일합니다.
 
@@ -85,7 +84,7 @@ $ unzip protoc-3.3.0-linux-x86_64.zip -d protoc-3.3.0
 $ protoc-3.3.0/bin/protoc object_detection/protos/*.proto --python_out=.
 ```
 
-### Add Libraries to PYTHONPATH
+## Add Libraries to PYTHONPATH
 
 ```
 (py3) $ cd ~/work/tensorflow/models/research
@@ -97,7 +96,7 @@ $ protoc-3.3.0/bin/protoc object_detection/protos/*.proto --python_out=.
 export PYTHONPATH=$PYTHONPATH:~/work/tensorflow/models/research/:~/work/tensorflow/models/research/slim:~/work/tensorflow/models/research/object_detection/
 ```
 
-### Testing the Installation
+## Testing the Installation
 
 아래 명령으로 모델이 잘 설치되었는지 검사합니다. 맨 마지막에 OK라는 글자가 나오면 됩니다.
 
@@ -114,7 +113,7 @@ OK
 
 이제 object detection 모델이 설치가 완료되었습니다.
 
-### Let's try!!!
+# Let's try!!!
 
 설치가 완료 되었으니, 한 번 맛을 볼까요? 아래 명령으로 jupyter notebook을 실행시킵니다.
 
@@ -169,7 +168,7 @@ Jupyter notebook이 아닌 python code를 이용하여 실시간으로 Object De
 
 [https://github.com/ukayzm/opencv/tree/master/object_detection_tensorflow](https://github.com/ukayzm/opencv/tree/master/object_detection_tensorflow) 에서 다운받을 수 있습니다.
 
-### 다운로드 및 실행
+## 다운로드 및 실행
 아래와 같이 하면 자동으로 인터넷으로부터 구글이 공개한 모델을 다운로드 받고 웹캠으로부터 디텍션을 시작합니다.
 ```
 $ git clone https://github.com/ukayzm/opencv.git
@@ -182,11 +181,11 @@ ssd_mobilenet_v1_coco_2017_11_17/frozen_inference_graph.pb is extracted
 press `q` to quit
 ```
 
-## Advanced: Instance Segmentation
+# Advanced: Instance Segmentation
 
 박스 형태의 인식에서 한 단계 더 나아가 사물의 모양대로 mask까지 인식하는 모델도 있습니다. [{{ site.url }}/tensorflow-instance-segmentation/]({{ site.url }}/tensorflow-instance-segmentation/) 여기를 읽어보세요.
 
-## 참고 사이트
+# 참고 사이트
 
 * [Whole install procedure of Tensorflow object detection model][install]
 * [Tensorflow object detection model zoo][modelzoo]
