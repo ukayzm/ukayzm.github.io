@@ -4,6 +4,8 @@ date:   2018-04-02 21:51:00 +0900
 tags:   face-recognition
 header:
   image: /assets/img/pexels/model-face-beautiful-black-and-white-407035.jpeg
+sidebar:
+  - nav: docs
 ---
 
 며칠 전에 [Python Face Recognition][python-face-recognition]에 대한 글을 올렸습니다. Face recognition은 다음과 같은 과정을 거칩니다. 이 중에서, 2번째 단계인 얼굴의 특징점을 추출하는 단계는 아주 재미있습니다.

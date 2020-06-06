@@ -5,6 +5,8 @@ header:
   teaser: /assets/img/posts/face_clustering.png
   image: /assets/img/posts/face_clustering_2.png
 date:   2018-08-03 22:00:00 +0900
+sidebar:
+  - nav: docs
 ---
 
 이전에 포스트했던 [Python Face Recognition](/python-face-recognition/)은 웹캠으로 입력받은 비디오에서 이미 알고 있는 얼굴과 비슷한 얼굴을 찾는 예제를 소개했습니다. 사전에 알고 있는 얼굴이 아닌 얼굴은 unknown으로 분류했습니다. 여기서 한 발 더 나아가 unknown 얼굴을 더 활용할 방법이 있는데, 바로 Face Clustering입니다. Face Clustering은 임의의 얼굴을 비슷한 얼굴끼리 모으고 분류하는 기술입니다.

@@ -4,6 +4,8 @@ tags:   object-detection
 header:
   image: /assets/img/posts/coco-examples.png
 date:   2018-05-31 21:00:00 +0900
+sidebar:
+  - nav: docs
 ---
 
 머신러닝을 위해 많은 데이터 셋이 만들어져 있는데, 그 중에 [COCO dataset](http://cocodataset.org/)은 object detection, segmentation, keypoint detection 등을 위한 데이터셋으로, 매년 다른 데이터셋으로 전 세계의 여러 대학/기업이 참가하는 대회에 사용되고 있습니다.

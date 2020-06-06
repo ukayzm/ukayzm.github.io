@@ -12,3 +12,39 @@ main:
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
+
+docs:
+  - title: 얼굴 인식
+    children:
+    - title: Python Face Recognition in Real Time
+      url: /python-face-recognition/
+    - title: Facial Landmarks
+      url: /facial-landmarks/
+    - title: Python Face Clustering
+      url: /face-clustering/
+
+  - title: 사물 인식
+    children:
+    - title: Python Object Detection with Tensorflow
+      url: /python-object-detection-tensorflow/
+    - title: Tensorflow Instance Segmentation
+      url: /tensorflow-instance-segmentation/
+    - title: COCO Dataset
+      url: /cocodataset/
+    - title: Training on the Pet Dataset
+      url: /pet-training/
+
+  - title: 아두이노
+    children:
+    - title: Arduino CLI - 리눅스 터미널에서 아두이노 개발
+      url: /arduino-cli/
+    - title: 2 Wheel Balancing Robot - Cases
+      url: /2-wheel-balancing-robot-cases/
+
+  - title: 라즈베리파이
+    children:
+    - title: Installing Raspbian Headless
+      url: /installing-raspbian/
+    - title: Installing Google Assistant
+      url: /installing-google-assistant/
+

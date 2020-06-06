@@ -1,10 +1,12 @@
 ---
-title:  Arduino CLI - 리눅스 터미널 만으로 아두이노 개발
+title:  Arduino CLI - 리눅스 터미널에서 아두이노 개발
 tags:   arduino
 header:
   teaser: /assets/img/posts/arduino-cli-title.png
   image: /assets/img/posts/arduino-cli-title.png
 date:   2020-05-10 10:00:00 +0900
+sidebar:
+  - nav: docs
 ---
 
 아두이노에서 기본으로 제공하는 IDE를 사용하면 코드 작성, 컴파일, 업로드, 시리얼 디버깅을 한 곳에서 할 수 있습니다. 하지만 IDE없이 리눅스 터미널 만으로도 코드 작성, 컴파일, 업로드, 시리얼 디버깅을 할 수 있는 방법이 있습니다. 여기에서는 터미널 명령어 만으로 아두이노 코드를 컴파일, 업로드할 수 있는 Arduino CLI를 소개하고 방법을 설명합니다.

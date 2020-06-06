@@ -4,6 +4,8 @@ date:   2018-05-04 18:40:00 +0900
 tags:   voice-assistant
 header:
   image: /assets/img/pexels/gadget-google-google-wifi-1054554.jpg
+sidebar:
+  - nav: docs
 ---
 
 구글은 [라즈베리파이에 Google Assistant를 설치할 수 있는 가이드](https://developers.google.com/assistant/sdk/guides/library/python/embed/setup)를 제공하고 있습니다. 이 글에서는 그 가이드를 좀 더 쉽게 설명하겠습니다.

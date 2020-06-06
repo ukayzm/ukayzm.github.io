@@ -4,6 +4,8 @@ tags:   object-detection tensorflow
 header:
   image: /assets/img/posts/pet-training.png
 date:   2018-06-12 11:00:00 +0900
+sidebar:
+  - nav: docs
 ---
 
 구글은 object detection model을 이용하여 [Pet Dataset을 학습시키는 예제](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_pets.md)를 제공하고 있습니다. 예제는 Google Cloud Platform 상에서 학습을 시키도록 되어 있는데, 여기서는 local PC에서 학습 시키는 방법을 설명합니다. 그리고, Google의 예제에서 잘못된 부분을 고치고, 예제 실행시 만나는 문제의 해결책을 제시합니다.

@@ -4,6 +4,8 @@ date:   2018-04-30 18:40:00 +0900
 tags:   embedded-software
 header:
   image: /assets/img/pexels/capacitors-chip-circuit-board-57007.jpg
+sidebar:
+  - nav: docs
 ---
 
 모니터, 키보드, 마우스 연결 없이 Raspberry Pi를 headless로 설정하는 방법을 설명합니다.

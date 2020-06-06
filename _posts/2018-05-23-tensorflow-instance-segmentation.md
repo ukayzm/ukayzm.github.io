@@ -4,6 +4,8 @@ tags:   tensorflow object-detection
 header:
   image: /assets/img/posts/instance-segmentation-road.png
 date: 2018-05-23 22:00:00 +0900
+sidebar:
+  - nav: docs
 ---
 
 Object detection 모델을 돌리면 object가 인식된 사각형 영역을 얻을 수 있습니다. Instance Segmentation은 이것을 확장하여 object가 존재하는 영역의 mask까지 얻어내는 것입니다. 구글은 텐서플로우로 만들어진 instance segmentation 모델을 공개하고 있습니다. 이 글에서는 Windows에서 동작하는 object detection과 instance segmentation 프로그램을 소개하겠습니다.
