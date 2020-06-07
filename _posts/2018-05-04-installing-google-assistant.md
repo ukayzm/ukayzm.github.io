@@ -1,7 +1,7 @@
 ---
 title:  Installing Google Assistant
 date:   2018-05-04 18:40:00 +0900
-tags:   voice-assistant
+tags:   voice-assistant raspberry-pi
 header:
   image: /assets/img/pexels/gadget-google-google-wifi-1054554.jpg
 sidebar:

@@ -1,7 +1,7 @@
 ---
 title:  2 Wheel Balancing Robot - Cases
 date:   2018-04-06 21:40:00 +0900
-tags:   embedded-software
+tags:   arduino
 header:
   image: /assets/img/pexels/wall_e.jpeg
 sidebar:

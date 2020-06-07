@@ -1,7 +1,6 @@
 ---
 title:  "블로그 운영 - references"
 categories: blog jekyll
-tags:   blog
 header:
   teaser: /assets/img/pexels/blog-blocks-wallpaper-1591056.jpg
   image: /assets/img/pexels/blog-blocks-wallpaper-1591056.jpg
