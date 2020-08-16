@@ -9,11 +9,11 @@ sidebar:
   - nav: docs
 ---
 
-이전에 포스트했던 [Python Face Recognition](/python-face-recognition/)은 웹캠으로 입력받은 비디오에서 이미 알고 있는 얼굴과 비슷한 얼굴을 찾는 예제를 소개했습니다. 사전에 알고 있는 얼굴이 아닌 얼굴은 unknown으로 분류했습니다. 여기서 한 발 더 나아가 unknown 얼굴을 더 활용할 방법이 있는데, 바로 Face Clustering입니다. Face Clustering은 임의의 얼굴을 비슷한 얼굴끼리 모으고 분류하는 기술입니다.
+이전에 포스트했던 [Python Face Recognition](/python-face-recognition/)은 웹캠으로 입력받은 비디오에서 이미 알고 있는 얼굴과 비슷한 얼굴을 찾는 예제를 소개했습니다. 모르는 사람의 얼굴은 unknown으로 표시했습니다. 여기서 한 발 더 나아가 unknown 얼굴을 더 활용할 방법이 있는데, 바로 Face Clustering입니다. Face Clustering은 임의의 얼굴을 비슷한 얼굴끼리 모으고 분류하는 기술입니다.
 
 > 이 글은 이 사이트에서 많은 부분을 참고하였습니다 - [Face Clustering with Python in PyImageSearch site](https://www.pyimagesearch.com/2018/07/09/face-clustering-with-python/)
 
-Face clustering은 주어진 얼굴들을 비슷한 얼굴끼리 모으고 분류합니다. 기준이 되는 얼굴이나 몇 명의 얼굴이 존재하는지에 대한 정보는 주어지지 않은 채로 말이죠. 이런 면에서, face clustering은 unsupervised learning 입니다. Clustering이란 이름에서 알 수 있듯이, k-NN, k-mean 등의 clustering을 사용할 수 있지만, 분류해야 하는 사람의 수를 모르기 때문에, DBSCAN이나 Chinese whispers clustering 알고리즘을 사용합니다.
+Face clustering은 주어진 얼굴들을 비슷한 얼굴끼리 모으고 분류합니다. 기준이 되는 얼굴이나 몇 명의 얼굴이 존재하는지에 대한 정보도 없는 데도 말이죠. 이런 면에서, face clustering은 unsupervised learning 입니다. Clustering이란 이름에서 알 수 있듯이, k-NN, k-mean 등의 clustering을 사용할 수 있지만, 분류해야 하는 사람의 수를 모르기 때문에, DBSCAN이나 Chinese whispers clustering 알고리즘을 사용합니다.
 
 여기에서는 python을 이용하여 face clustering을 구현해 보겠습니다. Source code는 아래 GitHub에서 다운로드 받을 수 있습니다.
 
@@ -243,4 +243,4 @@ $ python face_clustering.py -e 0
 
 # See Also
 
-[Unknown Face Classifier](/unknown-face-classifier/)에서는, 모르는 얼굴을 모으고 비슷한 얼굴을 찾아내어 새로운 사람을 찾아내는 또 다른 간단한 방법을 제시합니다.
+[Unknown Face Classifier](/unknown-face-classifier/)에서는 클러스터링이 아니라 간단한 알고리즘만으로 모르는 사람의 얼굴을 실시간으로 분류하는 방법을 소개합니다. 분류된 사람의 정보를 저장했다가 다음번 실행할 때 재활용하고, 얼굴을 재분류하여 정확도를 높일 수도 있습니다. 꼭 한 번 읽어보시기를 강력히 추천합니다.

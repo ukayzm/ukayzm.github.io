@@ -169,9 +169,20 @@ Line 74-87
 
 # See Also
 
-Unknown으로 분류된 얼굴을 좀 더 활용할 수 있는 방법은 없을까요? [Python Face Clustering](/face-clustering/)을 방문해 보시면, DBSCAN 알고리즘으로 전혀 모르는 얼굴을 분류하는 방법을 알 수 있습니다.
+## Unknown Face Classifier
 
-[Unknown Face Classifier](/unknown-face-classifier/)에서는 이 포스트의 구현을 개선했습니다. 아는 사람의 이름을 표시하는 것 뿐 아니라, 모르는 얼굴을 모으고 비슷한 얼굴을 찾아내어 새로운 사람을 찾아내는 간단한 방법을 알아보세요.
+이 포스트에서는 웹캠에서 얼굴을 인식하고 미리 알고 있던 사람들의 얼굴과 비교하여 이름을 표시했습니다. 이것을 개선하여 [Unknown Face Classifier](/unknown-face-classifier/)에서는 아는 사람의 이름을 표시하는 것 뿐 아니라,
+
+* 모르는 얼굴을 모으고
+* 그 중에서 비슷한 얼굴을 찾아내어 새로 출현한 사람을 찾아내고
+* 사람 정보를 저장했다가 재활용하고
+* 얼굴을 재분류하여 정확도를 높이는
+
+방법을 간단하게 구현했습니다. 꼭 한 번 읽어보시기를 강력히 추천합니다.
+
+## Python Face Clustering
+
+Unknown으로 분류된 얼굴을 좀 더 잘 분류하는 방법은 없을까요? [Python Face Clustering](/face-clustering/)에서는 모아진 얼굴들을 DBSCAN 알고리즘으로 간단하고 빠르게 분류하는 방법을 소개합니다.
 
 [face_recognition.zip]: /assets/face_recognition.zip
 [media_com]: https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c

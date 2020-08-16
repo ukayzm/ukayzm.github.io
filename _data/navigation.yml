@@ -16,22 +16,22 @@ main:
 docs:
   - title: 얼굴 인식
     children:
-    - title: Python Face Recognition in Real Time
+    - title: Python Face Recognition in Real Time - 파이썬 얼굴 인식
       url: /python-face-recognition/
     - title: Facial Landmarks
       url: /facial-landmarks/
-    - title: Python Face Clustering
+    - title: Face Clustering - 얼굴 클러스터링
       url: /face-clustering/
-    - title: Unknown Face Classifier
+    - title: Unknown Face Classifier - 모르는 얼굴 분류하기
       url: /unknown-face-classifier/
 
   - title: 사물 인식
     children:
-    - title: Python Object Detection with Tensorflow
+    - title: Python Object Detection with Tensorflow - 텐서플로우로 사물 인식
       url: /python-object-detection-tensorflow/
-    - title: Tensorflow Instance Segmentation
+    - title: Tensorflow Instance Segmentation - 사물의 영역 추출하기
       url: /tensorflow-instance-segmentation/
-    - title: COCO Dataset
+    - title: COCO Dataset - 코코 데이터셋
       url: /cocodataset/
     - title: Training on the Pet Dataset
       url: /pet-training/
