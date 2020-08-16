@@ -9,7 +9,7 @@ sidebar:
   - nav: docs
 ---
 
-이 포스트에서는 기존에 올렸던 [Python Face Recognition](/python-face-recognition/)을 개선합니다. 모르는 사람의 얼굴을 모아서, 비슷한 얼굴을 찾아내어 새로운 사람을을 찾아내는 간단한 방법을 구현합니다. 소스코드는 [여기](https://github.com/ukayzm/opencv/tree/master/unknown_face_classifier)에서 받으실 수 있습니다.
+이 포스트에서는 기존에 올렸던 [Python Face Recognition](/python-face-recognition/)을 개선합니다. 모르는 사람의 얼굴을 모아서, 비슷한 얼굴을 찾아내어 새로운 사람을 찾아내는 간단한 방법을 구현합니다. 소스코드는 [여기](https://github.com/ukayzm/opencv/tree/master/unknown_face_classifier)에서 받으실 수 있습니다.
 
 # 얼굴 인식의 원리
 
@@ -71,9 +71,9 @@ def compare_with_known_persons(self, face, persons):
         return persons[index]
 {% endhighlight %}
 
-# 모르는 얼굴에서 아는 사람으로
+# 새로운 사람 찾아내기
 
-모르는 사람의 얼굴을 분류하는 것은 아래와 같은 알고리즘으로 구현할 수 있습니다.
+모르는 사람의 얼굴을 비교하여 새로운 사람을 찾아내는 것은 아래와 같은 알고리즘으로 구현할 수 있습니다.
 
 1. 모르는 얼굴은 `unknown_faces`에 따로 저장해 놓는다.
 2. 새로 인식된 얼굴과 모르는 얼굴(`unknown_faces`)과의 거리를 구한다.
@@ -104,7 +104,7 @@ def compare_with_unknown_faces(self, face, unknown_faces):
 
 {% endhighlight %}
 
-## 분류된 예
+## 동영상으로 테스트한 결과
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/f6NPRNQfmJ4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 유튜브에 올려진 영화 '기생충'의 캐릭터 영상으로 테스트한 결과를 보여드리겠습니다. 영상은 총 2:06 길이이고, 아래 결과는 대략 1:14초의 것입니다. 아래 명령으로 캡처한 것입니다. `(threshold=0.4)`
@@ -125,9 +125,13 @@ person_03과 person_13은 이전 화면에 나온 적이 있어서 이미 알고
 
 하지만 그 다음 프레임에서는 두 아이가 각각 person_14, person_15로 분류되었습니다. 이전 프레임에서 unknowns에 저장된 사진과 비교해 보니 서로 거리가 가까워서 새로 출현한 사람이라고 판단한 것입니다.
 
-# 인식 결과
+# 프로그램의 사용법
 
+소스코드는 두 파일로 구성되어 있습니다.
 
+## person_db.py
+
+`person_db.py` 파일은 'Face'와 'Person'을 file로 저장하고 로딩하는 기능이 구현되어 있습니다. 
 
 # 웹캠으로 가지고 놀기
 
