@@ -22,6 +22,8 @@ docs:
       url: /facial-landmarks/
     - title: Python Face Clustering
       url: /face-clustering/
+    - title: Unknown Face Classifier
+      url: /unknown-face-classifier/
 
   - title: 사물 인식
     children:

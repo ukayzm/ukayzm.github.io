@@ -240,3 +240,7 @@ $ python face_clustering.py -e 0
 # Source Code Download
 
 [https://github.com/ukayzm/opencv/tree/master/face_clustering](https://github.com/ukayzm/opencv/tree/master/face_clustering)
+
+# See Also
+
+[Unknown Face Classifier](/unknown-face-classifier/)에서는, 모르는 얼굴을 모으고 비슷한 얼굴을 찾아내어 새로운 사람을 찾아내는 또 다른 간단한 방법을 제시합니다.

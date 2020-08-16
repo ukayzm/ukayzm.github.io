@@ -169,9 +169,9 @@ Line 74-87
 
 # See Also
 
-Unknown으로 분류된 얼굴을 좀 더 활용할 수 있는 방법은 없을까요? [face-clustering](/face-clustering/)을 방문해 보시면, 이미 알고 있는 얼굴이 아니라 전혀 모르는 얼굴을 분류하는 방법을 알 수 있습니다.
+Unknown으로 분류된 얼굴을 좀 더 활용할 수 있는 방법은 없을까요? [Python Face Clustering](/face-clustering/)을 방문해 보시면, DBSCAN 알고리즘으로 전혀 모르는 얼굴을 분류하는 방법을 알 수 있습니다.
 
-Object detection 예제도 재미있습니다. [tensorflow-instance-segmentation](/tensorflow-instance-segmentation/)를 방문해 보세요.
+[Unknown Face Classifier](/unknown-face-classifier/)에서는 이 포스트의 구현을 개선했습니다. 아는 사람의 이름을 표시하는 것 뿐 아니라, 모르는 얼굴을 모으고 비슷한 얼굴을 찾아내어 새로운 사람을 찾아내는 간단한 방법을 알아보세요.
 
 [face_recognition.zip]: /assets/face_recognition.zip
 [media_com]: https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c
