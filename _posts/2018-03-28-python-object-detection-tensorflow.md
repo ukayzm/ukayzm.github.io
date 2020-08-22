@@ -1,5 +1,5 @@
 ---
-title:  Python Object Detection with Tensorflow
+title:  Python Object Detection with Tensorflow - 텐서플로우로 사물 인식
 tags: object-detection tensorflow
 header:
   image: /assets/img/posts/kites_detections_output.jpg

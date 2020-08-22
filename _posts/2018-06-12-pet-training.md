@@ -1,5 +1,5 @@
 ---
-title:  Training on the Pet Dataset
+title:  Training on the Pet Dataset - 펫 데이터셋 학습시키기
 tags:   object-detection tensorflow
 header:
   image: /assets/img/posts/pet-training.png

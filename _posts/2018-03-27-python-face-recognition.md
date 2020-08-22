@@ -1,5 +1,5 @@
 ---
-title:  "Python Face Recognition in Real Time"
+title:  "Python Face Recognition in Real Time - 파이썬 얼굴 인식"
 date:   2018-03-27 21:30:34 +0900
 tags: face-recognition
 header:
@@ -160,18 +160,13 @@ Line 74-87
 
 찾은 사람의 얼굴 영역과 이름을 비디오 화면에 그립니다.
 
-# 참고 사이트
+# 모르는 얼굴의 분류
 
-* [https://github.com/ukayzm/opencv/tree/master/face_recognition](https://github.com/ukayzm/opencv/tree/master/face_recognition)
-* [딥러닝(Deep Learning)을 사용한 최신 얼굴 인식(Face Recognition)][media_com]
-* [Face recognition python package](https://github.com/ageitgey/face_recognition)
-* [Live streaming](http://www.chioka.in/python-live-video-streaming-example/)
-
-# See Also
+이제 아는 사람의 얼굴은 찾아낼 수 있습니다. 그런데, 모르는 사람의 얼굴은 어떻게 해야 할까요? 단순히 unknown으로 분류하지 말고 활용하는 방법은 무엇일까요?
 
 ## Unknown Face Classifier
 
-이 포스트에서는 웹캠에서 얼굴을 인식하고 미리 알고 있던 사람들의 얼굴과 비교하여 이름을 표시했습니다. 이것을 개선하여 [Unknown Face Classifier](/unknown-face-classifier/)에서는 아는 사람의 이름을 표시하는 것 뿐 아니라,
+ [Unknown Face Classifier](/unknown-face-classifier/)에서는 아는 사람의 이름을 표시하는 것 뿐 아니라,
 
 * 모르는 얼굴을 모으고
 * 그 중에서 비슷한 얼굴을 찾아내어 새로 출현한 사람을 찾아내고
@@ -182,7 +177,14 @@ Line 74-87
 
 ## Python Face Clustering
 
-Unknown으로 분류된 얼굴을 좀 더 잘 분류하는 방법은 없을까요? [Python Face Clustering](/face-clustering/)에서는 모아진 얼굴들을 DBSCAN 알고리즘으로 간단하고 빠르게 분류하는 방법을 소개합니다.
+Unknown으로 분류된 얼굴을 기술적으로 더 잘 분류하는 방법은 없을까요? [Python Face Clustering](/face-clustering/)에서는 모아진 얼굴들을 DBSCAN 알고리즘으로 간단하고 빠르게 분류하는 방법을 소개합니다.
+
+# 참고 사이트
+
+* [https://github.com/ukayzm/opencv/tree/master/face_recognition](https://github.com/ukayzm/opencv/tree/master/face_recognition)
+* [딥러닝(Deep Learning)을 사용한 최신 얼굴 인식(Face Recognition)][media_com]
+* [Face recognition python package](https://github.com/ageitgey/face_recognition)
+* [Live streaming](http://www.chioka.in/python-live-video-streaming-example/)
 
 [face_recognition.zip]: /assets/face_recognition.zip
 [media_com]: https://medium.com/@jongdae.lim/%EA%B8%B0%EA%B3%84-%ED%95%99%EC%8A%B5-machine-learning-%EC%9D%80-%EC%A6%90%EA%B2%81%EB%8B%A4-part-4-63ed781eee3c

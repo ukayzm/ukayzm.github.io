@@ -1,5 +1,5 @@
 ---
-title:  Facial Landmarks
+title:  Facial Landmarks - 얼굴 특징점
 date:   2018-04-02 21:51:00 +0900
 tags:   face-recognition
 header:

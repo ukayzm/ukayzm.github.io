@@ -1,5 +1,5 @@
 ---
-title:  COCO Dataset
+title:  COCO Dataset - 코코 데이터셋
 tags:   object-detection
 header:
   image: /assets/img/posts/coco-examples.png

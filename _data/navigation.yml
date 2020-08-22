@@ -18,7 +18,7 @@ docs:
     children:
     - title: Python Face Recognition in Real Time - 파이썬 얼굴 인식
       url: /python-face-recognition/
-    - title: Facial Landmarks
+    - title: Facial Landmarks - 얼굴 특징점
       url: /facial-landmarks/
     - title: Face Clustering - 얼굴 클러스터링
       url: /face-clustering/
@@ -33,7 +33,7 @@ docs:
       url: /tensorflow-instance-segmentation/
     - title: COCO Dataset - 코코 데이터셋
       url: /cocodataset/
-    - title: Training on the Pet Dataset
+    - title: Training on the Pet Dataset - 펫 데이터셋 학습시키기
       url: /pet-training/
 
   - title: 아두이노

@@ -1,5 +1,5 @@
 ---
-title:  "Python Face Clustering"
+title:  "Python Face Clustering - 얼굴 클러스터링"
 tags:   face-recognition
 header:
   teaser: /assets/img/posts/face_clustering.png

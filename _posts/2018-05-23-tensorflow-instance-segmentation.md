@@ -1,5 +1,5 @@
 ---
-title:  Tensorflow Instance Segmentation
+title:  Tensorflow Instance Segmentation - 사물의 영역 추출하기
 tags:   tensorflow object-detection
 header:
   image: /assets/img/posts/instance-segmentation-road.png
