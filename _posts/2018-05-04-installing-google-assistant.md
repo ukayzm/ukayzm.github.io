@@ -30,12 +30,12 @@ GCP 클라우드를 사용하기 위해서 구글 계정에 가입합니다. 기
 
 다음 단계는 새로 생성한 프로젝트에 Google Assistant API를 활성화하는 것입니다.
 
-페이지 좌상단 三 > APIs & Services > Dashboard를 눌러 API 관리 화면으로 들어갑니다. 위쪽의 “ENABLE APIS AND SERVICES”를 누른 후 API 검색창에서 “Google Assistant API”를 검색합니다. 또는 프로젝트 콘솔의 맨 위 검색창에서 검색해도 됩니다. 검색된 “Google Assistant API”를 선택하여  API 관리 화면으로 들어갑니다. “ENABLE”을 누르면 이 프로젝트에서 Google Assistant API를 사용할 수 있게 됩니다.  Google Cloud Platform 페이지에서 왼쪽 상단의 三 > APIs & Services > Dashboard를 눌러서 현재 프로젝트에서 사용 가능한 API 리스트 안에 Google Assistant API가 있는지를 확인합니다.
+페이지 좌상단 ☰ > APIs & Services > Dashboard를 눌러 API 관리 화면으로 들어갑니다. 위쪽의 “ENABLE APIS AND SERVICES”를 누른 후 API 검색창에서 “Google Assistant API”를 검색합니다. 또는 프로젝트 콘솔의 맨 위 검색창에서 검색해도 됩니다. 검색된 “Google Assistant API”를 선택하여  API 관리 화면으로 들어갑니다. “ENABLE”을 누르면 이 프로젝트에서 Google Assistant API를 사용할 수 있게 됩니다.  Google Cloud Platform 페이지에서 왼쪽 상단의 ☰ > APIs & Services > Dashboard를 눌러서 현재 프로젝트에서 사용 가능한 API 리스트 안에 Google Assistant API가 있는지를 확인합니다.
 
 ## OAuth Client ID 생성
 
 활성화한 Google Assistant API를 사용하려면 Consent screen과 OAuth Client ID를 만들어야 합니다. OAuth client ID는 라즈베리파이에서 구동되는 Google Assistant가 서버에 OAuth 2.0 access token을 요청할 때 사용됩니다.
-三 > APIs & Services > Credential > OAuth consent screen을 누릅니다. 적당히 Product name을 입력합니다. 필자는 DIYGoogleAssistant로 정했습니다. SAVE를 누른 후, Client ID를 설정합니다. 적당한 client ID를 입력합니다. 필자는 diy_ga_client를 입력하였습니다. Type은 반드시 Other로 합니다. Create를 누르고 OK를 누르면 OAuth Client ID가 만들어집니다. 만들어진 client ID는 아래 그림과 같이, 三 > APIs & Services > Credential > Credentials에서 확인할 수 있습니다.
+☰ > APIs & Services > Credential > OAuth consent screen을 누릅니다. 적당히 Product name을 입력합니다. 필자는 DIYGoogleAssistant로 정했습니다. SAVE를 누른 후, Client ID를 설정합니다. 적당한 client ID를 입력합니다. 필자는 diy_ga_client를 입력하였습니다. Type은 반드시 Other로 합니다. Create를 누르고 OK를 누르면 OAuth Client ID가 만들어집니다. 만들어진 client ID는 아래 그림과 같이, ☰ > APIs & Services > Credential > Credentials에서 확인할 수 있습니다.
 
 ![GCP-credentials](/assets/img/posts/GCP-credentials.png)
 
