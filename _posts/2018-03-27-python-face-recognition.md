@@ -166,7 +166,7 @@ Line 74-87
 
 ## Unknown Face Classifier
 
- [Unknown Face Classifier](/unknown-face-classifier/)에서는 아는 사람의 이름을 표시하는 것 뿐 아니라,
+[Unknown Face Classifier](/unknown-face-classifier/)에서는 아는 사람의 이름을 표시하는 것 뿐 아니라,
 
 * 모르는 얼굴을 모으고
 * 그 중에서 비슷한 얼굴을 찾아내어 새로 출현한 사람을 찾아내고
@@ -178,6 +178,10 @@ Line 74-87
 ## Python Face Clustering
 
 Unknown으로 분류된 얼굴을 기술적으로 더 잘 분류하는 방법은 없을까요? [Python Face Clustering](/face-clustering/)에서는 모아진 얼굴들을 DBSCAN 알고리즘으로 간단하고 빠르게 분류하는 방법을 소개합니다.
+
+# Read More
+
+[Visitor Alarm Telegram](/visitor-alarm-telegram/)에서는 Unknown face classifier를 확장하여, 인식된 사람의 사진을 실시간으로 텔레그램으로 전송하는 방법을 설명합니다. 웹캠을 집의 현관이나 복도 등 주요 장소에 설치해서 방문자나 지나다니는 사람을 실시간으로 모니터링하고, 자신의 스마트폰으로 알람을 받아볼 수 있습니다.
 
 # 참고 사이트
 
