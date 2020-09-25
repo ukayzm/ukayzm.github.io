@@ -247,19 +247,19 @@ Face classifier가 인식된 얼굴을 처음 보는 사람으로 분류하면, 
 
 # 소스코드 설명
 
-소스코드는 [GitHub](https://github.com/ukayzm/opencv/tree/master/visitor_alarm_telegram_bot)에서 받을 수 있으며, 총 3개의 파일로 되어 있습니다. [unknown face classifier](/unknown-face-classifier/)의 `person_db.py`와 `face_classifier.py`를 거의 그대로 사용했고, 텔레그램 봇을 위한 인터페이스가 추가되었습니다. `visitor_alarm_telegram_bot.py`에는 텔레그램 봇이 구현되어 있습니다.
+소스코드는 [GitHub](https://github.com/ukayzm/opencv/tree/master/visitor_alarm_telegram_bot)에서 받을 수 있으며, 총 3개의 파일로 되어 있습니다. `visitor_alarm_telegram_bot.py`에는 텔레그램 봇이 구현되어 있습니다. `person_db.py`와 `face_classifier.py`는 [unknown face classifier](/unknown-face-classifier/)에 텔레그램 봇을 위한 인터페이스가 조금 추가되었습니다.
 
 | file | 기능 |
 |------|------|
+| visitor_alarm_telegram_bot.py | 텔레그램 봇 기능 구현 |
 | person_db.py | 얼굴과 사람 class를 정의하고, 파일로 저장 |
 | face_classifier.py | 얼굴을 인식하고 사람 별로 분류 |
-| visitor_alarm_telegram_bot.py | 텔레그램 봇 |
 
 다음에서는 텔레그램 봇 구현의 큰 줄기를 설명합니다.
 
 ## Python-telegram-bot
 
-`visitor_alarm_telegram_bot.py`은 [Python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot) 패키지를 이용하여 구현되어 있습니다.
+`visitor_alarm_telegram_bot.py`의 텔레그램 봇 기능은 [Python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot) 패키지를 이용하여 구현되어 있습니다.
 
 [Python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)을 사용하기 위해서 아래와 같이 3개의 import를 합니다.
 
@@ -323,6 +323,8 @@ self.add_command(CmdShot(self))
 self.add_command(CmdRename(self))
 self.add_command(CmdList(self))
 ```
+
+CmdStart, CmdShot 등 각 명령어의 실제 구현은 소스코드를 참고하세요.
 
 ## 알림 보내기 (Observer Pattern)
 

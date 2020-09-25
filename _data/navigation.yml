@@ -18,14 +18,14 @@ docs:
     children:
     - title: Python Face Recognition in Real Time - 파이썬 얼굴 인식
       url: /python-face-recognition/
-    - title: Facial Landmarks - 얼굴 특징점
-      url: /facial-landmarks/
-    - title: Face Clustering - 얼굴 클러스터링
-      url: /face-clustering/
     - title: Unknown Face Classifier - 모르는 얼굴 분류하기
       url: /unknown-face-classifier/
     - title: Visitor Alarm Telegram Bot - 텔레그램 봇으로 실시간 방문자 알림
       url: /visitor-alarm-telegram-bot/
+    - title: Face Clustering - 얼굴 클러스터링
+      url: /face-clustering/
+    - title: Facial Landmarks - 얼굴 특징점
+      url: /facial-landmarks/
 
   - title: 사물 인식
     children:
