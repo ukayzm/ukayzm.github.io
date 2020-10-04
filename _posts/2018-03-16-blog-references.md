@@ -128,6 +128,55 @@ EOF
 bundle install     # install gems then Gemfile.lock is created
 ```
 
+# Page Redirect (jekyll-redirect-fromn)
+
+Install.
+
+```bash
+$ vi Gemfile   # add this line
+gem "jekyll-redirect-from"
+$ bundle
+```
+
+Add the plugin jekyll-redirect-from to your `_config.yaml` file.
+
+```
+plugins:
+  - jekyll-redirect-from
+
+# mimic GitHub Pages with --safe
+whitelist:
+  - jekyll-redirect-from
+^D
+```
+
+## Redirect Internally
+
+Add this to your file’s frontmatter.
+
+```
+---
+title: Your Post
+redirect_from:
+  - /old/page/
+  - /old2/page2
+---
+```
+
+That will create a /old/page/index.html and an /old2/page2 page that redirects to the Your Post page.
+
+## Redirect to Other Sites
+
+```
+---
+title: Your Post2
+redirect_to:
+  - https://www.dest.com/
+---
+```
+
+That will create a page for Your Post2 to redirect to https://www.supertechcrew.com/.
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/

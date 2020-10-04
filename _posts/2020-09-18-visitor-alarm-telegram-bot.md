@@ -7,6 +7,9 @@ header:
 date:   2020-09-18 10:00:00 +0900
 sidebar:
   - nav: docs
+redirect_from:
+  - /visitor-alarm-telegram/
+  - /visitor-alarm-telegram
 ---
 
 텔레그램 봇은 유저와 메시지나 명령/응답을 주고 받을 수 있는 대화형 앱으로, 누구나 무료로 만들 수 있습니다. 이 포스트에서는 비디오에서 인식된 얼굴을 스마트폰으로 전송하는 텔레그램 봇을 만들었습니다. 이 봇을 사용하면, 웹캠을 현관이나 복도 같은 주요 장소에 설치하고, 사람이 인식되면 사용자의 핸드폰으로 실시간 사진을 전송받을 수 있습니다. 얼굴을 인식하고 사람별로 분류하는 기능은 [unknown face classifier](/unknown-face-classifier/)를 이용했고, 여기에 텔레그램 봇 기능을 추가했습니다.
