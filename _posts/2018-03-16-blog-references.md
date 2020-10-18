@@ -177,6 +177,30 @@ redirect_to:
 
 That will create a page for Your Post2 to redirect to https://www.supertechcrew.com/.
 
+# Search Engine
+
+주요 서치 엔진에 블로그를 등록하면 다른 사람들이 서치를 할 수 있다.
+
+## Google
+
+[Google Search Console](https://search.google.com/search-console/about)에서 등록한다.
+
+## Naver
+
+[네이버 서치 어드바이저](https://searchadvisor.naver.com/)에서 등록한다.
+
+상단의 "웹마스터 도구"를 누르고, 사이트를 입력.
+
+## Daum
+
+[다음 검색 등록](https://register.search.daum.net/index.daum)에서 등록한다.
+
+## 참고사이트
+
+[https://devinlife.com/howto%20github%20pages/google-search-console-and-analytics/](https://devinlife.com/howto%20github%20pages/google-search-console-and-analytics/)
+[https://devinlife.com/howto%20github%20pages/register-search-engine/](https://devinlife.com/howto%20github%20pages/register-search-engine/)
+
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
