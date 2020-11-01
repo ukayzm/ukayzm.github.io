@@ -89,7 +89,7 @@ social:
 analytics:
   provider               : "google-gtag" # false (default), "google", "google-universal", "custom"
   google:
-    tracking_id          : "UA-116205467-1" # Tracking ID, e.g. "UA-000000-01"
+    tracking_id          : "G-33EZ5F77T5" # Tracking ID, e.g. "UA-000000-01"
     anonymize_ip         : # true, false (default)
 
 
