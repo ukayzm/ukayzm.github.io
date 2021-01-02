@@ -11,7 +11,7 @@ sidebar:
 
 IoT 기기에는 반드시 통신 기능이 들어간다. IoT는 스펙트럼이 매우 넓은 개념이라서, 하나의 통신 기술로 모든 경우를 커버할 수는 없다. 여기에서는 IoT에서 많이 채용되는 6가지 무선 통신 기술을 소개하고 비교한다. 이 글은 BEHRTECH에 실린 [6 Leading Types of IoT Wireless Tech and Their Best Use Cases](https://behrtech.com/blog/6-leading-types-of-iot-wireless-tech-and-their-best-use-cases/) 를 많이 참조했다.
 
-6개의 기술들은 각 기술은 장단점이 있다. 데이터 전송 속도는 대체로 전력소모에 비례하지만, 가격, 전력소모, 도달거리 등은 서로 다르다. 그래서, 응용 분야 별로 알맞은 기술도 다르다. 그래서, 내가 만들고자 하는 유스케이스에 맞는 기술을 고르려면 전송 속도, QoS, 보안, 전력소모, 관리, 가격 등 여러 요소를 고려해야 한다. 아래 그림은 각 기술들의 특징을 한 눈에 보여준다.
+6개의 기술들은 각각 장단점이 있다. 그리고, 응용 분야 별로 필요한 요소도 서로 다르다. 그래서, 내가 만들고자 하는 유스케이스에 맞는 기술을 고르려면 전송 속도, QoS, 보안, 전력소모, 관리, 가격 등 여러 요소를 고려해야 한다. 데이터 전송 속도는 대체로 전력소모에 비례한다. 도달거리나 가격 등은 서로 다르다. 아래 그림은 각 기술들의 특징을 한 눈에 보여준다.
 
 {:refdef: style="text-align: center;"}
 ![start](/assets/img/posts/iot-wireless-techs.jpg) 
@@ -49,14 +49,13 @@ Wi-Fi는 설명이 불필요할 정도로 산업, 가정 할 것 없이 가장 �
 
 # RFID
 
-RFID (Radio Frequency Identification)은 적은 양의 데이터를 아주 짧은 거리로 전송하는 기술이다. RFID tag를 제품에 붙여, 소매나 배송 등의 분야에서 주로 사용된다. RFID tag이 사용하는 전력은 reader기에서 무선으로 전송되기 때문에, 배터리가 필요 없다는 것이 가장 큰 장점이다.
+RFID (Radio Frequency Identification)은 적은 양의 데이터를 아주 짧은 거리로 전송하는 기술이다. RFID tag가 사용하는 전력은 reader기에서 무선으로 전송되기 때문에, RFID tag에는 배터리가 필요 없다. 이것이 가장 큰 장점이다. RFID tag를 제품에 붙여, 소매나 배송 등의 분야에서 주로 사용된다. 
 
 # Summary
 
 아래 표는 주요 IoT 분야에 따라 알맞은 무선 통신 기술이다.
 
 |   | LPWAN | Cellular | Zigbee | BLE | Wi-Fi | RFID 
-|   | star | star | mostly mesh | star & mesh | star & mesh | point-to-point
 |---|---|---|---|---|---|
 | 산업용 IoT | ● | ◯ | ◯ |   |   |  
 | 스마트 검침 | ● |   |   |   |   |  
