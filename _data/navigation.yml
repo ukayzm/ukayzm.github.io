@@ -38,6 +38,11 @@ docs:
     - title: Training on the Pet Dataset - 펫 데이터셋 학습시키기
       url: /pet-training/
 
+  - title: IoT
+    children:
+    - title: IoT Wireless Technologies - IoT 무선 통신 기술
+      url: /6-iot-wireless-tech/
+
   - title: 아두이노
     children:
     - title: Arduino CLI - 리눅스 터미널에서 아두이노 개발

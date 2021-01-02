@@ -25,8 +25,9 @@ $ echo 'export GEM_HOME=$HOME/gems' >> ~/.bashrc
 $ echo 'export PATH=$HOME/gems/bin:$PATH' >> ~/.bashrc
 $ source ~/.bashrc
 $ gem update
-$ sudo gem update --system
+$ gem update --system
 $ gem install jekyll bundler
+$ bundle update
 ```
 
 # Upgrade Jekyll
