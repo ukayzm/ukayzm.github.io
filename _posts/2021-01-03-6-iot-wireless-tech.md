@@ -1,5 +1,5 @@
 ---
-title:  IoT Wireless Technologies - IoT 무선 통신 기술
+title:  IoT Wireless Technologies - IoT 무선 통신 기술 비교
 tags:   iot
 header:
   teaser: /assets/img/posts/iot-3337536_1280.png

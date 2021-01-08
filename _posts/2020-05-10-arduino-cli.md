@@ -27,7 +27,7 @@ $ curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/instal
 $ curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/local/bin sh
 ```
 
-아두이노는 호스트와 시리얼 포트를 이용해서 통신을 합니다. 유저에게 시리얼 포트의 접근 권한을 주기 위해서, 아래와 같이 유저를 dialout 그룹에 추가합니다. 그룹 추가 후에는 로그인을 다시 하거나 호스트 PC를 재부팅 합니다.
+아두이노는 시리얼 포트를 이용해서 호스트와 통신합니다. 유저에게 시리얼 포트의 접근 권한을 주기 위해서, 아래와 같이 유저를 dialout 그룹에 추가합니다. 그룹 추가 후에는 로그인을 다시 하거나 호스트 PC를 재부팅 합니다.
 ```bash
 $ sudo usermod -a -G dialout $USER         # add this user to dialout group
                                            # You need to reopen the terminal or reboot the computer
@@ -47,7 +47,7 @@ Updating index: package_index.json downloaded
 
 # 아두이노 보드 설정
 
-다음으로 아두이노 종류에 맞는 설정을 합니다. 아두이노는 우노, 나노 등의 종류도 있지만 값싼 중국산 클론도 있습니다. 보드에 맞는 정확한 fqbn을 알아야 합니다.
+다음으로 아두이노 종류에 맞는 설정을 합니다. 아두이노는 우노, 나노 등의 종류도 있지만 값싼 중국산 클론도 있습니다. 보드에 맞는 정확한 `FQBN`을 알아야 합니다.
 
 ## 아두이노 정품 보드
 
@@ -123,23 +123,14 @@ Linino One                          arduino:avr:one
 
 ## 아두이노 클론 보드
 
-중국산 클론의 경우는 자동 인식이 안됩니다. `dmesg` 명령으로 커널 로그를 보면, 아래와 같이 Arduino 글자가 보이지 않고, 저가형 시리얼 칩인 ch341 글자가 보입니다. `arduino-cli board list`를 해 보면 board name이 unknown으로 나오지요.
+중국산 클론의 경우는 자동 인식이 안됩니다. 클론 보드를 USB에 꽂은 다음 `dmesg` 명령으로 커널 로그를 보면, 아래와 같이 Arduino 글자가 보이지 않고, 저가형 시리얼 칩인 ch341 글자가 보입니다. `arduino-cli board list`를 해 보면 board name이 unknown으로 나오지요.
 
 ```bash
 $ dmesg
-[ 3059.609249] usb 1-1: new full-speed USB device number 6 using xhci_hcd
-[ 3059.759268] usb 1-1: New USB device found, idVendor=1a86, idProduct=7523
-[ 3059.759284] usb 1-1: New USB device strings: Mfr=0, Product=2, SerialNumber=0
-[ 3059.759294] usb 1-1: Product: USB2.0-Serial
-[ 3059.761263] sdhci-pci 0000:00:12.0: SDHCI controller found [8086:2296] (rev 35)
-[ 3059.821491] usbcore: registered new interface driver usbserial_generic
-[ 3059.822413] usbserial: USB Serial support registered for generic
 [ 3059.826341] usbcore: registered new interface driver ch341
 [ 3059.827087] usbserial: USB Serial support registered for ch341-uart
 [ 3059.828153] ch341 1-1:1.0: ch341-uart converter detected
 [ 3059.828944] usb 1-1: ch341-uart converter now attached to ttyUSB0
-[ 3059.829169] sdhci-pci 0000:00:12.0: SDHCI controller found [8086:2296] (rev 35)
-[ 3059.830108] sdhci-pci 0000:00:12.0: SDHCI controller found [8086:2296] (rev 35)
 
 $ arduino-cli board list      # Check the connection to the board
 Port         Type              Board Name              FQBN                 Core
@@ -148,9 +139,9 @@ Port         Type              Board Name              FQBN                 Core
 
 자동 인식이 안된다고 해서 사용을 못하는 것은 아니니, 걱정할 필요는 없습니다. ch340/ch341의 시리얼 포트는 `/dev/ttyUSB0` 또는 `/dev/ttyUSB1` 입니다. 그리고, 코어는 정품과 같습니다. 따라서, 정품의 경우와 동일하게 `arduino-cli core install arduino:avr` 명령으로 정품 보드용 코어를 설치하고, `arduino-cli board listall` 명령으로 설치된 코어를 확인합니다.
 
-# 보드의 fqbn 알아내기
+# 보드의 FQBN 알아내기
 
-위에서, 중국산 클론 보드를 위해서는 fqbn을 지정해 주어야 한다고 했는데요. 내가 가지고 있는 보드의 fqbn 값을 어떻게 알아낼까요? 아두이노 기본 IDE를 이용하여 알아낼 수 있는 방법이 있습니다.
+위에서, 중국산 클론 보드를 위해서는 `FQBN`을 지정해 주어야 한다고 했는데요. 내가 가지고 있는 보드의 fqbn 값을 어떻게 알아낼까요? 아두이노 기본 IDE를 이용하여 알아낼 수 있는 방법이 있습니다.
 
 1. 보드를 PC에 연결하고 아두이노 기본 IDE를 실행합니다.
 2. 파일 > 환경설정 > 다음 동작중 자세한 출력 보이기 > 컴파일을 체크합니다.
@@ -164,15 +155,16 @@ Port         Type              Board Name              FQBN                 Core
 C:\Program Files (x86)\Arduino\arduino-builder -dump-prefs -logger=machine -hardware C:\Program Files (x86)\Arduino\hardware -tools C:\Program Files (x86)\Arduino\tools-builder -tools C:\Program Files (x86)\Arduino\hardware\tools\avr -built-in-libraries C:\Program Files (x86)\Arduino\libraries -libraries D:\Users\kjeom\Documents\Arduino\libraries -fqbn=arduino:avr:nano:cpu=atmega328old -vid-pid=1A86_7523 -ide-version=10812 -build-path C:\Users\kjeom\AppData\Local\Temp\arduino_build_337148 -warnings=none -build-cache C:\Users\kjeom\AppData\Local\Temp\arduino_cache_981687 -prefs=build.warn_data_percentage=75 -prefs=runtime.tools.avr-gcc.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.avr-gcc-7.3.0-atmel3.6.1-arduino5.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.avrdude.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.avrdude-6.3.0-arduino17.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.arduinoOTA.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -prefs=runtime.tools.arduinoOTA-1.3.0.path=C:\Program Files (x86)\Arduino\hardware\tools\avr -verbose D:\temp\sketch_apr17a\sketch_apr17a.ino
 ```
 
-위와 같이 긴 줄이 있는데, 중간에 `-fqbn=arduino:avr:nano:cpu=atmega328old` 이런 부분이 보이죠. `arduino:avr:nano:cpu=atmega328old`가 바로 내가 가지고 있는 보드의 fqbn 값입니다.
+위와 같이 긴 줄이 있는데, 중간에 `-fqbn=arduino:avr:nano:cpu=atmega328old` 이런 부분이 보이죠. `arduino:avr:nano:cpu=atmega328old`가 바로 내가 가지고 있는 보드의 FQBN 값입니다.
 
 참고로, 필자가 가지고 있는 보드의 fqbn은 다음과 같습니다.
 
-| 보드 | fqbn | 시리얼 포트 |
+| 보드 | FQBN | 시리얼 포트 |
 |-------|--------|---------|
 | 아두이노 우노 정품 | arduino:avr:uno | /dev/ttyACM0 |
 | 아두이노 우노 클론 | arduino:avr:uno | /dev/ttyUSB0 |
 | 아두이노 나노 클론 | arduino:avr:nano:cpu=atmega328old | /dev/ttyUSB0 |
+| ESP32 | esp32:esp32:esp2wrover |  |
 
 # 테스트해 보기
 
@@ -286,7 +278,7 @@ $ echo -n "H" > /dev/ttyUSB0           # -n 옵션을 주면 줄바꿈 문자 �
 
 ## 코드 업로드시 주의사항
 
-Arduino CLI는 컴파일된 코드를 업로드 할 때 시리얼 포트를 이용하므로, 업로드를 하고 싶으면 `^C`를 눌러 `cat` 명령을 종료해야 합니다.
+Arduino CLI는 컴파일된 코드를 업로드 할 때 시리얼 포트를 이용하므로, 업로드를 하고 싶으면 위에서 `cat` 명령을 내린 터미널에서 `^C`를 눌러 `cat` 명령을 종료해야 합니다.
 
 
 # Library 추가하기
@@ -349,6 +341,67 @@ I2Cdev/  IRremote/  MPU6050/
 * 설치된 라이브러리를 삭제하고 싶으면 이 디렉토리에 있는 라이브러리 디렉토리를 지우면 됩니다. 
 
 
+# ESP8266, ESP32 지원
+
+ESP8266은 WIFI를 지원하고 Arduino보다 월등히 좋은 성능을 가진 칩이고, ESP32는 ESP8266의 확장판으로, dual core, BLE 등이 내장된 칩으로, IoT 프로토타이핑에 많이 사용됩니다. Arduino-CLI로 ESP8266이나 ESP32 보드도 개발할 수 있습니다. 
+
+## arduino-cli.yaml 편집
+
+`~/.arduino15/arduino-cli.yaml`을 열고, `additional_urls` 항목에 아래와 같이 두 개 사이트를 추가합니다.
+
+```
+board_manager:
+  additional_urls:
+    - https://arduino.esp8266.com/stable/package_esp8266com_index.json
+    - https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+```
+
+아래 명령으로 platform index를 업데이트 합니다.
+
+```
+$ arduino-cli core update-index
+```
+
+## ESP8266, ESP32 코어 설치
+
+아래 명령으로 ESP8266과 ESP32의 코어를 설치합니다.
+
+```
+$ arduino-cli core install esp8266:esp8266
+$ arduino-cli core install esp32:esp32
+```
+
+아래 명령으로 설치된 것을 확인합니다. ESP32, ESP8266 칩을 이용한 보드가 여러 종류 나오네요.
+
+```
+$ arduino-cli board listall
+Board Name                       FQBN
+...
+ESP32 Dev Module                 esp32:esp32:esp32
+ESP32 FM DevKit                  esp32:esp32:fm-devkit
+ESP32 Pico Kit                   esp32:esp32:pico32
+ESP32 Wrover Module              esp32:esp32:esp32wrover
+ESP32vn IoT Uno                  esp32:esp32:esp32vn-iot-uno
+ESPDuino (ESP-13 Module)         esp8266:esp8266:espduino
+ESPea32                          esp32:esp32:espea32
+ESPectro Core                    esp8266:esp8266:espectro
+ESPectro32                       esp32:esp32:espectro32
+ESPino (ESP-12 Module)           esp8266:esp8266:espino
+...
+```
+
+내가 가지고 있는 보드에 맞는 FQBN을 알아내는 방법은 위에서 중국산 클론 보드의 FQBN을 알아내는 방법과 똑같습니다. 그런데, 먼저 윈도우의 아두이노 IDE에 ESP32 보드 지원을 설치해야 합니다. 여기를 참고해서 ESP32 보드 지원을 설치하세요.
+https://deneb21.tistory.com/590
+
+그 다음에, 위에서 설명한 방법으로 내 보드에 맞는 FQBN을 알아냅니다. 
+
+FQBN을 알아냈으면, 컴파일과 업로드는 `--fqbn` 옵션만 바꿔서 하면 됩니다.
+
+## 시리얼 드라이버 설치
+
+ESP32 보드는 아마 CP2102 시리얼 칩을 사용했을 것입니다. 이 칩의 드라이버를 아래 사이트에서 다운로드 받아서 설치합니다. 
+https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers
+
 # Reference
 
 글을 쓰는 2020년 5월 10일 현재, Arduino CLI는 계속 개발중이고 아직 1.0 버전이 나오지 않은 상태입니다. 가장 최신의 정보는 아래 사이트에서 얻을 수 있습니다.
@@ -356,3 +409,4 @@ I2Cdev/  IRremote/  MPU6050/
 * [Arduino CLI in GitHub](https://github.com/arduino/arduino-cli)
 * [Arudino CLI Documentation Home](https://arduino.github.io/arduino-cli/)
 * [Arduino CLI Application](https://www.arduino.cc/pro/cli)
+* [ESP32, ESP8266 지원 설치](https://www.survivingwithandroid.com/arduino-cli-compile-upload-manage-libraries-cores-boards/)

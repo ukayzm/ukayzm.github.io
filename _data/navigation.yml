@@ -16,44 +16,44 @@ main:
 docs:
   - title: 얼굴 인식
     children:
-    - title: Python Face Recognition in Real Time - 파이썬 얼굴 인식
+    - title: 파이썬 얼굴 인식
       url: /python-face-recognition/
-    - title: Unknown Face Classifier - 모르는 얼굴 분류하기
+    - title: 모르는 얼굴 분류하기
       url: /unknown-face-classifier/
-    - title: Visitor Alarm Telegram Bot - 텔레그램 봇으로 실시간 방문자 알림
+    - title: 텔레그램 봇으로 실시간 방문자 알림
       url: /visitor-alarm-telegram-bot/
-    - title: Face Clustering - 얼굴 클러스터링
+    - title: 얼굴 클러스터링
       url: /face-clustering/
-    - title: Facial Landmarks - 얼굴 특징점
+    - title: 얼굴 특징점
       url: /facial-landmarks/
 
   - title: 사물 인식
     children:
-    - title: Python Object Detection with Tensorflow - 텐서플로우로 사물 인식
+    - title: 텐서플로우로 사물 인식
       url: /python-object-detection-tensorflow/
-    - title: Tensorflow Instance Segmentation - 사물의 영역 추출하기
+    - title: 사물의 영역 추출하기
       url: /tensorflow-instance-segmentation/
     - title: COCO Dataset - 코코 데이터셋
       url: /cocodataset/
-    - title: Training on the Pet Dataset - 펫 데이터셋 학습시키기
+    - title: 펫 데이터셋 학습시키기
       url: /pet-training/
 
   - title: IoT
     children:
-    - title: IoT Wireless Technologies - IoT 무선 통신 기술
+    - title: IoT 무선 통신 기술 비교
       url: /6-iot-wireless-tech/
 
   - title: 아두이노
     children:
-    - title: Arduino CLI - 리눅스 터미널에서 아두이노 개발
+    - title: Arduino CLI - 터미널에서 아두이노 개발
       url: /arduino-cli/
     - title: 2 Wheel Balancing Robot - Cases
       url: /2-wheel-balancing-robot-cases/
 
   - title: 라즈베리파이
     children:
-    - title: Installing Raspbian Headless
+    - title: 키보드 모니터 없이 라즈베리파이 설치
       url: /installing-raspbian/
-    - title: Installing Google Assistant
+    - title: Google Assistant 설치
       url: /installing-google-assistant/
 
