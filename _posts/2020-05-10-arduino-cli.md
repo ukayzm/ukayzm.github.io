@@ -390,12 +390,13 @@ ESPino (ESP-12 Module)           esp8266:esp8266:espino
 ...
 ```
 
-내가 가지고 있는 보드에 맞는 FQBN을 알아내는 방법은 위에서 중국산 클론 보드의 FQBN을 알아내는 방법과 똑같습니다. 그런데, 먼저 윈도우의 아두이노 IDE에 ESP32 보드 지원을 설치해야 합니다. 여기를 참고해서 ESP32 보드 지원을 설치하세요.
-https://deneb21.tistory.com/590
+필자가 가지고 있는 ESP-WROOM-32 개발보드 (WIFI+BLE)에서는 --fqbn esp32:esp32:esp32를 사용하여 컴파일과 업로드를 할 수 있었습니다.
 
-그 다음에, 위에서 설명한 방법으로 내 보드에 맞는 FQBN을 알아냅니다. 
+```
+arduino-cli compile --fqbn esp32:esp32:esp32 serial/
+arduino-cli upload -p /dev/ttyUSB0 --fqbn esp32:esp32:esp32 serial/
+```
 
-FQBN을 알아냈으면, 컴파일과 업로드는 `--fqbn` 옵션만 바꿔서 하면 됩니다.
 
 ## 시리얼 드라이버 설치
 
