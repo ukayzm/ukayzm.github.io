@@ -8,6 +8,13 @@ sidebar:
   - nav: docs
 ---
 
+이 글은 파이썬 얼굴 인식 시리즈의 3편 중 첫번째 입니다.
+1. Python Face Recognition - 아는 사람의 얼굴을 인식하기
+2. [Unknown Face Classifier](/unknown-face-classifier/) - 모르는 사람의 얼굴을 분류하기
+3. [Visitor Alarm Telegram Bot](/visitor-alarm-telegram-bot/) - 인식된 얼굴을 텔레그램으로 보내기
+
+# 들어가며
+
 사진에서 사람 얼굴을 인식하는 face_recognition이라는, 아주 쓰기 쉬운 파이썬 패키지가 있습니다. 이 패키지를 이용하면 웹캠을 이용하여 실시간으로 사람 얼굴을 인식하는 프로그램을 쉽게 제작할 수 있습니다. 파이썬을 설치하고, 필요한 패키지를 설치하고 소스코드를 다운 받고, knowns 디렉토리에 사람 얼굴이 있는 사진을 넣으면 동작합니다. 바로 아래 화면처럼요.
 
 ![face-recognition-example-picture](https://cloud.githubusercontent.com/assets/896692/24430398/36f0e3f0-13cb-11e7-8258-4d0c9ce1e419.gif)

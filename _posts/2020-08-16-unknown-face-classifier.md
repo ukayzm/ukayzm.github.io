@@ -9,6 +9,13 @@ sidebar:
   - nav: docs
 ---
 
+이 글은 파이썬 얼굴 인식 시리즈의 3편 중 두번째 입니다.
+1. [Python Face Recognition](/python-face-recognition/) - 아는 사람의 얼굴을 인식하기
+2. Unknown Face Classifier - 모르는 사람의 얼굴을 분류하기
+3. [Visitor Alarm Telegram Bot](/visitor-alarm-telegram-bot/) - 인식된 얼굴을 텔레그램으로 보내기
+
+# 들어가며
+
 이 포스트에서는 기존에 올렸던 얼굴 인식 구현인 [Python Face Recognition](/python-face-recognition/)을 개선합니다. 아는 사람의 이름을 표시하는 것 뿐 아니라, 모르는 얼굴을 모으고 비슷한 얼굴을 찾아내어 새로운 사람을 찾아내는 간단한 방법을 구현합니다. 소스코드는 [여기](https://github.com/ukayzm/opencv/tree/master/unknown_face_classifier)에서 받으실 수 있습니다.
 
 # 얼굴 인식의 원리
