@@ -38,10 +38,12 @@ docs:
     - title: 펫 데이터셋 학습시키기
       url: /pet-training/
 
-  - title: IoT
+  - title: Cloud, IoT
     children:
     - title: IoT 무선 통신 기술 비교
       url: /6-iot-wireless-tech/
+    - title: AWS IAM 사용자 만들기
+      url: /aws-create-iam-user/
 
   - title: 아두이노
     children:
