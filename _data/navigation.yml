@@ -38,22 +38,19 @@ docs:
     - title: 펫 데이터셋 학습시키기
       url: /pet-training/
 
-  - title: Cloud, IoT
+  - title: Cloud/IoT
     children:
     - title: IoT 무선 통신 기술 비교
       url: /6-iot-wireless-tech/
     - title: AWS IAM 사용자 만들기
       url: /aws-create-iam-user/
 
-  - title: 아두이노
+  - title: 아두이노/라즈베리파이
     children:
     - title: Arduino CLI - 터미널에서 아두이노 개발
       url: /arduino-cli/
     - title: 2 Wheel Balancing Robot - Cases
       url: /2-wheel-balancing-robot-cases/
-
-  - title: 라즈베리파이
-    children:
     - title: 키보드 모니터 없이 라즈베리파이 설치
       url: /installing-raspbian/
     - title: Google Assistant 설치

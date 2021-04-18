@@ -97,7 +97,7 @@ analytics:
 author:
   name             : "ukayzm"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Embedded software, prototype, C, python" # Building blocks for an autonomous robot
+  bio              : "Embedded software, prototype, C, Java, python" # Building blocks for an autonomous robot
   location         : "Suwon, S.Korea"
   email            : "kijong.uhm@gmail.com"
   links:
