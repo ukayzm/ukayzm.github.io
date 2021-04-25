@@ -227,7 +227,7 @@ Administrator로 로그인 하고, [IAM 콘솔](https://console.aws.amazon.com/i
 $ sudo apt install awscli
 ```
 
-이제, `aws configure list` 명령을 내리면 아래와 같이 아무 것도 설정되어 있지 않다고 나옵니다.
+위에서 다운로드 받은 .csv 파일에 있는 액세스 키를 아직 설치하지 않았습니다. 그러므로, 아래와 같이 `aws configure list` 명령을 내리면 '<not set>' 이라고 나옵니다.
 
 ```
 $ aws configure list
@@ -246,7 +246,7 @@ $ aws s3 cp s3://wildrydes-us-east-1/WebApplication/1_StaticWebHosting/website .
 fatal error: Unable to locate credentials
 ```
 
-액세스 키를 설치하기 위해서, `~/.aws` 디렉토리를 만들고 `credentials`과 `config` 두 개의 파일을 만들어 줍니다.
+이제, 액세스 키를 설치하기 위해서, `~/.aws` 디렉토리를 만들고 `credentials`과 `config` 두 개의 파일을 만들어 줍니다.
 
 `aws_access_key_id`와 `aws_secret_access_key`는 바로 위에서 다운로드 받은 `PowerUser_credentials.csv`에 있는 값을 넣어줍니다.
 
@@ -267,7 +267,7 @@ region=ap-northeast-2
 output=json
 ```
 
-그러고 나서 `aws configure list` 명령을 내리면 아래와 같이 액세스키와 비밀키가 표시됩니다.
+그러고 나서 `aws configure list` 명령을 내리면 아래와 같이 설치된 액세스키와 비밀키가 표시됩니다.
 
 ```
 $ aws configure list

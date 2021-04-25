@@ -4,7 +4,6 @@ tags:   computer-vision
 feature-img: "assets/img/posts/face_clustering.png"
 thumbnail:   "assets/img/posts/face_clustering.png"
 date:   2018-09-06 12:00:00 +0900
-layout: post
 ---
 
 

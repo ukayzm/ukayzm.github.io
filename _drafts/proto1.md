@@ -4,7 +4,6 @@ tags:   prototype
 feature-img: "assets/img/posts/white-diagram-paper-under-pliers-1178498.jpg"
 thumbnail:   "assets/img/posts/white-diagram-paper-under-pliers-1178498.jpg"
 date:   2020-05-10 12:00:00 +0900
-layout: post
 ---
 
 가장 쉬운 타입의 로봇을 만들어 보겠습니다. 
