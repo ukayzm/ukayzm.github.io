@@ -217,9 +217,71 @@ Administrator로 로그인 하고, [IAM 콘솔](https://console.aws.amazon.com/i
 
 "액세스 키 ID"와 "비밀 액세스 키"는 추후 AWS 서비스를 개발하는데 두고 두고 사용되는 아주 중요한 정보입니다.
 
+## 액세스 키 설치하기
+
+액세스 키는 `~/.aws/credintials` 파일에 설치합니다. 설치된 액세스 키를 확인하려면 `awscli` 패키지가 필요합니다.
+
+먼저 아래 명령으로 `awscli` 패키지를 설치합니다.
+
+```
+$ sudo apt install awscli
+```
+
+이제, `aws configure list` 명령을 내리면 아래와 같이 아무 것도 설정되어 있지 않다고 나옵니다.
+
+```
+$ aws configure list
+      Name                    Value             Type    Location
+      ----                    -----             ----    --------
+   profile                <not set>             None    None
+access_key                <not set>             None    None
+secret_key                <not set>             None    None
+    region                <not set>             None    None
+```
+
+aws 관련 명령을 내려도 아래와 같이 credentials를 찾을 수 없다는 에러가 나옵니다.
+
+```
+$ aws s3 cp s3://wildrydes-us-east-1/WebApplication/1_StaticWebHosting/website ./ --recursive
+fatal error: Unable to locate credentials
+```
+
+액세스 키를 설치하기 위해서, `~/.aws` 디렉토리를 만들고 `credentials`과 `config` 두 개의 파일을 만들어 줍니다.
+
+`aws_access_key_id`와 `aws_secret_access_key`는 바로 위에서 다운로드 받은 `PowerUser_credentials.csv`에 있는 값을 넣어줍니다.
+
+
+```
+$ cat ~/.aws/credentials
+[default]
+aws_access_key_id=ABCD2MQOOQVDDQHAAMUF
+aws_secret_access_key=ABCDoit5VBkZeA1VxE8ipj4rWeKYSS1O1lrWHSGH
+```
+
+`config` 파일의 region에는 서울 리전을 뜻하는 `ap-northeast-2`을 넣습니다.
+
+```
+$ cat ~/.aws/config
+[default]
+region=ap-northeast-2
+output=json
+```
+
+그러고 나서 `aws configure list` 명령을 내리면 아래와 같이 액세스키와 비밀키가 표시됩니다.
+
+```
+$ aws configure list
+      Name                    Value             Type    Location
+      ----                    -----             ----    --------
+   profile                <not set>             None    None
+access_key     ****************AMUF shared-credentials-file
+secret_key     ****************HSGH shared-credentials-file
+    region           ap-northeast-2      config-file    ~/.aws/config
+```
+
 # 만들어진 사용자 확인하기
 
-IAM > 사용자에서 아래와 같이 Administrator와 PowerUser 두 개의 사용자가 추가되었음을 확인할 수 있습니다. Administrator는 액세스 키가 없고 PowerUser는 비밀번호가 없는 것 보이시죠?
+IAM > 사용자에서 아래와 같이 Administrator와 PowerUser 두 개의 사용자가 추가되었음을 확인할 수 있습니다. Administrator는 비밀번호가 있고, PowerUser는 액세스 키가 있는 것이 보이시죠?
 
 {:refdef: style="text-align: center;"}
 ![19_users](/assets/img/iam_admin_user/19_users.png) 
