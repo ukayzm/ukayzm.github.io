@@ -44,6 +44,8 @@ docs:
       url: /6-iot-wireless-tech/
     - title: AWS IAM 사용자 만들기
       url: /aws-create-iam-user/
+    - title: AWS Amplify - 정적 웹호스팅
+      url: /aws-amplify/
 
   - title: 아두이노/라즈베리파이
     children:
