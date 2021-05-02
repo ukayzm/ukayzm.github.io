@@ -251,7 +251,7 @@ $ git commit -m "change title - 2nd edition"
 [master 2753bf7] change title - 2nd edition
  1 file changed, 1 insertion(+), 1 deletion(-)
 $ git push
-Username for 'https://git-codecommit.ap-northeast-2.amazonaws.com': PowerUser-at-714068624710
+Username for 'https://git-codecommit.ap-northeast-2.amazonaws.com': PowerUser-at-71406862XXXX
 Password for 'https://PowerUser-at-714068624710@git-codecommit.ap-northeast-2.amazonaws.com':
 오브젝트 나열하는 중: 5, 완료.
 오브젝트 개수 세는 중: 100% (5/5), 완료.
