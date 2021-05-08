@@ -53,31 +53,30 @@ AWS CodeCommit을 이용하려면 git credential을 만들어야 합니다. Git 
 
 먼저 [IAM 대시보드](https://console.aws.amazon.com/iam/)에 접속하여 "Administrator" 사용자로 로그인 합니다. 그리고 아래와 같이 "사용자" > "PowerUser"를 누릅니다. 
 
-{:refdef: style="text-align: center;"}
-![01_user](/assets/img/aws_amplify/01_user.png) 
-{: refdef}
-
+<figure>
+    <a href="/assets/img/aws_amplify/01_user.png" class="align-center"><img src="/assets/img/aws_amplify/01_user.png"></a>
+</figure>
 그리고, "보안 자격 증명" 탭을 누릅니다.
 
-{:refdef: style="text-align: center;"}
-![02_security](/assets/img/aws_amplify/02_security.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/02_security.png" class="align-center"><img src="/assets/img/aws_amplify/02_security.png"></a>
+</figure>
 
 아래 쪽으로 스크롤을 하면 "AWS CodeCommit에 대한 HTTPS Git 자격 증명"이 보입니다. 저는 이미 credential을 만든 상태이기 때문에 아래 화면에 credential이 하나 보이네요. "자격 증명 생성"을 누르면 credential을 만들 수 있습니다. 
 
-{:refdef: style="text-align: center;"}
-![03_create_key](/assets/img/aws_amplify/03_create_key.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/03_create_key.png" class="align-center"><img src="/assets/img/aws_amplify/03_create_key.png"></a>
+</figure>
 
 다음으로, 아래와 같이 자격 증명을 다운로드 받을 수 있는 페이지가 나옵니다. 
 
-{:refdef: style="text-align: center;"}
-![035_download_key](/assets/img/aws_amplify/035_download_key.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/035_download_key.png" class="align-center"><img src="/assets/img/aws_amplify/035_download_key.png"></a>
+</figure>
 
 위 화면의 "자격 증명 다운로드"를 누르면 .csv 파일을 받을 수 있습니다. .csv 파일 안에는 자격 증명이 들어 있습니다. 
 
-```
+```console
 $ cat PowerUser_codecommit_credentials.csv 
 User Name,Password
 PowerUser-at-xxxxyyyyzzzz,ABCDU6I4KMUTVzOBmmlV5XlFftC+Kj1ZnSpMyaE7Hzg=
@@ -91,27 +90,27 @@ PowerUser-at-xxxxyyyyzzzz,ABCDU6I4KMUTVzOBmmlV5XlFftC+Kj1ZnSpMyaE7Hzg=
 
 먼저, 지역을 "서울"로 바꾸어야 합니다. 그리고 나서, "서비스" > "개발자 도구" > "CodeCommit"을 눌러서 [CodeCommit 대시보드](https://ap-northeast-2.console.aws.amazon.com/codesuite/codecommit/home?region=ap-northeast-2)로 접속합니다. 왼쪽의 "리포지토리"를 누르고, 오른쪽의 "리포지토리 생성"을 누릅니다.
 
-{:refdef: style="text-align: center;"}
-![04_create_repository](/assets/img/aws_amplify/04_create_repository.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/04_create_repository.png" class="align-center"><img src="/assets/img/aws_amplify/04_create_repository.png"></a>
+</figure>
 
 아래 화면에서 리포지토리 이름을 줄 수 있습니다. 저는 AWS의 예제와 똑같이 "wildrydes-site"라고 입력했습니다. 그리고, "생성"을 누릅니다.
 
-{:refdef: style="text-align: center;"}
-![05_create](/assets/img/aws_amplify/05_create.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/05_create.png" class="align-center"><img src="/assets/img/aws_amplify/05_create.png"></a>
+</figure>
 
 다음으로 연결 단계 화면이 나옵니다. 
 
-{:refdef: style="text-align: center;"}
-![06_copy_url](/assets/img/aws_amplify/06_copy_url.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/06_copy_url.png" class="align-center"><img src="/assets/img/aws_amplify/06_copy_url.png"></a>
+</figure>
 
 우리는 사전 작업이서 이미 git을 설치했고, 바로 위에서 PowerUser에게 git 자격 증명도 만들었으므로, 1단계와 2단계는 마친 상태입니다.
 
 위 화면에서 "복사"를 누릅니다. 그리고 리눅스의 터미널에 붙여넣기를 하면 아래와 같이 방금 만든 리포지토리를 리눅스 머신에 복제를 할 수 있습니다. 유저네임과 패스워드는 위에서 다운받은 .csv 파일 안에 있는 값을 사용합니다.
 
-```
+```shell
 $ cd ~/work
 $ git clone https://git-codecommit.ap-northeast-2.amazonaws.com/v1/repos/wildrydes-site
 'wildrydes-site'에 복제합니다...
@@ -128,7 +127,7 @@ Password for 'https://PowerUser-at-714068624710@git-codecommit.ap-northeast-2.am
 
 이 글의 목적은 AWS Amplify의 사용법을 익히는 것이므로, 웹페이지는 Amazon에서 예제로 미리 만들어 놓은 것을 그대로 쓰겠습니다. 아래 명령으로, S3에 올려져 있는 예제를 로컬 리눅스 머신에 다운로드 합니다.
 
-```
+```shell
 $ cd ~/work/wildrydes-site
 $ aws s3 cp s3://wildrydes-us-east-1/WebApplication/1_StaticWebHosting/website ./ --recursive
 download: s3://wildrydes-us-east-1/WebApplication/1_StaticWebHosting/website/apply.html to ./apply.html
@@ -139,7 +138,7 @@ download: s3://wildrydes-us-east-1/WebApplication/1_StaticWebHosting/website/css
 
 `ls` 명령을 쳐 보면 아래와 같이 S3로부터 예제파일을 받은 것을 확인할 수 있습니다.
 
-```
+```shell
 $ ls
 .git/       css/      favicon.ico  images/     investors.html  register.html  robots.txt   unicorns.html
 apply.html  faq.html  fonts/       index.html  js/             ride.html      signin.html  verify.html
@@ -148,7 +147,7 @@ apply.html  faq.html  fonts/       index.html  js/             ride.html      si
 이제, 이 파일들을 위에서 만든 리포지토리에 올립니다. 'git push' 명령을 내리면 로컬 리눅스 머신에 있는 파일들을 AWS CodeCommit에 올릴 수 있습니다.
 유저네임과 패스워드는 앞에서 받은 .csv 파일에 있는 것을 입력합니다.
 
-```
+```shell
 $ git add .
 $ git commit -m "initial commit"
 $ git push
@@ -172,43 +171,43 @@ To https://git-codecommit.ap-northeast-2.amazonaws.com/v1/repos/wildrydes-site
 처음 시작하시는 분은 아래 그림처럼 "GET STARTED" 또는 "시작하기"를 누르고, Delivery를 선택합니다.
 이미 웹사이트를 만들어 보신 분은 오른쪽에 나오는 "New app"을 누르고 "Host web app"을 선택하시면 됩니다.
 
-{:refdef: style="text-align: center;"}
-![10_get_started](/assets/img/aws_amplify/10_get_started.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/10_get_started.png" class="align-center"><img src="/assets/img/aws_amplify/10_get_started.png"></a>
+</figure>
 
-{:refdef: style="text-align: center;"}
-![12_deliver](/assets/img/aws_amplify/12_deliver.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/12_deliver.png" class="align-center"><img src="/assets/img/aws_amplify/12_deliver.png"></a>
+</figure>
 
 다음으로, 웹페이지를 가져올 리포지토리를 선택합니다. 우리는 위에서 AWS CodeCommit에 웹페이지를 올려 놓았으므로, AWS CodeCommit을 선택합니다.
 
-{:refdef: style="text-align: center;"}
-![13_codecommit](/assets/img/aws_amplify/13_codecommit.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/13_codecommit.png" class="align-center"><img src="/assets/img/aws_amplify/13_codecommit.png"></a>
+</figure>
 
 그리고 위에서 만들었던 리포지토리와 브랜치를 입력합니다. 우리는 위에서 wildrydes-site란 이름으로 리포지토리를 만들었습니다. 그리고, 아무 브랜치도 만들지 않았으므로 디폴트 브랜치인 master를 선택합니다.
 
-{:refdef: style="text-align: center;"}
-![14_repository_branch](/assets/img/aws_amplify/14_repository_branch.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/14_repository_branch.png" class="align-center"><img src="/assets/img/aws_amplify/14_repository_branch.png"></a>
+</figure>
 
 빌드 설정 구성 화면이 나오는데, 기본적인 사항은 이미 입력이 되어 있으므로, 일단 "다음"을 눌러 넘어갑니다.
 
-{:refdef: style="text-align: center;"}
-![15_build_conf](/assets/img/aws_amplify/15_build_conf.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/15_build_conf.png" class="align-center"><img src="/assets/img/aws_amplify/15_build_conf.png"></a>
+</figure>
 
 앞에서 입력한 사항이 맞는지 마지막으로 검토하는 화면이 나옵니다. "저장 및 배포"를 누르면 웹사이트 만들기가 시작됩니다.
 
-{:refdef: style="text-align: center;"}
-![16_verify](/assets/img/aws_amplify/16_verify.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/16_verify.png" class="align-center"><img src="/assets/img/aws_amplify/16_verify.png"></a>
+</figure>
 
 다음 화면은 AWS Amplify에서 웹사이트를 만드는 과정을 보여줍니다. 프로비저닝부터 확인 단계까지 완료되는데 몇 분 정도 소요됩니다.
 
-{:refdef: style="text-align: center;"}
-![17_verified](/assets/img/aws_amplify/17_verified.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/17_verified.png" class="align-center"><img src="/assets/img/aws_amplify/17_verified.png"></a>
+</figure>
 
 작업이 완료되면, 왼쪽의 그림을 누르면 방금 만든 웹사이트로 접속할 수 있습니다.
 
@@ -218,7 +217,7 @@ To https://git-codecommit.ap-northeast-2.amazonaws.com/v1/repos/wildrydes-site
 
 이제 한 숨 돌리고, 웹페이지 내용을 살펴봅시다. `ls`로 확인해 보면 아래와 같이, HTML, CSS, JavaScript, 이미지 파일들이 있습니다.
 
-```
+```shell
 $ ls
 .git/       css/      favicon.ico  images/     investors.html  register.html  robots.txt   unicorns.html
 apply.html  faq.html  fonts/       index.html  js/             ride.html      signin.html  verify.html
@@ -226,7 +225,7 @@ apply.html  faq.html  fonts/       index.html  js/             ride.html      si
 
 이 중에서, index.html 파일을 열어서 웹페이지의 제목을 바꾸어 보겠습니다.
 
-```
+```shell
 $ vi index.html
   1 <!doctype html>
   2 <html class="no-js" lang="">
@@ -239,13 +238,13 @@ $ vi index.html
 
 `index.html` 파일의 7째 줄을 아래와 같이 수정합니다.
 
-```
+```shell
   7   <title>Wild Rydes - 2nd edition</title>
 ```
 
 그리고, 아래와 같이 코드를 commit 하고 push 합니다.
 
-```
+```shell
 $ git add index.html
 $ git commit -m "change title - 2nd edition"
 [master 2753bf7] change title - 2nd edition
@@ -265,15 +264,15 @@ To https://git-codecommit.ap-northeast-2.amazonaws.com/v1/repos/wildrydes-site
 
 리포지토리에 코드가 push 되면, AWS Amplify는 자동으로 이것을 인식해서 웹사이트를 다시 빌드하고 배포합니다. [Amplify 콘솔](https://console.aws.amazon.com/amplify/home)에서 이 과정을 확인할 수 있습니다. 앞에서 했던 배포와 마찬가지로, 이 작업도 몇 분 정도 걸립니다.
 
-{:refdef: style="text-align: center;"}
-![20_push](/assets/img/aws_amplify/20_push.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/20_push.png" class="align-center"><img src="/assets/img/aws_amplify/20_push.png"></a>
+</figure>
 
 이제, 우리가 만든 웹사이트에 다시 접속해 보면, 아래와 같이 제목이 'Wild Rydes - 2nd edition'로 바뀌어 있는 것을 볼 수 있습니다.
 
-{:refdef: style="text-align: center;"}
-![21_title](/assets/img/aws_amplify/21_title.png) 
-{: refdef}
+<figure>
+    <a href="/assets/img/aws_amplify/21_title.png" class="align-center"><img src="/assets/img/aws_amplify/21_title.png"></a>
+</figure>
 
 일단 AWS Amplify로 웹사이트를 만들어 놓으면, 그 다음부터는 연결된 리포지토리에 push하는 작업 말고는 따로 해 주는 일이 없습니다. 다른 일은 모두 자동화되어 AWS Amplify가 알아서 해 주기 때문입니다.
 
