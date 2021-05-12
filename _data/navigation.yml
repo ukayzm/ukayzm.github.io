@@ -46,6 +46,8 @@ docs:
       url: /aws-amplify/
     - title: AWS Cognito - 로그인 관리
       url: /aws-cognito/
+    - title: AWS Lambda - 서버리스 컴퓨팅
+      url: /aws-lambda/
     - title: IoT 무선 통신 기술 비교
       url: /6-iot-wireless-tech/
 
