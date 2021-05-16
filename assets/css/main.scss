@@ -6,6 +6,7 @@
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Gothic+Coding&display=swap');
 
 html {
     /* apply a natural box layout model to all elements */
@@ -22,7 +23,7 @@ html {
     }
   
     @include breakpoint($x-large) {
-      font-size: 20px;
+      font-size: 18px;
     }
   
     -webkit-text-size-adjust: 100%;
