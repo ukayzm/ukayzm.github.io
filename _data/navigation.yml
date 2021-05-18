@@ -48,6 +48,8 @@ docs:
       url: /aws-cognito/
     - title: AWS Lambda - 서버리스 컴퓨팅
       url: /aws-lambda/
+    - title: AWS API Gateway - HTTP/REST API
+      url: /aws-api-gateway/
     - title: IoT 무선 통신 기술 비교
       url: /6-iot-wireless-tech/
 
