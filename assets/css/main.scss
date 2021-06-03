@@ -29,3 +29,23 @@ html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
+
+a {
+    /* remove underbar of link */
+    text-decoration: none;
+}
+
+#main {
+  @include breakpoint($x-large) {
+    //max-width: $max-width;
+    max-width: 1440px;
+  }
+}
+
+.page__content {
+  h1 {
+    padding-top: 2em;
+    padding-bottom: 0.5em;
+    //border-top: 1px solid $border-color;
+  }
+}

@@ -195,7 +195,38 @@ That will create a page for Your Post2 to redirect to https://www.supertechcrew.
 
 [다음 검색 등록](https://register.search.daum.net/index.daum)에서 등록한다.
 
-## 참고사이트
+# Tips
+
+Notice<br>\{: .notice\}
+{: .notice}
+
+Notice info<br>\{: .notice--info\}
+{: .notice--info}
+
+Notice Warning<br>\{: .notice--warning\}
+{: .notice--warning}
+
+Notice Danger<br>\{: .notice--danger\}
+{: .notice--danger}
+
+Notice Success<br>\{: .notice--success\}
+{: .notice--success}
+
+<figure>
+    <a href="/assets/img/pexels/wall_e.jpeg" class="align-center"><img src="/assets/img/pexels/wall_e.jpeg"></a>
+    <figcaption>Image click to enlarge (this is caption)</figcaption>
+</figure>
+
+
+Center aligned text and image<br>\{: .text-center\}
+{: .text-center}
+
+![image in center](/assets/img/triangle.svg){: .align-center}
+\!\[image in center\]\(/assets/img/triangle.svg\)\{: .align-center\}
+{: .text-center}
+
+
+# 참고사이트
 
 [https://devinlife.com/howto%20github%20pages/google-search-console-and-analytics/](https://devinlife.com/howto%20github%20pages/google-search-console-and-analytics/)
 [https://devinlife.com/howto%20github%20pages/register-search-engine/](https://devinlife.com/howto%20github%20pages/register-search-engine/)
