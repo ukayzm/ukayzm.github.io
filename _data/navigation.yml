@@ -48,14 +48,14 @@ docs:
       url: /aws-cognito/
     - title: AWS Lambda - 서버리스 컴퓨팅
       url: /aws-lambda/
-    - title: AWS API Gateway - HTTP/REST API
+    - title: AWS API Gateway
       url: /aws-api-gateway/
     - title: IoT 무선 통신 기술 비교
       url: /6-iot-wireless-tech/
 
   - title: 아두이노/라즈베리파이
     children:
-    - title: Arduino CLI - 터미널에서 아두이노 개발
+    - title: Arduino CLI 터미널에서 아두이노 개발
       url: /arduino-cli/
     - title: 2 Wheel Balancing Robot - Cases
       url: /2-wheel-balancing-robot-cases/

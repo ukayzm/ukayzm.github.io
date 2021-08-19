@@ -228,7 +228,7 @@ Center aligned text and image<br>\{: .text-center\}
 
 # MacOS에서 설치
 
-먼저 ruby를 설치한다.
+Ruby를 설치한다.
 
 ```zsh
 $ brew install ruby
