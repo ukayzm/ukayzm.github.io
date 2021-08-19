@@ -226,6 +226,45 @@ Center aligned text and image<br>\{: .text-center\}
 {: .text-center}
 
 
+# MacOS에서 설치
+
+먼저 ruby를 설치한다.
+
+```zsh
+$ brew install ruby
+$ ruby -v
+ruby 2.6.3p62 (2019-04-16 revision 67580) [universal.arm64e-darwin20]
+```
+
+Ruby 버전 관리를 위해서 rbenv를 설치한다.
+
+```zsh
+$ brew update
+$ brew install rbenv ruby-build  # rbenv, ruby-build 설치
+$ eval "$(rbenv init -)"         # .bashrc나 .zshrc에 이 라인을 추가한다.
+```
+
+rbenv를 이용하여 원하는 버전의 ruby를 설치한다. (이 글을 쓰는 시점에서의 최신 버전은 2.7.2)
+```zsh
+$ rbenv install 2.7.2
+$ rbenv rehash        # 새 Ruby 설치 후 실행합니다.
+```
+
+사용할 ruby의 버전을 지정한다.
+
+```zsh
+$ rbenv global 2.4.4 # 시스템 전역의 버전을 지정
+$ rbenv local 2.3.2  # 현재 디렉토리에서 사용할 버전 지정
+$ ruby -v
+ruby 2.7.2p137 (2020-10-01 revision 5445e04352) [arm64-darwin20]
+```
+
+bundle로 gem을 설치한다.
+
+```zsh
+$ bundle install
+```
+
 # 참고사이트
 
 [https://devinlife.com/howto%20github%20pages/google-search-console-and-analytics/](https://devinlife.com/howto%20github%20pages/google-search-console-and-analytics/)
