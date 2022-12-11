@@ -27,3 +27,5 @@ gem "jekyll-redirect-from"
 # If you have any other plugins, put them here!
 group :jekyll_plugins do
 end
+
+gem "webrick", "~> 1.7"
