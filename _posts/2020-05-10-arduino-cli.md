@@ -164,7 +164,7 @@ C:\Program Files (x86)\Arduino\arduino-builder -dump-prefs -logger=machine -hard
 | 아두이노 우노 정품 | arduino:avr:uno | /dev/ttyACM0 |
 | 아두이노 우노 클론 | arduino:avr:uno | /dev/ttyUSB0 |
 | 아두이노 나노 클론 | arduino:avr:nano:cpu=atmega328old | /dev/ttyUSB0 |
-| ESP32 | esp32:esp32:esp2wrover |  |
+| ESP32 | esp32:esp32:esp32 | /dev/ttyUSB0 |
 
 # 테스트해 보기
 
